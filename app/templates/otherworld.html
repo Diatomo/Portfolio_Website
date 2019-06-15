@@ -1,0 +1,137 @@
+
+
+{% extends "base.html" %}
+
+{% block content %}
+		<h1>Otherworld</h1>
+		<hr>
+	<!-- Otherworld Introduction -->
+	<div class="article">
+		<!-- image -->
+		<div class="post_image">
+			<img src="{{ url_for('static', filename='Images/otherworld_intro.jpg') }}" width=600 height=400 />
+		</div>
+
+		<!-- description -->
+		<div class="description">
+		<p class="post">
+		
+		Otherworld is a small company that designs and build interactive art spaces. They build rooms and hallways filled with escape room and haunted house elements. This includes enigmatic puzzles, fantastical sculpture, audio, and textiles
+		as well as interactive projection mapping and otherworldy led animations. Charles was hired on for a technologist position to build interactive LED systems as well exposure to develop a narrative display using the Unity Framework. 
+		The size and scope of the projects produced some challenges that required tenacity as well as innovative problem solving. 
+		
+		</p>
+		</div>
+	</div>
+	<hr>
+	
+	<!-- Infinity Hall -->
+	<div class="article">
+		<!-- title -->
+		<div class="post_title">
+			<h3>Infinity Hall</h3>
+		</div>
+		<!-- image div -->
+		<div class="post_image">
+			<img src="{{ url_for('static', filename='Images/otherworld_infinity.jpg') }}" width=600 height=400 />
+		</div>
+
+		<!-- description -->
+		<div class="description">
+		<p class="post">
+
+		The Infinity Hall was a built hallway with LED channels that drew the attention to altered perspectives within the reflections of the mirrors but also the length of the hallway itself.  
+		The exhibit plays with one's perspective in two different ways. First, the hallway narrows, so when you look down the hallway it appears much further away than it really is. Second, the narrowing 
+		causes the mirrors' reflections to curve. Giving the sense that you're standing in a circular room. These perspectives are then accentuated by the led channels placed in the walls, celing, and floor. With a chase animation that draws
+		individuals into the altered perspective of the exhibit. The challenges of this exhibit were to mount the leds to a static structure and also route the wires to a central location about fifty feet from the exhibit space. It involved
+		weeks of testing, soldering, and adhereing the leds to the exhibit. It was meticulous work but eventually each led strand was mapped and animated using a teensy modification with touch designer.
+		
+		</p>
+		</div>
+	</div>
+	<hr>
+	
+	<!-- Sleeper Pods --> 
+	<div class="article">
+		<!-- title -->
+		<div class="post_title">
+			<h3>Sleeper Pods</h3>
+		</div>
+		<!-- image div -->
+		<div class="post_image">
+			<img src="{{ url_for('static', filename='Images/otherworld_sleeper.jpg') }}" width=600 height=400 />
+		</div>
+
+		<!-- description -->
+		<div class="description">
+		<p class="post">
+
+		The Sleeper Pods were another large scale LED exhibit with some futuristic fabrication and the use of audio and induction sensors. There are three pods with pressure pads in the bottom. When three people are simultaneously standing on these
+		pressure pads and the doors are closed. There is a payoff animation on the top of the room as if people are being beamed into some kind of celestial orb going to another world. The main challenge of this exhibit was that the leds were all
+		mounted to the ceiling which proved to be cumbersome to solder upside-down everyday. Another issue was that the leds would flicker. What Charles found out through hours of testing was that because we were using multiple microcontrollers
+		on the same LED power circuit, the differences in data grounds were cause the leds to flicker. Therefore, when the grounds were all bridged all the flicker would be resolved. 
+		
+		</p>
+		</div>
+	</div>
+	<hr>
+
+	<!-- Funeral Scene -->
+	<div class="article">
+		<!-- title -->
+		<div class="post_title">
+			<h3>Church Scene</h3>
+		</div>
+		<!-- image div -->
+		<div class="post_image">
+			<img src="{{ url_for('static', filename='Images/otherworld_funeral.jpg') }}" width=600 height=400 />
+		</div>
+
+		<!-- description -->
+		<div class="description">
+		<p class="post">
+
+		The church scene offered a few challenges. First the exhibit consisted of a rear projects, a sodium street light, 4 LED spotlights, 4 fans, an audio player, a magnet sensor, as well as 4 plants that would trigger when a door to a casket was opened and closed.
+		The first challenge was to get looping audio and video to play. Charles first though a raspberry pi was a great solution. However; there were a few problems with this desicion. First, to safely exhibitize a raspberry pi it needs to be placed
+		in read only mode. This, however; causes the graphics driver on the raspberry pi to become compromised and so video can no longer play. Therefore, Charles utilized a looping video player called a sprite to resolve this issue. Next, the raspberry pi when
+		in a box with a projector easily overheats. No matter the heatsinks nor the ventilation it didn't seem to behave properly with the conditions. As a result, the raspberry pi was swapped for a wavtrigger which is triggered by an arduino uno. When all the
+		issues were resolved an exhibit emerged that played heavily with light and color. The sodium lamp would suck all the color from the room and when the casket was opened led spot lights were shine on beautiful painted murals and the color would seemlessly
+		pour into a once monochromatic room.
+		
+		</p>
+		</div>
+		<!-- code -->
+		<div class=post_code>
+			<a href="https://github.com/Diatomo/Otherworld/tree/master/Funeral_Scene/Funeral_Scene">Code :: Funeral Scene</a>
+		</div>
+	</div>
+	<hr>
+
+	<!-- Unity Display Case -->
+	<div class="article">
+		<!-- title -->
+		<div class="post_title">
+			<h3>Unity Display</h3>
+		</div>
+		<!-- image div -->
+		<div class="post_image">
+			<img src="{{ url_for('static', filename='Images/otherworld_unity.jpg') }}" width=600 height=400 />
+		</div>
+
+		<!-- description -->
+		<div class="description">
+		<p class="post">
+
+		Charles had the oppurunity to develop a narrative display case with Unity. He didn't have much time but in about a weeks time he learned a new framework and designed a mock desktop to display media content such as video, images, text, and audio.
+		The display explained the background of Otherworld Industries. That is,  a science laboratory gone wrong that mixes together life/death, space, time, and sketchy monstrous experiments that insight your worst childhood nightmares. The programming for the
+		application utilized C# and was relatively straight forward. Unity utilizes a collection of objects that are composited to created more complex aesthetics and interactions between objects. Therefore, Charles utilized a factory method that depending on the tag
+		of each object would mitigate the appropriate responses. Therefore, the complexity of the code resided in a few if-then statements which routed the control of the entire program. As a result, guests can view and read the narrative of the space and learn
+		a little more about Otherworld Industries.
+
+		</p>
+		</div>
+	</div>
+	<hr>
+
+	<hr>
+{% endblock %}

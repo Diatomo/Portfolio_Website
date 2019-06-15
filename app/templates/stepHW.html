@@ -1,0 +1,121 @@
+
+{% extends "base.html" %}
+
+{% block content %}
+		<h1>Step Sequencer :: Hardware</h1>
+		<hr>
+	<div class="entryContainer">
+	
+	<!-- Introduction -->
+	<div class="article">
+		<!-- image -->
+		<div class="post_video">
+			<video width="600" height="400" controls>
+				<source src="{{ url_for('static', filename='Images/stepHW_intro.mp4') }}" type="video/mp4">
+			</video>
+		</div>
+
+		<!-- description -->
+		<div class="description">
+		<p class="post">
+			The step-sequencer hardware system originally started as a school project. It was nothing particularly new, however; plays an important role analog/digital modular sound synthesis. It was a natural path on learning more about custom
+			and open source hardware. It also introduced Charles to devloping electronics hardware as an engineering profession but also a medium to create new devices.
+		</p>
+		</div>
+	</div>
+		<hr>
+		
+	<!-- Prototype -->
+	<div class="article">
+		<!-- title -->
+		<div class="post_title">
+			<h3>Prototype</h3>
+		</div>
+
+		<!-- image div -->
+		<div class="post_image">
+			<img src="{{ url_for('static', filename='Images/stepHW_prototype.jpg') }}" width=600 height=400 />
+		</div>
+
+		<!-- description -->
+		<div class="description">
+		<p class="post">
+
+			This is an early prototype. There were many challenged in developing the first model. First, Charles had to understand the methodology of hardware production. This included, breadboarding, microcontrollers, integrated circuits, 
+			capacitors, resistors, etc... Afterwards, Charles had to figure out how integrated circuits function and which ones to choose. He eventually landed on two integrated circuits that were logic controlled spi periphals known to multiplex
+			button inputs. There were many weeks spent understanding the spi communcation, not only for the wiring but also the programming as well. In the end, Charles got a working prototype together, which was a feat that led to understanding
+			the short-comings of some of the hardware. 
+
+		</p>
+		<p>
+			<a href="https://en.wikipedia.org/wiki/Multiplexing">You can read more about multiplexing here</a>
+		</p>
+		</div>
+	</div>
+		<hr>
+	
+	<!-- Button Board -->
+	<div class="article">
+		<!-- title -->
+		<div class="post_title">
+			<h3>Button Board</h3>
+		</div>
+
+		<!-- image div -->
+		<div class="post_image">
+			<img src="{{ url_for('static', filename='Images/stepHW_buttons.jpg') }}" width=600 height=400 />
+		</div>
+
+		<!-- description -->
+		<div class="description">
+		<p class="post">
+		
+			The first button boards Charles received were from sparkfun and were dated back to 2008. Even though some electronics stand the test of time, the design of the button boards was severly outdated. It wasn't just that the leds chosen for the board were 
+			obsolete, but particular color animations could not be achieved. With an immense amount of C++ code, months learning and building the prototype, Charles decided to make a new board. 
+			Charles bought of a copy of Eagle and begin designing a board based off this previous version. With a lot of time, Charles created a design that he decided would be wise to get reviewed by a community online. 
+			Charles's collaboration efforts did not go in vain. With some fortune another individual gave charles a long list of constructive feedback. Before long, Charles produced his new button board design. Next he needed a subunit to drive information through
+			the board, which gave way to produce a multiplexer.
+		
+		</p>
+		</div>
+	</div>
+		<hr>
+
+
+	<!-- Multiplexer Schematic && Board Design -->
+	<div class="article">
+		<!-- title -->
+		<div class="post_title">
+			<h3>Multiplexer</h3>
+		</div>
+
+		<!-- image div -->
+		<div class="muxImage">
+			<img src="{{ url_for('static', filename='Images/stepHW_muxer.jpg') }}" width=1000 height=400 />
+		</div>
+
+		<!-- description -->
+		<div class="description">
+		<p class="post">
+
+			The multiplexer consisted of two integrated circuits. One was a 74HC595 other wise known as a Serial In Paralell Out logic circuit. The other was a 74HC165 other wise known as a Paralell In Serial Out logic circuit. The challenges of this design
+			came down to making the circuit modular. Meaning if one wanted to drive N number of boards they could chain multiplexers together to create a larger multiplexing system. The next difficult challenge was to find all the parts, make sure the pitch was correct
+			and the connectors were congruent with the crimps. Charles decided to go with precrimped jumper wires because the price of certain crimpers can run hundreds of dollars. After completion of the design, the gerber file was sent to Seeedstudio and came in the 
+			mail about a week later. Next, Charles, needs to develop a program to run on a microcontroller to send and read data from the peripheral multiplexing board as well as the button board.
+		
+		</p>
+		</div>
+	</div>
+		<hr>
+
+	<!-- WIP -->
+	<div class="article">
+		<div class=wip>
+			<h3>TO BE CONTINUED...</h3>
+		</div>
+	</div>
+		<hr>
+
+	</div>
+	<hr>
+{% endblock %}
