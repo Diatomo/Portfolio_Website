@@ -1,2 +1,2 @@
-# Portfolio_Website
-This is a development repository for my portfolio website
+# Website Portfolio
+This is a development repository for my portfolio website. The purposes of publishing in a public repository is to illustrate my understanding of web-development, python, and the flask framework. The website also highlights some past and current projects that some might find interesting. This project is mainly intended for job applications but will be updated for future aesthetic and purposes.
