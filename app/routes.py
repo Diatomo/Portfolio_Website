@@ -14,6 +14,14 @@ def index():
             "image" : "otherworld.png"
         },
         {
+            "name" : 'Hexapod Robot',
+            "video" : 'https://www.youtube.com/watch?v=X491o8rT-u4&feature=youtu.be',
+            "code" : 'https://github.com/Diatomo/SugarCube/tree/master/src',
+            'description' : 'Building and Programming a Hexapod Robot :: Orignally Designed by Adammck',
+            "endpoint" : "hexapod",
+            "image" : "hexapod.jpg"
+        },
+        {
             "name" : 'Roto',
             "video" : 'https://www.youtube.com/watch?v=4urrSNMTg34',
             "code" : 'https://github.com/Diatomo/Roto_Private',
@@ -60,14 +68,6 @@ def index():
             'description' : 'Designing and building a hardware step sequencer for a semi-moldular set',
             "endpoint" : "stepHW",
             "image" : "stepHW.jpg"
-        },
-        {
-            "name" : 'Hexapod Robot',
-            "video" : 'https://www.youtube.com/watch?v=X491o8rT-u4&feature=youtu.be',
-            "code" : 'https://github.com/Diatomo/SugarCube/tree/master/src',
-            'description' : 'Building and Programming a Hexapod Robot :: Orignally Designed by Adammck',
-            "endpoint" : "hexapod",
-            "image" : "hexapod.jpg"
         }
         ]
     return render_template('index.html', title='Home', projects=projects)
