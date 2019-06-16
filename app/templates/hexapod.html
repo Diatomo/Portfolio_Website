@@ -16,12 +16,14 @@
 		<!-- description -->
 		<div class="description">
 		<p class="post">
-			Charles has always had a deep fascination for robots. When Charles began working he noticed a weak point in his engineering skills pertained to mechanical devices. Therefore, with some patience and saving he had the opprutunity
-			to buy a 3D printer. At first, he built a hexapod from scrap off the internet. It was an interesting design; however, the servo motors were all pulse width modulated and the wires resembled a bad hair day instead of a wel engineered
-			electrical system. Needless to say, the design was extremely flimsly and Charles never approriately got the thing to walk. After building the 3D printer, Charles didn't quite know where to start on building his own robot. How were the legs
-			suppose to look, how many motors to use, how were the motors even implemented into a walking robot? With some luck and research Charles found a github repository of a guy named Adam, who had designed and programmed a hexapod. 
-			Charles borrowed his design files and started printing. Eventually the design will be personalized with the inverse kinematics to be written from scratch utilizing python and ROS as well as a reinforment learning program measured with a front
-			facing camera as well as an accelerometer. 
+
+			Charles has always had a deep fascination of robots. When Charles began working he noticed a weak point in his engineering skills with respect to mechanical devices. Therefore, with some patience and saving he had the oppurtunity
+			to buy a 3D printer. At first, he built a hexapod from scrap off the internet. It was an interesting design; however, the servo motors were all pulse width modulated and the wires resembled a bad hair day instead of a well engineered
+			electrical system. Needless to say, the design was extremely flimsy and Charles never approriately got the thing to walk. After building the 3D printer, Charles didn't quite know where to start on building his own robot. How were the legs
+			suppose to look? How many motors to use? How were the motors even implemented into a walking robot? With some luck and research Charles found a github repository of a guy named Adam, who had designed and programmed a hexapod. 
+			Charles borrowed his design files and started printing. Eventually the design will be personalized with the inverse kinematics to be written from scratch utilizing python and ROS as well as a reinforcment learning program measured with a front
+			facing camera as well as an accelerometer. However; with all Charles hopes to gain with completing this project, the core design work is attributed to Adam.
+		
 		</p>
 		</div>
 	</div>
@@ -42,8 +44,10 @@
 		<!-- description -->
 		<div class="description">
 		<p class="post">
+
 			Charles built this version of a hexapod from cutout parts bought online. All the hardware had to be sourced, that is nothing came with the cutouts, including the raspberry pi servo shield. Charles learned a lot about sourcing hardware and a lot more about
 			how not to build a robot. It was the first step to upgrading parts into a more robust and artfully interesting design.
+		
 		</p>
 		</div>
 	</div>
@@ -64,9 +68,11 @@
 		<!-- description -->
 		<div class="description">
 		<p class="post">
+
 			Charles, at this point, couldn't wait to utilize his 3D printer. This meant that ideas could be digitally fabricated and new modifications could be added without having
 			to buy another robot or start from scratch. Adam's design gave Charles a convienant starting point to integrate servo motors, power supplies, accelerometers, and cameras to the hexapod. With that said, Charles decided to use
 			Colorfabb's NGEN as the robot's material because of its safety but also its flexibility. Soon after, the 3D printer was assembled, and the stl files were cooked in Cura and ready to be printed.
+		
 		</p>
 		</div>
 	</div>
@@ -86,12 +92,14 @@
 		<!-- description -->
 		<div class="description">
 		<p class="post">
-			With the robot assembled it was time to begin animating the creature. In order to begin the program is dividing into several different features. First, the servos required an API to communicate with all their features, such as, led status,
-			torque, and movement. Next, Charles needed to construct a stack that would communicate to this API. Therefore, one object would direct the inverse kinematics algorithm which contains servo objects that contain vector and angle information for both
+
+			With the robot assembled it was time to begin animating the creature. In order to begin, the program is divided into several different features. First, the servos required an API to configure their built-in features, such as, led status,
+			torque, and movement. Next, Charles needed to construct a stack that would communicate to this API. Therefore, one object would direct the inverse kinematics algorithm which contained servo objects that contained vector and angular information for both
 			the leg's coordnate space as well as the chassis's world coordinate space. Inverse kinematics is essentially simplifying a complex jointed structure using trignometry and linear algebra. The idea is that it takes a vector coordinate and the algorithm
-			calculates the rotation of each servo motor up the chain to acheive that position. This alleiviates a lot of complexity in moving the robot from right to left or front to back without keyframing servo positions. Afterwards all the legs are controlled
-			by a hexapod object that manages time-frames of each movement as well as the gait, or pattern of how the legs walk. All this is controlled by a switch pro controller, in which, Charles parses a byte stream to mine out inputs needed for the robots movement.
-			It is still a work in progress, there needs to be a lot more testing before a reliable code-base can be pushed to production.
+			calculates the rotation of each servo motor up the chain to acheive that position. This alleviates a lot of complexity in moving the robot from right to left or front to back without keyframing servo positions. Afterwards, the legs are controlled
+			by a hexapod object that manages time-frames of each movement as well as the gait, or pattern of how the legs walk. All this is driven by input of a switch pro controller, in which, Charles parses a byte stream to mine out inputs needed 
+			for the robots movement. It is still a work in progress, there needs to be a lot more testing before a reliable code-base can be pushed to production.
+		
 		</p>
 		</div>
 	</div>

@@ -12,45 +12,50 @@
 		<div class="introduction">
 			<div class="description">
 				<p class="post">
-				Roto is a world class plan, design and build firm for the immersive interactive entertainment industry. They cater toward children's science and art museums. 
-				Charles worked as an engineer responsible for designing and implementing the electrical and programming elements. The role introduced Charles to
-				electrical hardware and he gained an advanced knowledge of C++ experience, with hundreds of scripts written and implemented in a production environment. It was one of the most
-				prolific experiences of Charles's career.
-				</p>
 
-				<div class="skills">
-					<ul>
-						<div class="left">
-							<li>Arduino</li>
-							<li>Raspberry Pi</li>
-							<li>C++</li>
-							<li>Python</li>
-							<li>Processing</li>
-							<li>Flask</li>
-							<li>Fadecandy</li>
-							<li>WS2811 LEDs</li>
-							<li>Fiber Optics</li>
-							<li>Gear Tooth Sensors</li>
-							<li>Audio Systems</li>
-							<li>Projection</li>
-						</div>
-						<div class="right">
-							<li>LiDars</li>
-							<li>High Voltage</li>
-							<li>PWM boards</li>
-							<li>Touch Capacitive boards</li>
-							<li>Button boards</li>
-							<li>Wav triggers</li>
-							<li>I2C extenders</li>
-							<li>I2C hub</li>
-							<li>7-segment displays</li>
-							<li>Custom fade candy systems</li>
-						</div>
-					</ul>
-				</div>
+				Roto was a world class plan, design and build firm for the immersive interactive entertainment industry. They catered toward children's science and art museums. 
+				Charles worked as an engineer responsible for designing and implementing the electrical and programming elements of each exhibit. The role introduced Charles to
+				electrical hardware and he gained an advanced knowledge of C++, with hundreds of scripts written and implemented in a production environment. It was one of the most
+				prolific experiences, so far, of Charles's career.
+				
+				</p>
 			</div>
 		</div>
 		<hr>
+
+
+	<!-- CRSMITH -->
+	<div class="article">
+		<!-- title -->
+		<div class=post_title>
+			<a href="http://www.crsmithmuseum.org/exhibitions/permanent-exhibits/"><u>CR-Smith Museum</u></a>
+		</div>
+
+		<!-- image div -->
+		<div class="post_image">
+			<img src="{{ url_for('static', filename='Images/roto_md80.png') }}" width=600 height=400 />
+		</div>
+
+		<!-- description -->
+		<div class="description">
+		<p class="post">
+
+			Charles's first professional engineering experience began with CRsmith, an American Airlines museum about flight. Charles took on the task to design and develop the center-peice of the exhibit space, an authentic MD80 cockpit. The peice 
+			came straight out of a junkyard and was shipped to the shop in Columbus, Ohio. Parts needed to be torn out in the hull of the cockpit and replaced in order to become a dynamic display case. Therefore, projectors, buttons, leds, and speakers
+			all had to make a home in the cockpit, that were easy to access but also couldn't be tampered by children or curious adults. First, Charles had to collaborate with mechanical engineers and project managers to determine the best position 
+			for all the components.Next Charles had to roll up his sleeves and begin pulling a lot of the natural wiring out of the cockpit in order to run wires for power and data to the exhibit. 
+			Afterwards the parts were integrated into cockpit and tested a week before it shipped. The cockpit was popular with visiting pilots as well as American Airlines staff. 
+			It was as close as one can get to piloting a real MD80 without being a pilot themselves. 
+		
+		</p>
+		</div>
+		<!-- code -->
+		<div class=post_code>
+			<a href="https://github.com/Diatomo/Roto_Private/blob/master/COMPLETE/CRSMITH/MD80/MD80.ino">Code :: MD80</a>
+		</div>
+	</div>
+	<hr>
+
 	<!-- Ohio State Constitution -->
 	<div class="article">
 		<!-- title -->
@@ -66,11 +71,13 @@
 		<!-- description -->
 		<div class="description">
 		<p class="post">
-			Charles was fortunate enough to participate in the remodeling of the Ohio Statehouse's historical museum. The musuem hadn't been updated in over twenty years and the contractor before
+
+			Charles was fortunate enough to participate in the remodeling of the Ohio Statehouse's historical museum. The museum hadn't been updated in over twenty years and the contractor before
 			had little documentation to integrate their electrical systems. Therefore, a layout had to be mapped for all twenty three exhibits, new lighting had to be ordered, 
-			and a few exhibits including a mock speech podeum, a projection mapped voting menu focused on values was developed, as well as the first ever display case for the original Ohio State 
-			Constitution were designed, and developed for the space. Charles took the intiative to program the microcontrollers, design schematics and build the new electrical control boxes. He also volunteered
-			to help integrate the space. The result was a newly renovated space with the first ever display of the original Ohio State Costitution.  
+			and a few exhibits including a mock speech podeum, a projection mapped voting menu focused on values was developed. As well, the first ever display case for the original Ohio State 
+			Constitution was designed, and developed for the space. Charles took the intiative to program the microcontrollers, design schematics and build the new electrical control boxes. He also volunteered
+			to help integrate the space and played a major role in prototyping and building the electronics and code for the Constitution display case. The results were a newly renovated space with the first ever display of the original Ohio State Costitution.  
+		
 		</p>
 		</div>
 		<!-- code -->
@@ -95,12 +102,14 @@
 		<!-- description -->
 		<div class="description">
 		<p class="post">
-			High museum was one of the largest LED installations Charles had ever engineered. There was more than three-hundred meters of LED tape spread between multiple rooms that were integrated with encoder controllers. 
-			The challenges were to figure out how to spread a pwm signal over long distance without the signal attentuating, how to inject power to avoid voltage drop, keep the light emitting diodes from overheating, and designing
-			easy access points for technicians maintaining the electrical components. In order to pull this off, Charle's first began with the design drawings to ensure easy access to the leds and that ventilation was appropriated
-			in the designs. Next, calculations were done to ensure power drops were placed every five meters and dmx to pwm controllers were placed close to the leds to avoid the attenuation of the pwm signal. Afterwards, there
-			were countless hours integrated, and soldering the leds into the exhibit cabinetry. As a result, the space was flooded with leds that contained intuitive control interfaces from rotation knobs to sliding potentiometers.
+
+			High museum was one of the largest LED installations Charles had ever engineered. There were more than three-hundred meters of LED tape spread between multiple rooms that were integrated with encoder controllers. 
+			The challenges were to figure out how to spread a pwm signal over long distance without the signal attenuating, how to inject power to avoid voltage drop, keep the light emitting diodes from overheating, and designing
+			easy access points for technicians maintaining the electrical components. In order to pull this off, Charles first began with the design drawings to ensure easy access to the leds and that ventilation was appropriated
+			in the designs. Next, calculations were done to ensure power drops were placed every five meters and then dmx to pwm controllers were placed close to the leds to avoid the attenuation of the pwm signal. Afterwards, there
+			were countless hours spent integrating and soldering the leds into the exhibit cabinetry. As a result, the space was flooded with leds that contained intuitive control interfaces from rotation knobs to sliding potentiometers.
 			It offered a robust design for children of all ages to interact and explore the realm of art and color.
+		
 		</p>
 		</div>
 		<!-- code -->
@@ -109,39 +118,6 @@
 		</div>
 	</div>
 	<hr>
-
-
-
-	<!-- CRSMITH -->
-	<div class="article">
-		<!-- title -->
-		<div class=post_title>
-			<a href="http://www.crsmithmuseum.org/exhibitions/permanent-exhibits/"><u>CR-Smith Museum</u></a>
-		</div>
-
-		<!-- image div -->
-		<div class="post_image">
-			<img src="{{ url_for('static', filename='Images/roto_md80.png') }}" width=600 height=400 />
-		</div>
-
-		<!-- description -->
-		<div class="description">
-		<p class="post">
-			Charles's first professional engineering experiences started with CRsmith, an American Airlines sponsered museum, about flight. Charles took on the task to design and develop the center-peice of the exhibit space, an authentic MD80 cockpit. The peice 
-			came straight out of a junkyard and was shipped to the shop in Columbus, Ohio. In the midst of the complexity of the cockpit, parts needed to be torn out and replaced to become a dynamic display case. Therefore, projects, buttons, leds, and speakers
-			all had to make a home in the cockpit, that were easy to access but also couldn't be tampered by children or nosy adults. First, Charles had to collaborate with mechanical engineers and project managers to determine the best position for all the components.
-			Next Charles had to roll up his sleeves and begin pulling a lot of the natural wiring out of the cockpit in order to run wires for power and data to the exhibit. Afterwards the parts were integrated into cockpit and tested a week before it shipped. The 
-			cockpit now exist in Fort Worth, Texas, and is a big hit with visiting pilots as well as American Airlines staff. It is as close as one can get to piloting a real MD80 without being a pilot themselves. 
-		</p>
-		</div>
-		<!-- code -->
-		<div class=post_code>
-			<a href="https://github.com/Diatomo/Roto_Private/blob/master/COMPLETE/CRSMITH/MD80/MD80.ino">Code :: MD80</a>
-		</div>
-	</div>
-	<hr>
-		
-
 
 	<!-- DISCOVERY WORLD -->
 	<div class="article">
@@ -158,13 +134,16 @@
 		<!-- description -->
 		<div class="description">
 		<p class="post">
-			Discovery World was easily the most challenging programming task Charles ever accomplished. Discover World, a science museum in Milwaukee, were looking to add an exhibit about energy and power. Charles's task involved programming
-			a complex system that contained 3 microcontrollers, 3 gear tooth sensors, 7 alternating current devices, 24 seven-segment displays, and over 300 leds. The system had to run concurrently, be tested and developed in under two weeks. First course
-			of action was to begin programming immediately. He first split the microcontrollers into three different modules that depending on partiular pins being wired to high and low signals loading different objects in the code and were responsible
-			for different tasks. This allowed Charles to split the number of states in actions into separate parts and made the system more manageable. Next each state was separately coded and tested. First, the gear tooth sensors and the data structure
-			that incremented how fast someone was pedaling. Next, the led animation then the 7 segment displays (which were brand new and needed an api to be tested and written) and lastly the relays controlling the AC devices. Then it was time to put all
-			the parts together and see how they interacted with one-another. Fortunately with such a limited amount of time all the tests and features passed, but with a stress on optimization and memory management. In the field, however; the exhibit still
-			stands and was one of the most resilient in the space.
+
+			Discovery World was by far the most challenging programming task Charles ever accomplished. Discovery World, a science museum in Milwaukee, Wisconsin, was looking to add an exhibit about energy and power. Charles's task involved programming
+			a complex system that contained 3 microcontrollers, 3 gear tooth sensors, 7 alternating current devices, 24 seven-segment displays, and over 300 leds. The system had to run concurrently, be tested and developed in under two weeks and all fit
+			in the memory space of an ATMEGA328. First course of action was to begin programming immediately. He first split the microcontrollers into three different modules that depending on particular pins being wired to high and low signals 
+			loading different objects in the code and were responsible for different tasks. This allowed Charles to split the number of states in actions into separate parts and made the system more manageable. 
+			Next each state was separately coded and tested. First, the gear tooth sensors and the data structure that incremented how fast someone was pedaling. Next, the led animation then the 7 segment displays 
+			(which were brand new and needed an api to be tested and written) and lastly the relays controlling the AC devices. Then it was time to put all the parts together and see how they interacted with one-another. 
+			Fortunately with such a limited amount of time all the tests and features passed but within an extremely tight limit of allotted memory space. In the field, however; the exhibit still
+			stands and was one of the most resilient and popular among children in the space.
+		
 		</p>
 		</div>
 		<!-- code -->
