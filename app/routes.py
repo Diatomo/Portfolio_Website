@@ -16,7 +16,7 @@ def index():
         {
             "name" : 'Hexapod Robot',
             "video" : 'https://www.youtube.com/watch?v=X491o8rT-u4&feature=youtu.be',
-            "code" : 'https://github.com/Diatomo/SugarCube/tree/master/src',
+            "code" : 'https://github.com/Diatomo/Hexapod',
             'description' : 'Building and Programming a Hexapod Robot :: Orignally Designed by Adammck',
             "endpoint" : "hexapod",
             "image" : "hexapod.jpg"
@@ -64,7 +64,7 @@ def index():
         {
             "name" : 'Step Sequencer Hardware Prototype',
             "video" : 'https://www.youtube.com/watch?v=X491o8rT-u4&feature=youtu.be',
-            "code" : 'https://github.com/Diatomo/SugarCube/tree/master/src',
+            "code" : 'https://github.com/Diatomo/Step-Sequencer',
             'description' : 'Designing and building a hardware step sequencer for a semi-moldular set',
             "endpoint" : "stepHW",
             "image" : "stepHW.jpg"
