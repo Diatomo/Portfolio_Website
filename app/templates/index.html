@@ -5,28 +5,22 @@
 {% block content %}
 
 
-<h1><b>CHARLES STEVENSON</b></h1>
-		<hr>
+<h1><b>Charles C. Stevenson</b></h1>
+	<div class="menu">
+		<a href="www.google.com">Projects</a>
+		<a href="www.google.com">About</a>
+		<a href="www.google.com">Blog</a>
+		<a href="www.google.com">Music</a>
+	</div>
 
-		<!--
-		<script>
-			document.getElementById("container").onmouseover = function() {mouseOver()};
-			document.getElementById("container").onmouseout = function() {mouseOut()};
-		function mouseOver(){
-			document.getElementById("container").style.background-color = #e6e6ff;
-		}
-		function mouseOut(){
-			document.GetElementById("container").style.background-color = #F5F5F5;
-		}
-		</script>
-		-->
-
-
-		{% for project in projects %}
-		<div class="container">
+	
+	<ul>
+	{% for project in projects %}
+		<li>
+			<!--<div class="container">-->
 
 			<!-- title -->
-			<div class=entry>
+			<div class="title">
 				<p>
 					{% if project.endpoint  == 'asteroids' %}
 					<u><b><a href="http://www.codeskulptor.org/#user46_Yt9RESUGhC9ZCwm_3.py">{{ project.name }}</a></b></u>
@@ -35,14 +29,8 @@
 					{% endif %}
 				</p>
 			</div>
-				
-			<!-- image -->
-			<div class=introImage>
-				<div class="image">
-					<img src="{{ url_for('static', filename='Images/' + project.image) }}" class="img-rounded" alt={{ project.name }} width="600" height="400"/>
-				</div>
-			</div>
-			
+
+
 			<!-- information links -->
 			<div class="externalLinks">
 				<a href={{ project.video }}>Video</a>
@@ -50,12 +38,19 @@
 				<a href={{ project.code }}>Code</a>
 			</div>
 
+	<!-- image -->
+				<div class="image">
+					<img src="{{ url_for('static', filename='Images/' + project.image) }}" class="img-rounded" alt={{ project.name }} width="400" height="200"/>
+				</div>
+
 			<!-- description -->
 			<div class="description">
 				<p>{{ project.description }}</p>
 			</div>
 
-		</div>
-		<hr width="500">
+			<!--</div>-->
+			<!--<hr width="500">-->
+	</li>
 	{% endfor %}
+	</ul>
 {% endblock %}
