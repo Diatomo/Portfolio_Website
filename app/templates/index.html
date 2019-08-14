@@ -7,10 +7,10 @@
 
 <h1><b>Charles C. Stevenson</b></h1>
 	<div class="menu">
-		<a href="www.google.com">Projects</a>
-		<a href="www.google.com">About</a>
-		<a href="www.google.com">Blog</a>
-		<a href="www.google.com">Music</a>
+		<a href={{ url_for('index') }}>Projects</a>
+		<a href={{ url_for('about') }}>About</a>
+		<a href={{ url_for('blog') }}>Blog</a>
+		<a href={{ url_for('music') }}>Music</a>
 	</div>
 
 	
@@ -38,9 +38,9 @@
 				<a href={{ project.code }}>Code</a>
 			</div>
 
-	<!-- image -->
+		<!-- image -->
 				<div class="image">
-					<img src="{{ url_for('static', filename='Images/' + project.image) }}" class="img-rounded" alt={{ project.name }} width="400" height="200"/>
+					<img src="static/images/{{ project.image }}" class="img-rounded" alt={{ project.name }} width="400" height="200"/>
 				</div>
 
 			<!-- description -->

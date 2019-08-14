@@ -1,0 +1,63 @@
+
+
+
+{% extends "base.html" %}
+
+{% block content %}
+
+	<!-- title -->
+	<h1><b>{{ title }}</b></h1>
+	<div class="menu">
+		<a href={{ url_for('index') }}>Projects</a>
+		<a href={{ url_for('about') }}>About</a>
+		<a href={{ url_for('blog') }}>Blog</a>
+		<a href={{ url_for('music') }}>Music</a>
+	</div>
+	<hr>
+
+	<!-- Introduction -->
+	<div class="introduction">
+		<div class="article">
+		<!-- description -->
+			<div class="description">
+				<p class="intro-description">
+					{{ description }}
+				</p>
+			</div>
+		</div>
+	</div>
+	<hr>
+
+	<!-- Entries -->
+	<ul>
+	{% for project in projects %}
+		<li>
+			<div class="article">
+				<!-- title -->
+				<div class="post_title">
+					<h3>{{ project.name }}</h3>
+				</div>
+			
+				<!-- image div -->
+				<div class="post_image">
+					<img src="static/images/{{ project.image }}" class="img-rounded" width=400 height=200 />
+				</div>
+
+				<!-- description -->
+				<div class="description">
+					<p class="post">
+						{{ project.post }}
+					</p>
+				</div>
+				
+				<!-- code -->
+				{% if project.code != None %}
+					<div class=post_code>
+						<a href={{ project.code }}>Code</a>
+					</div>
+				{% endif %}
+			</div>
+		</li>
+	{% endfor %}
+	</ul>
+{% endblock %}
