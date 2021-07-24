@@ -5,6 +5,7 @@ from app import app
 def about():
     return render_template('about.html')
 
+'''
 @app.route('/blog')
 def blog():
     return render_template('blog.html')
@@ -12,11 +13,26 @@ def blog():
 @app.route('/music')
 def music():
     return render_template('music.html')
+'''
 
 @app.route('/')
 @app.route('/index')
 def index():
     projects = [
+        {
+            "name" : 'Modular Synthesizer',
+            "video" : 'https://www.youtube.com/watch?v=JeMhOAyNEn0&ab_channel=MachineDreams',
+            'description' : 'Machine built to sculpt music in an electric sandbox utilizing buttons, jacks and knobs',
+            "endpoint" : "modular",
+            "image" : "modular.jpg"
+        },
+        {
+            "name" : 'Computer Generated Music',
+            "code" : 'https://github.com/Diatomo/Generative_Music',
+            'description' : 'Library of babel but for music',
+            "endpoint" : "generative",
+            "image" : "computer_generated_music.jpg"
+        },
         {
             "name" : 'Otherworld - Unity',
             "video" : 'https://www.youtube.com/watch?v=TdyC8926eEo',
@@ -322,10 +338,52 @@ def roto():
             "video" : None
         }
     ] 
-
     return render_template('project.html', title=title, description=description, projects=projects)
 
 
 
+@app.route('/modular')
+def modular():
+    title = "Modular"
+    description = ''' Modular Dummy Text '''
+    projects = [
+        {
+            "name" : "Music",
+            "image" : 'modular.jpg',
+            "post" : "Modular Dummy Text",
+            "code" : None,
+            "video" : None
+        },
+        {
+            "name" : "Schematics",
+            "image" : 'modular.jpg',
+            "post" : "Modular Dummy Text",
+            "code" : None,
+            "video" : None
+        }
+    ] 
+    return render_template('project.html', title=title, description=description, projects=projects)
 
+
+@app.route('/generative')
+def generative():
+    title = "Computer Generated Music"
+    description = ''' Generated music Dummy Text '''
+    projects = [
+        {
+            "name" : "Music",
+            "image" : 'computer_generated_music.jpg',
+            "post" : "Computer Generated Music Dummy Text",
+            "code" : None,
+            "video" : None
+        },
+        {
+            "name" : "Schematics",
+            "image" : 'computer_generated_music.jpg',
+            "post" : "Computer Generated Music Dummy Text",
+            "code" : None,
+            "video" : None
+        }
+    ] 
+    return render_template('project.html', title=title, description=description, projects=projects)
 
