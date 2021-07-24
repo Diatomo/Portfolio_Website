@@ -5,7 +5,6 @@ from app import app
 def about():
     return render_template('about.html')
 
-'''
 @app.route('/blog')
 def blog():
     return render_template('blog.html')
@@ -13,7 +12,6 @@ def blog():
 @app.route('/music')
 def music():
     return render_template('music.html')
-'''
 
 @app.route('/')
 @app.route('/index')
