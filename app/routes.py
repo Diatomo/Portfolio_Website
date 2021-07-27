@@ -335,24 +335,24 @@ def roto():
 @app.route('/modular')
 def modular():
     title = "Modular"
-    description = ''' Modular Dummy Text '''
+    description = ''' Eurorack format to sculpt music with unique and heavily parameterized modules. '''
     projects = [
         {
             "name" : "Music",
-            "image" : 'modular.jpg',
-            "post" : "Modular Dummy Text",
+            "image" : 'mod_music.jpg',
+            "post" : "A collection of tunes that I've written. Hope you enjoy.",
             "code" : None,
             "video" : None
         },
         {
             "name" : "Schematics",
-            "image" : 'modular.jpg',
-            "post" : "Modular Dummy Text",
+            "image" : 'schematic.png',
+            "post" : "Schematics of modules that I've tried or an building for my synthesizer system.",
             "code" : None,
             "video" : None
         }
     ] 
-    return render_template('project.html', title=title, description=description, projects=projects)
+    return render_template('modular.html', title=title, description=description, projects=projects)
 
 
 @app.route('/generative')
