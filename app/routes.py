@@ -10,6 +10,12 @@ def about():
 def index():
     projects = [
         {
+            "name" : 'Human Genetics Research Informatics Core',
+            'description' : 'Bioinformatics core facilitating a consortium research database.',
+            "endpoint" : "hgric",
+            "image" : "modular.jpg"
+        },
+        {
             "name" : 'Modular Synthesizer',
             "video" : 'https://www.youtube.com/watch?v=JeMhOAyNEn0&ab_channel=MachineDreams',
             'description' : 'Machine built to sculpt music in an electric sandbox utilizing buttons, jacks and knobs',
@@ -334,7 +340,7 @@ def roto():
 
 @app.route('/modular')
 def modular():
-    title = "Modular"
+    title = "Modular - Under Construction."
     description = ''' Eurorack format to sculpt music with unique and heavily parameterized modules. '''
     projects = [
         {
@@ -347,7 +353,8 @@ def modular():
         {
             "name" : "Schematics",
             "image" : 'schematic.png',
-            "post" : "Schematics of modules that I've tried or an building for my synthesizer system.",
+            "post" : "Schematics of modules that I've tried or am building for my synthesizer system.",
+            "endpoint" : "schematics",
             "code" : None,
             "video" : None
         }
@@ -355,9 +362,54 @@ def modular():
     return render_template('modular.html', title=title, description=description, projects=projects)
 
 
+@app.route('/schematics')
+def schematics():
+    title = "Schematics - Under Construction."
+    description = ''' Schematics I've prototyped and built for eurorack modular synthesizer. '''
+    projects = [
+        {
+            "name" : "Oscillator",
+            "image" : 'schematic.png',
+            "post" : "A module that produces a sound wave.",
+            "endpoint" : "schematics",
+            "code" : None,
+            "video" : None
+        },
+        {
+            "name" : "Sequencer",
+            "image" : 'schematic.png',
+            "post" : "A module that delivers control voltages to the oscillator.",
+            "endpoint" : "stepHW",
+            "code" : None,
+            "video" : None
+        },
+        {
+            "name" : "Filter",
+            "image" : 'schematic.png',
+            "post" : "Rounds out the edges of an oscillator making is softer or harsher in tone.",
+            "endpoint" : "filter",
+            "code" : None,
+            "video" : None
+        }
+    ] 
+    return render_template('project_link.html', title=title, description=description, projects=projects)
+
+
+@app.route('/oscillator')
+def oscillator():
+    title = "Oscillator"
+    description = ''' Oscillator Schematic. '''
+    return render_template('oscillator.html', title=title, description=description)
+
+@app.route('/filter')
+def filter():
+    title = "Diode Ladder Filter"
+    description = ''' Filter Schematic. '''
+    return render_template('filter.html', title=title, description=description)
+
 @app.route('/generative')
 def generative():
-    title = "Computer Generated Music"
+    title = "Computer Generated Music - Under Construction."
     description = ''' Generated music Dummy Text '''
     projects = [
         {
@@ -377,3 +429,8 @@ def generative():
     ] 
     return render_template('project.html', title=title, description=description, projects=projects)
 
+@app.route('/hgric')
+def hgric():
+    title = "Human Genetic Research Informatics Core"
+    description = "Bioinformatics research lab for Dilated Cardiomyopathy"
+    return render_template('hgric.html', title=title, description=description)

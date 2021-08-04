@@ -1,0 +1,33 @@
+
+
+
+{% extends "base.html" %}
+
+{% block content %}
+
+	<!-- title -->
+	<h1><b>{{ title }}</b></h1>
+	<div class="menu">
+		<a href={{ url_for('index') }}>Projects</a>
+		<a href={{ url_for('about') }}>About</a>
+	</div>
+	<hr>
+
+	<!-- Introduction -->
+	<div class="introduction">
+		<div class="article">
+		<!-- description -->
+			<div class="description">
+				<p class="intro-description">
+					{{ description }}
+				</p>
+			</div>
+		</div>
+	</div>
+	<hr>
+
+	<!-- blog entries -->
+	<p>
+	</p>
+
+{% endblock %}
