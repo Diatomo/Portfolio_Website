@@ -5,29 +5,43 @@ from app import app
 def about():
     return render_template('about.html')
 
+#SAVING THIS FOR LATER
+{
+    "name" : 'Computer Generated Music',
+    "code" : 'https://github.com/Diatomo/Generative_Music',
+    'description' : 'Library of babel but for music',
+    "endpoint" : "generative",
+    "image" : "computer_generated_music.jpg"
+}
+{
+    "name" : 'Step Sequencer Hardware Prototype',
+    "video" : 'https://www.youtube.com/watch?v=X491o8rT-u4&feature=youtu.be',
+    "code" : 'https://github.com/Diatomo/Step-Sequencer',
+    'description' : 'Designing and building a hardware step sequencer for a moldular set',
+    "endpoint" : "stepHW",
+    "image" : "stepHW.jpg",
+}
+
+
 @app.route('/')
 @app.route('/index')
 def index():
     projects = [
         {
-            "name" : 'Human Genetics Research Informatics Core',
-            'description' : 'Bioinformatics core facilitating a consortium research database.',
+            "name" : 'HGRIC',
+            "video" : '',
+            "code" : '',
+            'description' : 'Bioinformatics core maintaing and developing a consortium research database.',
             "endpoint" : "hgric",
-            "image" : "modular.jpg"
+            "image" : "bioinformatics.jpg"
         },
         {
             "name" : 'Modular Synthesizer',
             "video" : 'https://www.youtube.com/watch?v=JeMhOAyNEn0&ab_channel=MachineDreams',
+            "code" : '',
             'description' : 'Machine built to sculpt music in an electric sandbox utilizing buttons, jacks and knobs',
             "endpoint" : "modular",
             "image" : "modular.jpg"
-        },
-        {
-            "name" : 'Computer Generated Music',
-            "code" : 'https://github.com/Diatomo/Generative_Music',
-            'description' : 'Library of babel but for music',
-            "endpoint" : "generative",
-            "image" : "computer_generated_music.jpg"
         },
         {
             "name" : 'Otherworld - Unity',
@@ -78,20 +92,12 @@ def index():
             "image" : "asteroids.png"
         },
         {
-            "name" : 'Semi-Modular Patch Documentation',
+            "name" : 'Patch Documentation',
             "video" : 'https://www.youtube.com/watch?v=X491o8rT-u4&feature=youtu.be',
             "code" : 'https://github.com/Diatomo/Mother32_Preset',
             'description' : 'Moog Semimodular documentation for patching. Contains multiple moogs and a save feature',
             "endpoint" : "mother32",
             "image" : "mother32.png",
-        },
-        {
-            "name" : 'Step Sequencer Hardware Prototype',
-            "video" : 'https://www.youtube.com/watch?v=X491o8rT-u4&feature=youtu.be',
-            "code" : 'https://github.com/Diatomo/Step-Sequencer',
-            'description' : 'Designing and building a hardware step sequencer for a moldular set',
-            "endpoint" : "stepHW",
-            "image" : "stepHW.jpg",
         }
     ]
     return render_template('index.html', title='Home', projects=projects)
@@ -432,5 +438,5 @@ def generative():
 @app.route('/hgric')
 def hgric():
     title = "Human Genetic Research Informatics Core"
-    description = "Bioinformatics research lab for Dilated Cardiomyopathy"
+    description = "Bioinformatics research lab seeking the genetic causes of Dilated Cardiomyopathy (DCM)"
     return render_template('hgric.html', title=title, description=description)

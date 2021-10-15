@@ -31,9 +31,17 @@
 
 			<!-- information links -->
 			<div class="externalLinks">
+				{% if project.video != '' %}
 				<a href={{ project.video }}>Video</a>
-				   -   
+				{% endif %}
+				{% if project.video != '' and project.code != '' %}
+				   -
+				{% else %}
+				<br>
+				{% endif %}
+				{% if project.code != '' %}
 				<a href={{ project.code }}>Code</a>
+				{% endif %}
 			</div>
 
 		<!-- image -->
