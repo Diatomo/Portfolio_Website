@@ -17,21 +17,20 @@
 	{% for project in projects %}
 		<li>
 			<!--<div class="container">-->
-			<div class="container-lg">
 				<!-- title -->
-				<div class="mod_title">
+				<div class="title">
 					<h3>
 						<u><b> <a href={{ project.endpoint }}>{{ project.name }}</a></b></u>
 					</h3>
 				</div>
 
 				<!-- image -->
-				<div class="mod_image">
+				<div class="image">
 					<img src="static/images/{{ project.image }}" class="img-rounded" alt={{ project.name }} width="400" height="200"/>
 				</div>
 
 				<!-- description -->
-				<div class="mod_description">
+				<div class="description">
 					<p class="post">
 					{{ project.post }}
 					</p>

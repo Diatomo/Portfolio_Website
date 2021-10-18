@@ -5,25 +5,6 @@ from app import app
 def about():
     return render_template('about.html')
 
-#SAVING THIS FOR LATER
-{
-    "name" : 'Computer Generated Music',
-    "code" : 'https://github.com/Diatomo/Generative_Music',
-    'description' : 'Library of babel but for music',
-    "endpoint" : "generative",
-    "image" : "computer_generated_music.jpg"
-}
-{
-    "name" : 'Step Sequencer Hardware Prototype',
-    "video" : 'https://www.youtube.com/watch?v=X491o8rT-u4&feature=youtu.be',
-    "code" : 'https://github.com/Diatomo/Step-Sequencer',
-    'description' : 'Designing and building a hardware step sequencer for a moldular set',
-    "endpoint" : "stepHW",
-    "image" : "stepHW.jpg",
-}
-
-
-
 @app.route('/')
 @app.route('/index')
 def index():
@@ -354,12 +335,13 @@ def modular():
             "name" : "Music",
             "image" : 'mod_music.jpg',
             "post" : "A collection of tunes that I've written. Hope you enjoy.",
+            "endpoint" : "music",
             "code" : None,
             "video" : None
         },
         {
-            "name" : "Schematics",
-            "image" : 'schematic.png',
+            "name" : "Modules",
+            "image" : 'step_multiplexer.jpg',
             "post" : "Schematics of modules that I've tried or am building for my synthesizer system.",
             "endpoint" : "schematics",
             "code" : None,
@@ -378,23 +360,15 @@ def schematics():
             "name" : "Oscillator",
             "image" : 'schematic.png',
             "post" : "A module that produces a sound wave.",
-            "endpoint" : "schematics",
+            "endpoint" : "oscillator",
             "code" : None,
             "video" : None
         },
         {
             "name" : "Sequencer",
-            "image" : 'schematic.png',
+            "image" : 'step_multiplexer.jpg',
             "post" : "A module that delivers control voltages to the oscillator.",
             "endpoint" : "stepHW",
-            "code" : None,
-            "video" : None
-        },
-        {
-            "name" : "Filter",
-            "image" : 'schematic.png',
-            "post" : "Rounds out the edges of an oscillator making is softer or harsher in tone.",
-            "endpoint" : "filter",
             "code" : None,
             "video" : None
         }
@@ -408,12 +382,84 @@ def oscillator():
     description = ''' Oscillator Schematic. '''
     return render_template('oscillator.html', title=title, description=description)
 
+@app.route('/music')
+def music():
+    title = "Music"
+    description = ''' Music '''
+    projects = [
+        {
+            "name" : "Dark Portal",
+            "image" : 'schematic.png',
+            "post" : "Dark Portal Summoning Spirits.",
+            "music" : "https://www.dropbox.com/s/c15pwe9ibzpics4/Late_Night_Portal.mp4?dl=0"
+        },
+        {
+            "name" : "Ambient_001",
+            "image" : 'schematic.png',
+            "post" : "Ambient 001",
+            "music" : "https://www.dropbox.com/s/freczmem7fk6kl2/AMBIENT%20001.mp4?dl=0"
+        },
+        {
+            "name" : "Ambient_002",
+            "image" : 'schematic.png',
+            "post" : "Ambient 002",
+            "music" : "https://www.dropbox.com/s/ynhztbddnpki1ol/ambient_002.mp4?dl=0"
+        },
+        {
+            "name" : "October Track",
+            "image" : 'schematic.png',
+            "post" : "October Track",
+            "music" : "https://www.dropbox.com/s/fpvs72uqposn1pc/Instagram_10.11.2021.mp4?dl=0"
+        }
+
+    ]
+    return render_template('music.html', title=title, description=description, projects=projects)
+
+@app.route('/hgric')
+def hgric():
+    title = "Human Genetic Research Informatics Core"
+    description = "Bioinformatics research lab seeking the genetic causes of Dilated Cardiomyopathy (DCM)"
+    return render_template('hgric.html', title=title, description=description)
+
+
+
+
+
+
+
+
+
+#SAVING THIS FOR LATER
+{
+    "name" : 'Computer Generated Music',
+    "code" : 'https://github.com/Diatomo/Generative_Music',
+    'description' : 'Library of babel but for music',
+    "endpoint" : "generative",
+    "image" : "computer_generated_music.jpg"
+}
+{
+    "name" : 'Step Sequencer Hardware Prototype',
+    "video" : 'https://www.youtube.com/watch?v=X491o8rT-u4&feature=youtu.be',
+    "code" : 'https://github.com/Diatomo/Step-Sequencer',
+    'description' : 'Designing and building a hardware step sequencer for a moldular set',
+    "endpoint" : "stepHW",
+    "image" : "stepHW.jpg",
+}
+#MODULE
+{
+    "name" : "Filter",
+    "image" : 'schematic.png',
+    "post" : "Rounds out the edges of an oscillator making is softer or harsher in tone.",
+    "endpoint" : "filter",
+    "code" : None,
+    "video" : None
+}
+
 @app.route('/filter')
 def filter():
     title = "Diode Ladder Filter"
     description = ''' Filter Schematic. '''
     return render_template('filter.html', title=title, description=description)
-
 @app.route('/generative')
 def generative():
     title = "Computer Generated Music - Under Construction."
@@ -435,9 +481,3 @@ def generative():
         }
     ] 
     return render_template('project.html', title=title, description=description, projects=projects)
-
-@app.route('/hgric')
-def hgric():
-    title = "Human Genetic Research Informatics Core"
-    description = "Bioinformatics research lab seeking the genetic causes of Dilated Cardiomyopathy (DCM)"
-    return render_template('hgric.html', title=title, description=description)
