@@ -6,7 +6,7 @@
 {% block content %}
 
 	<!-- title -->
-	<h1><b>{{ title }}</b></h1>
+	<h1><b>{{ title }} - Under Construction</b></h1>
 	<div class="menu">
 		<a href={{ url_for('index') }}>Projects</a>
 		<a href={{ url_for('about') }}>About</a>
@@ -14,7 +14,42 @@
 	</div>
 	<hr>
 
-	
+	<div style='text-align:center; width: 40em; margin-right: auto; margin-left: auto'>
+		<h3>Introduction</h3>
+		<p>
+			The voltage controlled oscillator broken down into it’s simplest parts is a Resistor - Capacitor (RC) circuit, 
+			where a capacitor charges, raising the voltage level, and then discharges through the resistor causing the voltage 
+			level to fall. However; in order to integrate this into a eurorack format we add several other components. 
+			A mixer, an augmented oscillator core with a schmitt trigger and instead of a resistor, two transistors, and an 
+			ac-coupled op-amp. All this is built on top of a bipolar 12V. 
+		</p>
+
+		<hr>
+		<h3>Bipolar Power</h3>
+		<p>
+			The bipolar power is an important aspect of synthesizer electronics for two separate reasons. One, when voltage 
+			is mapped to an oscillation every voltage level is mapped to a frequency. If we only had discrete voltages 
+			between 0 volts and 5 volts, we would map that space to 128 notes. This would mean changing a note would be 0.04volts. 
+			This voltage is so fine that it is difficult to get that granularity when utilizing a transistor as a control voltage resistor. 
+			Two, operational amplifiers provide the best and easiest method to buffer and scale down our oscillation to fit 
+			within the eurorack standard. 
+		<p>
+
+
+		<hr>
+		<h3>Component One</h3>
+		<p>
+			The first component is a parallel mixing circuit. The mixing circuit is composed of a potentiometer, a resistor and a 
+			thermistor, in series. The three components cut the 12 volt voltage level to a level low enough to make the transistor 
+			act like a resistor, which happens to transistors when a low enough voltage level hits a transistors base. The flow of 
+			current from the collector to the emitter is in a partial open and closed state, acting like a resistor. 
+		<p>
+
+		<hr>
+		<h3>To Be Continued...</h3>
+		<p>
+		<p>
+	</div>
 
 
 	<!-- blog entries -->

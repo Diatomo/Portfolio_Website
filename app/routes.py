@@ -389,25 +389,25 @@ def music():
     projects = [
         {
             "name" : "Dark Portal",
-            "image" : 'schematic.png',
+            "image" : 'dark_portal.png',
             "post" : "Dark Portal Summoning Spirits.",
             "music" : "https://www.dropbox.com/s/c15pwe9ibzpics4/Late_Night_Portal.mp4?dl=0"
         },
         {
             "name" : "Ambient_001",
-            "image" : 'schematic.png',
+            "image" : 'ambient_001.png',
             "post" : "Ambient 001",
             "music" : "https://www.dropbox.com/s/freczmem7fk6kl2/AMBIENT%20001.mp4?dl=0"
         },
         {
             "name" : "Ambient_002",
-            "image" : 'schematic.png',
+            "image" : 'ambient_002.png',
             "post" : "Ambient 002",
             "music" : "https://www.dropbox.com/s/ynhztbddnpki1ol/ambient_002.mp4?dl=0"
         },
         {
             "name" : "October Track",
-            "image" : 'schematic.png',
+            "image" : 'october.png',
             "post" : "October Track",
             "music" : "https://www.dropbox.com/s/fpvs72uqposn1pc/Instagram_10.11.2021.mp4?dl=0"
         }
