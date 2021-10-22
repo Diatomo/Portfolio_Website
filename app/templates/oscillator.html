@@ -15,7 +15,17 @@
 	<hr>
 
 	<div style='text-align:center; width: 40em; margin-right: auto; margin-left: auto'>
-		<h3>Introduction</h3>
+		<h3>General Introduction</h3>
+		<p>
+			Welcome, to my post about oscillators. There are quite a few components in here that are not quite beginner friendly, 
+			however; I followed a schematic design and explanation by Moritz Klein. I’ve taken the liberty to expand a little on 
+			his circuit but also create a reproducible PCB board layout in Eagle. My goal with these projects is to get to a point 
+			where the majority of my modules are DIY, hoping to learn a lot about synthesizer circuits to make my own new and novel 
+			versions but also make things more accessible to those interested in both music making but also utilizing circuits 
+			as an art form.
+		</p>
+		<hr>
+		<h3>Oscillator Introduction</h3>
 		<p>
 			The voltage controlled oscillator broken down into it’s simplest parts is a Resistor - Capacitor (RC) circuit, 
 			where a capacitor charges, raising the voltage level, and then discharges through the resistor causing the voltage 
@@ -23,7 +33,6 @@
 			A mixer, an augmented oscillator core with a schmitt trigger and instead of a resistor, two transistors, and an 
 			ac-coupled op-amp. All this is built on top of a bipolar 12V. 
 		</p>
-
 		<hr>
 		<h3>Bipolar Power</h3>
 		<p>
@@ -33,27 +42,58 @@
 			This voltage is so fine that it is difficult to get that granularity when utilizing a transistor as a control voltage resistor. 
 			Two, operational amplifiers provide the best and easiest method to buffer and scale down our oscillation to fit 
 			within the eurorack standard. 
-		<p>
-
-
+		</p>
 		<hr>
-		<h3>Component One</h3>
+		<h3>Mixing: Component One</h3>
 		<p>
 			The first component is a parallel mixing circuit. The mixing circuit is composed of a potentiometer, a resistor and a 
 			thermistor, in series. The three components cut the 12 volt voltage level to a level low enough to make the transistor 
 			act like a resistor, which happens to transistors when a low enough voltage level hits a transistors base. The flow of 
 			current from the collector to the emitter is in a partial open and closed state, acting like a resistor. 
-		<p>
-
+		</p>
 		<hr>
-		<h3>To Be Continued...</h3>
+		<h3>Oscillator Core: Component Two</h3>
 		<p>
+			The second component is the oscillator core. The small voltage mixed from the potentiometers and jacks hits the 
+			base of the pnp transistor. This allows a +12V raid to sink to a -12V rail divided by a 1Mega Ohm resistor, which 
+			hits the base of NPN transistor. This triggers a voltage to fill up a capacitor and raise the voltage level beyond 
+			the schmitt triggers threshold. Next, the schmitt trigger puts out an equal but opposite signal until the voltage 
+			level falls below another threshold, which I believe are set by the schmitt triggers power raid inputs. 
+			Therefore, this cycle continues producing an oscillation. 
+		</p>
+		<hr>
+		<h3>Sawtooth Output: Component Three</h3>
 		<p>
+			The third component is a series of op-amps. The first op-amp buffers the input from the output. If this op-amp 
+			didn’t exist, then current would be dissipated with the output and detune the oscillation. Therefore, an op-amp, 
+			with its high impedance is the perfect tool to couple both the input and the output. The second op-amp for the 
+			sawtooth wave form scales the oscillation voltage down to a 10V peak to peak standard utilized in the eurorack 
+			synthesizer setup.
+		</p>
+		<hr>
+		<h3>Square Output: Component Four</h3>
+		<p>
+			For the square wave, the schematic scales the threshold of the sawtooth wave and send it into the schmitt trigger. 
+			Since the schmitt trigger only turns on and off above and below a particular threshold, the amount of time the oscillation 
+			is above and below those thresholds will create the duty cycle, or rather the amount of time that the square wave is high 
+			relative to how often the square wave is low. Hence, we have a potentiometer on the op-amps inverted rail.
+			After the schmitt trigger we scale the oscillation to be sent to another eurorack module or an output. 
+		</p>
+		<hr>
+		<h3>Version 3 and Beyond</h3>
+		<p>
+			My latest build of this oscillator, V2, contains 8 out of 9 inputs and outputs working, with the only missing output, 
+			being a square wave on channel 2. I found this to be a success but going into the future, I would like to add an LED 
+			to illustrate that the module is getting power, a triangle wave form on a third board underneath the logic board for 
+			the other two oscillators, flip the trimmers around for easier tuning, and fix an issue where the square wave cuts 
+			the oscillation when the duty cycle is high enough. However; my next project is most likely going to be a triple VCA 
+			to give the oscillations some life.
+		</p>
+		<hr>
+		<h3>Resources</h3>
+		<a href='https://www.dropbox.com/s/hifex9ubbawy5vu/oscillator.png?dl=0'>Schematic</a>
+		<a href='https://www.youtube.com/channel/UCzfW6SlNEyxmAPtdr3n-_Og'>Synth DIY Videos</a>
 	</div>
 
-
-	<!-- blog entries -->
-	<p>
-	</p>
 
 {% endblock %}
