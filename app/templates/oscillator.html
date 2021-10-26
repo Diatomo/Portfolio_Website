@@ -14,7 +14,7 @@
 	</div>
 	<hr>
 
-	<div style='text-align:center; width: 40em; margin-right: auto; margin-left: auto'>
+	<div style='position: relative; text-align:center; width: 50%; margin-right: auto; margin-left: auto'>
 		<h3>General Introduction</h3>
 		<p>
 			Welcome, to my post about oscillators. There are quite a few components in here that are not quite beginner friendly, 
@@ -45,6 +45,7 @@
 		</p>
 		<hr>
 		<h3>Mixing: Component One</h3>
+		<img src="static/images/mixer.png" alt="mixer" width="1080" height="607" style='border: 2px solid black;'>
 		<p>
 			The first component is a parallel mixing circuit. The mixing circuit is composed of a potentiometer, a resistor and a 
 			thermistor, in series. The three components cut the 12 volt voltage level to a level low enough to make the transistor 
@@ -53,6 +54,7 @@
 		</p>
 		<hr>
 		<h3>Oscillator Core: Component Two</h3>
+		<img src="static/images/core.png"  alt="core" width="1080" height="607" style='border: 2px solid black;'/>
 		<p>
 			The second component is the oscillator core. The small voltage mixed from the potentiometers and jacks hits the 
 			base of the pnp transistor. This allows a +12V raid to sink to a -12V rail divided by a 1Mega Ohm resistor, which 
@@ -63,6 +65,7 @@
 		</p>
 		<hr>
 		<h3>Sawtooth Output: Component Three</h3>
+		<img src="static/images/saw_out.png"  alt="saw_out" width="1080" height="607" style='border: 2px solid black;'/>
 		<p>
 			The third component is a series of op-amps. The first op-amp buffers the input from the output. If this op-amp 
 			didn’t exist, then current would be dissipated with the output and detune the oscillation. Therefore, an op-amp, 
@@ -72,6 +75,7 @@
 		</p>
 		<hr>
 		<h3>Square Output: Component Four</h3>
+		<img src="static/images/square_out.png"  alt="square_out" width="1080" height="607" style='border: 2px solid black;'/>
 		<p>
 			For the square wave, the schematic scales the threshold of the sawtooth wave and send it into the schmitt trigger. 
 			Since the schmitt trigger only turns on and off above and below a particular threshold, the amount of time the oscillation 
