@@ -358,7 +358,7 @@ def schematics():
     projects = [
         {
             "name" : "Oscillator",
-            "image" : 'schematic.png',
+            "image" : 'oscillator.png',
             "post" : "A module that produces a sound wave.",
             "endpoint" : "oscillator",
             "code" : None,
