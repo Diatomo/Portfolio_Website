@@ -1,10 +1,6 @@
 from flask import render_template, url_for, current_app
 from app import app
 
-@app.route('/about')
-def about():
-    return render_template('about.html')
-
 @app.route('/')
 @app.route('/index')
 def index():
@@ -16,38 +12,6 @@ def index():
             'description' : 'Bioinformatics core maintaing and developing a consortium research database.',
             "endpoint" : "hgric",
             "image" : "bioinformatics.jpg"
-        },
-        {
-            "name" : 'Modular Synthesizer',
-            "video" : 'https://www.youtube.com/watch?v=JeMhOAyNEn0&ab_channel=MachineDreams',
-            "code" : '',
-            'description' : 'Machine built to sculpt music in an electric sandbox utilizing buttons, jacks and knobs',
-            "endpoint" : "modular",
-            "image" : "modular.jpg"
-        },
-        {
-            "name" : 'Otherworld - Unity',
-            "video" : 'https://www.youtube.com/watch?v=TdyC8926eEo',
-            "code" : 'https://github.com/Diatomo/Otherworld',
-            'description' : 'Art Installation Company for interactive experiences. Built, designed and programmed Unity app, arduino scripts and applications on a raspberry pi with processing',
-            "endpoint" : "otherworld",
-            "image" : "otherworld.png"
-        },
-        {
-            "name" : 'Hexapod Robot',
-            "video" : 'https://www.youtube.com/watch?v=X491o8rT-u4&feature=youtu.be',
-            "code" : 'https://github.com/Diatomo/Hexapod',
-            'description' : 'Building and Programming a Hexapod Robot :: Orignally Designed by Adammck',
-            "endpoint" : "hexapod",
-            "image" : "hexapod.jpg",
-        },
-        {
-            "name" : 'Roto',
-            "video" : 'https://www.youtube.com/watch?v=4urrSNMTg34',
-            "code" : 'https://github.com/Diatomo/Roto_Private',
-            'description' : 'Plan, design, build firm in which I built, designed, and programmed hardware systems for interactives.',
-            "endpoint" : "roto",
-            "image" : "roto.png",
         },
         {
             "name" : 'TIAS',
@@ -74,108 +38,31 @@ def index():
             "image" : "asteroids.png"
         },
         {
-            "name" : 'Patch Documentation',
+            "name" : 'Hexapod Robot - Incomplete',
+            "video" : '',
+            "code" : 'https://github.com/Diatomo/Hexapod',
+            'description' : 'Building and Programming a Hexapod Robot :: Orignally Designed by Adammck',
+            "endpoint" : "hexapod",
+            "image" : "hexapod.jpg",
+        },
+        {
+            "name" : 'Patch Documentation - Incomplete',
             "video" : 'https://www.youtube.com/watch?v=X491o8rT-u4&feature=youtu.be',
             "code" : 'https://github.com/Diatomo/Mother32_Preset',
-            'description' : 'Moog Semimodular documentation for patching. Contains multiple moogs and a save feature',
+            'description' : 'Moog Semimodular documentation application for patching. When I first was learning how to play a synthesizer, I often find myself creating some interesting sounds but forgetting how I made them. I decided to create a program to help me save and record patches.',
             "endpoint" : "mother32",
             "image" : "mother32.png",
         }
     ]
     return render_template('index.html', title='Home', projects=projects)
 
-
-@app.route('/tias', methods=["GET", "POST"])
-def tias():
-    return current_app.send_static_file('tias.html')
-
-@app.route('/gravity')
-def gravity():
-    return render_template('gravity.html')
-
-@app.route('/mother32')
-def mother():
-    return render_template('mother32.html')
-
-@app.route('/stepHW')
-def stepHW():
-    title = "Step Sequencer Hardware"
-    description = '''The step-sequencer hardware system originally started as a school project. 
-    It was nothing particularly new, however; played an important role in analog/digital modular sound synthesis.
-    It was a natural path on learning more about customand open source hardware. It also introduced Charles to 
-    developing electronics hardware from scratch using professional tools such as Eagle.'''
-    projects = [ 
-        {
-            "name" : "Prototype",
-            "image" : 'step_prototype.jpg',
-            "post" : "Protype begin on breadboards with hundreds of wires and a few cans of beer.",
-            "code" : None,
-            "video" : None
-        },
-        {
-            "name" : "Button Board",
-            "image" : 'step_button.jpg',
-            "post" : "With shortcomings of a prototyped breadboard, a new board was brought to life. Which utilized neopixels and a flashy pcb laceur",
-            "code" : None,
-            "video" : None
-        },
-        {
-            "name" : "Multiplexer",
-            "image" : 'step_multiplexer.jpg',
-            "post" : "Modularity was key to create a system that could be expanded thus the multiplexer drove the input of the button board",
-            "code" : None,
-            "video" : None
-        },
-        {
-            "name" : "Software",
-            "image" : 'step_software.png',
-            "post" : "To control everything a small Object Oriented C++ program was created utilizing the arduino compiler for a teensy board along with the platformIO framework",
-            "code" : None,
-            "video" : None
-        }
-    ]
-    return render_template('project.html', title=title, description=description, projects=projects)
-
-@app.route('/hexapod')
-def hexapod():
-    title = "Hexapod"
-    description = '''Hexapod built to began designing a kinematic system for robots 
-    but eventually test reinforcment learning algorithms as well as computer vision.'''
-    projects =[
-        {
-            "name" : "Prototype",
-            "image" : 'hexapod_prototype.jpg',
-            "post" : "Hexapod Robot built with pulse width modulated servo motors.",
-            "code" : None,
-            "video" : None
-        },
-        {
-            "name" : "Assembly",
-            "image" : 'hexapod_assembly.jpg',
-            "post" : "Parts collection before assembly. Included legs, feet, a body, smart servo motors, and a raspberry pi",
-            "code" : None,
-            "video" : None
-        },
-        {
-            "name" : "Software",
-            "image" : 'hexapod_software.png',
-            "post" : '''Designed in a layered object oriented archetecture following the mathematics and research for Hexapod Functionality. 
-                      This includes, servo api, legs, head, pose, gait, hexapod state machine, and an input controller.''',
-            "code" : "https://github.com/Diatomo/Hexapod",
-            "video" : None
-        }
-    ]
-    return render_template('project.html', title=title, description=description, projects=projects)
-
-@app.route('/otherworld')
-def otherworld():
-    title = "Otherworld"
+@app.route('/exhibits')
+def exhibits():
+    title = "Art Installations"
     description = '''
-            Otherworld was a small company that designed and built interactive art spaces. 
-            They built rooms and hallways filled with escape room and haunted house elements. 
-            This included enigmatic puzzles, fantastical sculpture, audio, and textiles
-            as well as interactive projection mapping and otherworldy led animations. The technologist
-            position thus required tenacity as well as innovative problem solving.'''
+        Art installations built, designed, and installed over two years from Texas to Ohio, including a display case
+        for the real Ohio constitution.
+        '''
     projects =  [
         {
             "name" : "Infinity Hall",
@@ -247,17 +134,6 @@ def otherworld():
             "code" : None,
             "video" : None
         },
-    ]
-    return render_template('project.html', title=title, description=description, projects=projects)
-
-@app.route('/roto')
-def roto():
-    title = "Roto"
-    description = ''' Roto was a plan, design and build firm for the immersive  
-            interactive entertainment industry. They catered toward 
-            children's science and art museums. Exhibit Engineers designed 
-            and implemented the electrical and programming elements of each exhibit.'''
-    projects = [
         {
             "name" : "MD-80 Display Case",
             "image" : 'roto_md80.png',
@@ -321,66 +197,21 @@ def roto():
             "code" : "https://github.com/Diatomo/Roto-Arduino-Scripts/blob/master/COMPLETE/AKRON/Knox_Prototype/Knox_Prototype.ino",
             "video" : None
         }
-    ] 
+    ]
     return render_template('project.html', title=title, description=description, projects=projects)
 
 
+@app.route('/tias', methods=["GET", "POST"])
+def tias():
+    return current_app.send_static_file('tias.html')
 
-@app.route('/modular')
-def modular():
-    title = "Modular - Under Construction."
-    description = ''' Eurorack format to sculpt music with unique and heavily parameterized modules. '''
-    projects = [
-        {
-            "name" : "Music",
-            "image" : 'mod_music.jpg',
-            "post" : "A collection of tunes that I've written. Hope you enjoy.",
-            "endpoint" : "music",
-            "code" : None,
-            "video" : None
-        },
-        {
-            "name" : "Modules",
-            "image" : 'step_multiplexer.jpg',
-            "post" : "Schematics of modules that I've tried or am building for my synthesizer system.",
-            "endpoint" : "schematics",
-            "code" : None,
-            "video" : None
-        }
-    ] 
-    return render_template('modular.html', title=title, description=description, projects=projects)
+@app.route('/gravity')
+def gravity():
+    return render_template('gravity.html')
 
-
-@app.route('/schematics')
-def schematics():
-    title = "Schematics - Under Construction."
-    description = ''' Schematics I've prototyped and built for eurorack modular synthesizer. '''
-    projects = [
-        {
-            "name" : "Oscillator",
-            "image" : 'oscillator.png',
-            "post" : "A module that produces a sound wave.",
-            "endpoint" : "oscillator",
-            "code" : None,
-            "video" : None
-        },
-        {
-            "name" : "Sequencer",
-            "image" : 'step_multiplexer.jpg',
-            "post" : "A module that delivers control voltages to the oscillator.",
-            "endpoint" : "stepHW",
-            "code" : None,
-            "video" : None
-        }
-    ] 
-    return render_template('project_link.html', title=title, description=description, projects=projects)
-
-
-@app.route('/oscillator')
-def oscillator():
-    title = "Oscillator"
-    description = ''' Oscillator Schematic. '''
-    return render_template('oscillator.html', title=title, description=description)
+@app.route('/mother32')
+def mother():
+    return render_template('mother32.html')
 
 @app.route('/music')
 def music():
@@ -415,69 +246,11 @@ def music():
     ]
     return render_template('music.html', title=title, description=description, projects=projects)
 
+
+'''
 @app.route('/hgric')
 def hgric():
     title = "Human Genetic Research Informatics Core"
     description = "Bioinformatics research lab seeking the genetic causes of Dilated Cardiomyopathy (DCM)"
     return render_template('hgric.html', title=title, description=description)
-
-
-
-
-
-
-
-
-
-#SAVING THIS FOR LATER
-{
-    "name" : 'Computer Generated Music',
-    "code" : 'https://github.com/Diatomo/Generative_Music',
-    'description' : 'Library of babel but for music',
-    "endpoint" : "generative",
-    "image" : "computer_generated_music.jpg"
-}
-{
-    "name" : 'Step Sequencer Hardware Prototype',
-    "video" : 'https://www.youtube.com/watch?v=X491o8rT-u4&feature=youtu.be',
-    "code" : 'https://github.com/Diatomo/Step-Sequencer',
-    'description' : 'Designing and building a hardware step sequencer for a moldular set',
-    "endpoint" : "stepHW",
-    "image" : "stepHW.jpg",
-}
-#MODULE
-{
-    "name" : "Filter",
-    "image" : 'schematic.png',
-    "post" : "Rounds out the edges of an oscillator making is softer or harsher in tone.",
-    "endpoint" : "filter",
-    "code" : None,
-    "video" : None
-}
-
-@app.route('/filter')
-def filter():
-    title = "Diode Ladder Filter"
-    description = ''' Filter Schematic. '''
-    return render_template('filter.html', title=title, description=description)
-@app.route('/generative')
-def generative():
-    title = "Computer Generated Music - Under Construction."
-    description = ''' Generated music Dummy Text '''
-    projects = [
-        {
-            "name" : "Music",
-            "image" : 'computer_generated_music.jpg',
-            "post" : "Computer Generated Music Dummy Text",
-            "code" : None,
-            "video" : None
-        },
-        {
-            "name" : "Schematics",
-            "image" : 'computer_generated_music.jpg',
-            "post" : "Computer Generated Music Dummy Text",
-            "code" : None,
-            "video" : None
-        }
-    ] 
-    return render_template('project.html', title=title, description=description, projects=projects)
+'''
