@@ -38,14 +38,6 @@ def index():
             "image" : "asteroids.png"
         },
         {
-            "name" : 'Hexapod Robot - Incomplete',
-            "video" : '',
-            "code" : 'https://github.com/Diatomo/Hexapod',
-            'description' : 'Building and Programming a Hexapod Robot :: Orignally Designed by Adammck',
-            "endpoint" : "hexapod",
-            "image" : "hexapod.jpg",
-        },
-        {
             "name" : 'Patch Documentation - Incomplete',
             "video" : 'https://www.youtube.com/watch?v=X491o8rT-u4&feature=youtu.be',
             "code" : 'https://github.com/Diatomo/Mother32_Preset',
