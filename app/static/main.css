@@ -1,8 +1,5 @@
 
 
-
-
-
 /*index*/
 .container{
 	background-color: #F5F5F5;
@@ -94,13 +91,6 @@ li:hover{
 }
 
 
-/*
-hr{
-	display: block;
-	border-color: #000000;
-	border-width: 2px;
-}
-*/
 h1{
 font-family: 'Kalam';	
 	text-align: center;
