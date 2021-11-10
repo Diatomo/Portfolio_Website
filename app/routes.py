@@ -30,7 +30,7 @@ def index():
             "image" : "gravity.png"
         },
         {
-            "name" : 'Asteroids',
+            "name" : 'Asteroids - Deprecated',
             "video" : 'https://www.youtube.com/watch?v=4o5iO1PYDYU&feature=youtu.be',
             "code" : 'http://www.codeskulptor.org/#user46_Yt9RESUGhC9ZCwm_3.py',
             'description' : 'Asteroids, one my first programs, with circle to cicle collisions and ammo',
@@ -38,159 +38,178 @@ def index():
             "image" : "asteroids.png"
         },
         {
-            "name" : 'Patch Documentation - Incomplete',
+            "name" : 'Patches - Incomplete',
             "video" : 'https://www.youtube.com/watch?v=X491o8rT-u4&feature=youtu.be',
             "code" : 'https://github.com/Diatomo/Mother32_Preset',
-            'description' : 'Moog Semimodular documentation application for patching. When I first was learning how to play a synthesizer, I often find myself creating some interesting sounds but forgetting how I made them. I decided to create a program to help me save and record patches.',
+            'description' : 'Moog Semimodular documentation application for patching.',
             "endpoint" : "mother32",
             "image" : "mother32.png",
-        }
-    ]
-    return render_template('index.html', title='Home', projects=projects)
-
-@app.route('/exhibits')
-def exhibits():
-    title = "Art Installations"
-    description = '''
-        Art installations built, designed, and installed over two years from Texas to Ohio, including a display case
-        for the real Ohio constitution.
-        '''
-    projects =  [
+        },
+        {
+            "name" : "School Projects",
+            "image" : 'study.jpg',
+            "description" : "Collection of work that I wrote through my undergraduate program, including A.I., datamining, and bioinformatics projects.",
+            "code" : 'https://github.com/Inkozi/School',
+            "video" : '',
+            "endpoint" : ''
+        },
         {
             "name" : "Infinity Hall",
             "image" : 'otherworld_infinity.jpg',
-            "post" : "Distorted the space around you with mirrors and leds. Space is not what one perceives it to be but rather a fabric that bends around you.",
-            "code" : None,
-            "video" : None
+            "description" : "Distorted the space around you with mirrors and leds. Space is not what one perceives it to be but rather a fabric that bends around you.",
+            "code" : '',
+            "video" : '',
+            "endpoint" : ''
         },
         {
             "name" : "Sleeper Pods",
             "image" : "otherworld_sleeper.jpg",
-            "post" : "When one interacts with the pods it beams your soul through soul sucking led animations", 
-            "code" : None,
-            "video" : None
+            "description" : "When one interacts with the pods it beams your soul through soul sucking led animations", 
+            "code" : '',
+            "video" : '',
+            "endpoint" : ''
         },
         {
             "name" : "Funeral Scene",
             "image" : 'otherworld_funeral.jpg',
-            "post" : "Brought the boundary of life and death together by soaking the color out of the room but when triggered would bring them back to life.",
+            "description" : "Brought the boundary of life and death together by soaking the color out of the room but when triggered would bring them back to life.",
             "code" : "https://github.com/Diatomo/Otherworld/tree/master/Funeral_Scene/Funeral_Scene",
-            "video" : None
+            "video" : '',
+            "endpoint" : ''
         },
         {
             "name" : "Unity Display Case",
             "image" : 'otherworld_unity.jpg',
-            "post" : "A narrative display case with Unity that illustrates the corruption and maddening nature of Otherworld's experiments.",
-            "code" : None,
-            "video" : None
+            "description" : "A narrative display case with Unity that illustrates the corruption and maddening nature of Otherworld's experiments.",
+            "code" : '',
+            "video" : '',
+            "endpoint" : ''
         },
         {
             "name" : "Kelp Forest",
             "image" : 'otherworld_kelp.jpg',
-            "post" : "Center-Peice of otherworld, in which a tree with glowing orbs illuminates mystery and wonder.",
+            "description" : "Center-Peice of otherworld, in which a tree with glowing orbs illuminates mystery and wonder.",
             "code" : "https://github.com/Diatomo/Otherworld/blob/master/Seaweed/Seaweed.ino",
-            "video" : None
+            "video" : '',
+            "endpoint" : ''
         },
         {
             "name" : "The Watcher",
             "image" : 'otherworld_watcher.jpg',
-            "post" : "A beast with many eyes watches you as you traverse beneath them, they say that when one stares into the abyss it stares back into you.",
-            "code" : None,
-            "video" : None
+            "description" : "A beast with many eyes watches you as you traverse beneath them, they say that when one stares into the abyss it stares back into you.",
+            "code" : '',
+            "video" : '',
+            "endpoint" : ''
         },
         {
             "name" : "Command Center",
             "image" : 'otherworld_command.jpg',
-            "post" : "Command and watch the rooms at Otherworld Industries. Buttons interact with led animation across the exhibit space and Otherworld's internal documentation is exposed.",
-            "code" : None,
-            "video" : None
+            "description" : "Command and watch the rooms at Otherworld Industries. Buttons interact with led animation across the exhibit space and Otherworld's internal documentation is exposed.",
+            "code" : '',
+            "video" : '',
+            "endpoint" : ''
         },
         {
             "name" : "Stalagtites",
             "image" : 'otherworld_stalagtites.jpg',
-            "post" : "Magical stalagtites offer an interactive that play musical harmonies when a hand is swept between them.",
-            "code" : None,
-            "video" : None
+            "description" : "Magical stalagtites offer an interactive that play musical harmonies when a hand is swept between them.",
+            "code" : '',
+            "video" : '',
+            "endpoint" : ''
         },
         {
             "name" : "Blanket Fort",
             "image" : 'otherworld_blanket.jpg',
-            "post" : "Relax, although reality is crumbling around you, a little cove of alien plant life shimmers as one may enjoy its alien beauty.",
+            "description" : "Relax, although reality is crumbling around you, a little cove of alien plant life shimmers as one may enjoy its alien beauty.",
             "code" : "https://github.com/Diatomo/Otherworld/blob/master/Blanket_Fort/Blanket_Fort.ino",
-            "video" : None
+            "video" : '',
+            "endpoint" : ''
         },
         {
             "name" : "Glow Lab",
             "image" : 'otherworld_glowlab.jpg',
-            "post" : "A laboratory of alien life is being experimented on and harvested.",
-            "code" : None,
-            "video" : None
+            "description" : "A laboratory of alien life is being experimented on and harvested.",
+            "code" : '',
+            "video" : '',
+            "endpoint" : ''
         },
         {
             "name" : "MD-80 Display Case",
             "image" : 'roto_md80.png',
-            "post" : "This exhibit allowed one to experience and learn about the complexity of flying an MD80 with a dynamic display.",
+            "description" : "This exhibit allowed one to experience and learn about the complexity of flying an MD80 with a dynamic display.",
             "code" : "https://github.com/Diatomo/Roto_Private/blob/master/COMPLETE/CRSMITH/MD80/MD80.ino",
-            "video" : None
+            "video" : '',
+            "endpoint" : ''
         },
         {
             "name" : "Luggage Stack",
             "image" : 'roto_luggage.png',
-            "post" : "Race against time to see if you're better than a professional. This was a game where kids and grownups had to stack luggage for a potential flight.",
+            "description" : "Race against time to see if you're better than a professional. This was a game where kids and grownups had to stack luggage for a potential flight.",
             "code" : "https://github.com/Diatomo/Roto-Arduino-Scripts/blob/master/COMPLETE/CRSMITH/Luggage_Stack_CCS_NEW/Luggage_Stack_CCS.ino",
-            "video" : None
+            "video" : '',
+            "endpoint" : ''
         },
         {
             "name" : "People of American Airlines",
             "image" : 'roto_people.png',
-            "post" : "Diversity is key when it comes to running an airline. This exhibit allowed employees to discuss who they were and how they contributed to such a large service.",
+            "description" : "Diversity is key when it comes to running an airline. This exhibit allowed employees to discuss who they were and how they contributed to such a large service.",
             "code" : "https://github.com/Diatomo/Roto-Arduino-Scripts/blob/master/COMPLETE/CRSMITH/Story_Corps/Story_Corps.ino",
-            "video" : None
+            "video" : '',
+            "endpoint" : ''
         },
         {
             "name" : "The Ohio State Constitution Display",
             "image" : 'roto_constitution.jpg',
-            "post" : "First ever live display case of the authentic Ohio state consitution.",
+            "description" : "First ever live display case of the authentic Ohio state consitution.",
             "code" : "https://github.com/Diatomo/Roto-Arduino-Scripts/blob/master/OHIO_STATEHOUSE/OhioConstitution/OhioConstitution.ino",
-            "video" : None
+            "video" : '',
+            "endpoint" : ''
         },
         {
             "name" : "Noodle Forest",
             "image" : 'roto_noodle.jpg',
-            "post" : "A jungle gym for children to run through boxing bags triggering lidar controlled crystalline sounds.",
+            "description" : "A jungle gym for children to run through boxing bags triggering lidar controlled crystalline sounds.",
             "code" : "https://github.com/Diatomo/Roto-Arduino-Scripts/blob/master/COMPLETE/HIGH_MUSEUM/Noodle_Forest/Noodle_Forest.ino",
-            "video" : None
+            "video" : '',
+            "endpoint" : ''
         },
         {
             "name" : "Whisper Tube",
             "image" : 'roto_tube.jpg',
-            "post" : "Whisper your message into a microphone and the message would trasnmit via a rasperry pi led animation.",
+            "description" : "Whisper your message into a microphone and the message would trasnmit via a rasperry pi led animation.",
             "code" : "https://github.com/Diatomo/Roto-Arduino-Scripts/tree/master/Acrylic_Tube",
-            "video" : None
+            "video" : '',
+            "endpoint" : ''
         },
         {
             "name" : "Cycle to Power",
             "image" : 'roto_cycle.jpg',
-            "post" : "Bike your way to beat the clock converting mechanical energy into electrical energy. Then watch your progress as appliances animate with the energy one created.",
+            "description" : "Bike your way to beat the clock converting mechanical energy into electrical energy. Then watch your progress as appliances animate with the energy one created.",
             "code" : "https://github.com/Diatomo/Roto-Arduino-Scripts/tree/master/Cycle_To_Power_MotherBox/src",
-            "video" : None
+            "video" : '',
+            "endpoint" : ''
         },
         {
             "name" : "Sound Vibration",
             "image" : 'roto_sound.jpg',
-            "post" : "Ever wonder what sound looks like? In this exhibit, individuals could see the sound waves with sand placed upon a vibrating plate.",
+            "description" : "Ever wonder what sound looks like? In this exhibit, individuals could see the sound waves with sand placed upon a vibrating plate.",
             "code" : "https://github.com/Diatomo/Roto-Arduino-Scripts/blob/master/COMPLETE/FRIST/Sound_Vibration/Sound_Vibration.ino",
-            "video" : None
+            "video" : '',
+            "endpoint" : ''
         },
         {
             "name" : "Knox Cube",
             "image" : 'roto_knox.png',
-            "post" : "Test your memory with this simon says game. A test for immigrants coming to America.",
+            "description" : "Test your memory with this simon says game. A test for immigrants coming to America.",
             "code" : "https://github.com/Diatomo/Roto-Arduino-Scripts/blob/master/COMPLETE/AKRON/Knox_Prototype/Knox_Prototype.ino",
-            "video" : None
+            "video" : '',
+            "endpoint" : ''
         }
+
+
     ]
-    return render_template('project.html', title=title, description=description, projects=projects)
+    return render_template('index.html', title='Home', projects=projects)
+
 
 
 @app.route('/tias', methods=["GET", "POST"])
@@ -213,25 +232,25 @@ def music():
         {
             "name" : "Dark Portal",
             "image" : 'dark_portal.png',
-            "post" : "Dark Portal Summoning Spirits.",
+            "description" : "Dark Portal Summoning Spirits.",
             "music" : "https://www.dropbox.com/s/c15pwe9ibzpics4/Late_Night_Portal.mp4?dl=0"
         },
         {
             "name" : "Ambient_001",
             "image" : 'ambient_001.png',
-            "post" : "Ambient 001",
+            "description" : "Ambient 001",
             "music" : "https://www.dropbox.com/s/freczmem7fk6kl2/AMBIENT%20001.mp4?dl=0"
         },
         {
             "name" : "Ambient_002",
             "image" : 'ambient_002.png',
-            "post" : "Ambient 002",
+            "description" : "Ambient 002",
             "music" : "https://www.dropbox.com/s/ynhztbddnpki1ol/ambient_002.mp4?dl=0"
         },
         {
             "name" : "October Track",
             "image" : 'october.png',
-            "post" : "October Track",
+            "description" : "October Track",
             "music" : "https://www.dropbox.com/s/fpvs72uqposn1pc/Instagram_10.11.2021.mp4?dl=0"
         }
 
@@ -239,10 +258,8 @@ def music():
     return render_template('music.html', title=title, description=description, projects=projects)
 
 
-'''
 @app.route('/hgric')
 def hgric():
     title = "Human Genetic Research Informatics Core"
     description = "Bioinformatics research lab seeking the genetic causes of Dilated Cardiomyopathy (DCM)"
     return render_template('hgric.html', title=title, description=description)
-'''

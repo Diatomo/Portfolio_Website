@@ -8,7 +8,6 @@
 <h1><b>Charles C. Stevenson</b></h1>
 	<div class="menu">
 		<a href={{ url_for('index') }}>Projects</a>
-		<a href={{ url_for('exhibits') }}>Exhibits</a>
 		<a href='https://techrez.io/resume/charles-stevenson'>Resume</a>
 	</div>
 	<hr>
@@ -26,7 +25,11 @@
 				<p>
 					{% if project.endpoint  == 'asteroids' %}
 					<u><b><a href="http://www.codeskulptor.org/#user46_Yt9RESUGhC9ZCwm_3.py">{{ project.name }}</a></b></u>
-					{% else %} 
+					{% endif %}
+					{% if project.endpoint == '' %}
+					<u><b>{{ project.name }}</a></b></u>
+					{% endif %}
+					{% if project.endpoint != '' and project.endpoint != 'asteroids' %}
 					<u><b> <a href={{ project.endpoint }}>{{ project.name }}</a></b></u>
 					{% endif %}
 				</p>
@@ -39,12 +42,13 @@
 				<a href={{ project.video }}>Video</a>
 				{% endif %}
 				{% if project.video != '' and project.code != '' %}
-				   -
-				{% else %}
-				<br>
+				   	-
 				{% endif %}
 				{% if project.code != '' %}
 				<a href={{ project.code }}>Code</a>
+				{% endif %}
+				{% if project.video == '' and project.code == '' %}
+					<br>
 				{% endif %}
 			</div>
 
