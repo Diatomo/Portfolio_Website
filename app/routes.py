@@ -30,7 +30,7 @@ def index():
             "image" : "gravity.png"
         },
         {
-            "name" : 'Asteroids - Deprecated',
+            "name" : 'Asteroids',
             "video" : 'https://www.youtube.com/watch?v=4o5iO1PYDYU&feature=youtu.be',
             "code" : 'http://www.codeskulptor.org/#user46_Yt9RESUGhC9ZCwm_3.py',
             'description' : 'Asteroids, one my first programs, with circle to cicle collisions and ammo',
