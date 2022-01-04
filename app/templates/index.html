@@ -24,7 +24,7 @@
 			<div class="title">
 				<p>
 					{% if project.endpoint  == 'asteroids' %}
-					<u><b><a href="http://www.codeskulptor.org/#user46_Yt9RESUGhC9ZCwm_3.py">{{ project.name }}</a></b></u>
+					<u><b><a href={{ project.code }}>{{ project.name }}</a></b></u>
 					{% endif %}
 					{% if project.endpoint == '' %}
 					<u><b>{{ project.name }}</a></b></u>

@@ -32,7 +32,7 @@ def index():
         {
             "name" : 'Asteroids',
             "video" : 'https://www.youtube.com/watch?v=4o5iO1PYDYU&feature=youtu.be',
-            "code" : 'http://www.codeskulptor.org/#user46_Yt9RESUGhC9ZCwm_3.py',
+            "code" : 'https://py2.codeskulptor.org/#user49_GFkrajcmPH_1.py',
             'description' : 'Asteroids, one my first programs, with circle to cicle collisions and ammo',
             "endpoint" : "asteroids",
             "image" : "asteroids.png"
