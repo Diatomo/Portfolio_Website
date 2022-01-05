@@ -1,6 +1,11 @@
 from flask import render_template, url_for, current_app
 from app import app
 
+
+@app.route('/playlist', methods=['GET', 'POST'])
+def playlist():
+    Playlist.generate()
+
 @app.route('/')
 @app.route('/index')
 def index():
@@ -211,7 +216,6 @@ def index():
     return render_template('index.html', title='Home', projects=projects)
 
 
-
 @app.route('/tias', methods=["GET", "POST"])
 def tias():
     return current_app.send_static_file('tias.html')
@@ -256,7 +260,6 @@ def music():
 
     ]
     return render_template('music.html', title=title, description=description, projects=projects)
-
 
 @app.route('/hgric')
 def hgric():
