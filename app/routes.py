@@ -1,10 +1,13 @@
 from flask import render_template, url_for, current_app
 from app import app
+from .playlist import generate
 
 
 @app.route('/playlist', methods=['GET', 'POST'])
 def playlist():
-    Playlist.generate()
+    tracks = generate()
+    return render_template('playlist.html', title='Playlist',  tracks=tracks)
+
 
 @app.route('/')
 @app.route('/index')

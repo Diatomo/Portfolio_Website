@@ -7,4 +7,3 @@ app = Flask(__name__)
 
 bootstrap = Bootstrap(app)
 from app import routes
-from app import Playlist

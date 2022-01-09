@@ -1,0 +1,40 @@
+
+
+
+<link rel= "stylesheet" type= "text/css" href="{{ url_for('static', filename='playlist.css') }}">
+
+
+{% block content %}
+
+
+<h1><b>Playlist</b></h1>
+	<div class="menu">
+		<a href={{ url_for('index') }}>Projects</a>
+		<a href='https://techrez.io/resume/charles-stevenson'>Resume</a>
+	</div>
+	<hr>
+	<div style="padding-bottom:100px;"></div>
+
+	{% for track in tracks %}
+
+	<!--
+		<div align="center" class="audio">
+			<audio controls src={{ track.audio }}></audio>
+		</div>
+	-->
+		<div class="track">
+			<p>{{ track.number }}.</p>
+			<img src={{ track.image }} align="left">
+			<div class="track-info">
+				<div align="center" class="audio">
+					<audio controls src={{ track.audio }}></audio>
+				</div>
+				<u><b><a href={{ track.url }}>{{ track.title }}</a></b></u>
+			</div>
+		</div>
+		<hr width="75%" border-top="1px dashed gray">
+	{% endfor %}
+
+
+
+{% endblock %}
