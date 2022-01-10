@@ -15,7 +15,7 @@ def auth():
 
 def getPosts(reddit):
     performances = []
-    for submission in reddit.subreddit("modular").hot(limit=50):
+    for submission in reddit.subreddit("modular").hot(limit=100):
         performance = {}
         if (submission.is_video and submission.link_flair_text == 'Performance'):
             title = submission.title
