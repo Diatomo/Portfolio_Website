@@ -7,9 +7,8 @@ def auth():
     reddit = praw.Reddit(
             client_secret=os.environ.get("CLIENT_SECRET"),
             client_id=os.environ.get("CLIENT_ID"),
+            redirect_uri=os.environ.get("REDIRECT_URI"),
             user_agent=os.environ.get("USER_AGENT"),
-            password=os.environ.get("PASSWORD"),
-            username=os.environ.get("USERNAME")
     )
     return reddit
 

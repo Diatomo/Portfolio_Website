@@ -14,6 +14,14 @@ def playlist():
 def index():
     projects = [
         {
+            "name" : 'Playlister - Alpha',
+            "video" : '',
+            "code" : '',
+            'description' : 'Playlist for reddit user submitted content. Still in developement.',
+            "endpoint" : "playlist",
+            "image" : "mod_music.jpg"
+        },
+        {
             "name" : 'HGRIC',
             "video" : '',
             "code" : '',
