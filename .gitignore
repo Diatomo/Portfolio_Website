@@ -1,2 +1,8 @@
 .env
 venv
+*.swn
+*.swp
+*.swo
+*.swl
+*.swk
+*.pyc
