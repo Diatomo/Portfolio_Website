@@ -17,7 +17,7 @@ def index():
             "name" : 'Playlister - Alpha',
             "video" : '',
             "code" : '',
-            'description' : 'Playlist for reddit user submitted content. Still in developement.',
+            'description' : 'Playlist for reddit user submitted content. Still in development. There is a bug where loading this link will return a 502: Bad Gateway. Refreshing the page every 30s to 1min should resolve the issue after a few attempts. I will be looking to fix this in the future.',
             "endpoint" : "playlist",
             "image" : "mod_music.jpg"
         },
