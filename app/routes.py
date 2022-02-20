@@ -1,11 +1,21 @@
 from flask import render_template, url_for, current_app
 from app import app
-from .playlist import generate
+from app import db
+from app.models import Tracks
 
 
 @app.route('/playlist', methods=['GET', 'POST'])
 def playlist():
-    tracks = generate()
+    q = Tracks.query.all()
+    tracks = []
+    for ele in q:
+        track = {}
+        track['title'] = ele.title
+        track['genre'] = ele.genre
+        track['image'] = ele.image
+        track['audio'] = ele.audio
+        track['url'] = ele.url
+        tracks.append(track)
     return render_template('playlist.html', title='Playlist',  tracks=tracks)
 
 

@@ -2,13 +2,15 @@
 import praw
 import pprint
 import os
+from app import db
+from app.models import Tracks 
 
 def auth():
     reddit = praw.Reddit(
-            client_secret=os.environ.get("CLIENT_SECRET"),
-            client_id=os.environ.get("CLIENT_ID"),
-            redirect_uri=os.environ.get("REDIRECT_URI"),
-            user_agent=os.environ.get("USER_AGENT"),
+        CLIENT_SECRET="qWt2mNuV_9doDaKsBm9FljTqbnZ1Sw"
+        CLIENT_ID="E06qX-Yn4cziFum7J4E8LQ"
+        REDIRECT_URI="http://127.0.0.1:5000/playlist"
+        USER_AGENT="playlist flask app"
     )
     return reddit
 
@@ -29,6 +31,7 @@ def getPosts(reddit):
             audio = audio.split('?')[0]
             audio = audio[:audio.find('_')] + '_audio.mp4'
             performance['audio'] = audio
+            performance['genre'] = "modular"
             performances.append(performance)
     return performances
 
@@ -48,5 +51,25 @@ def generate():
         performance['number'] = count
         count = count + 1
     #prettyPrint(performances)
+    insert(performances)
     return performances
 
+
+def insert(performances):
+    addition = False
+    for song in performances:
+        print("searching through songs")
+        exists = db.session.query(Tracks.title).filter_by(title=str(song['title'])).first()
+        if (exists is None):
+            addition = True
+            print("Adding new information")
+            print(song['url'])
+            track = Tracks(title=song['title'], genre=song['genre'], image=song['image'], audio=song['audio'], url=song['url'], score=song['score'])
+            db.session.add(track)
+
+    if (addition == True):
+        print("committing new information")
+        db.session.commit()
+
+
+generate()
