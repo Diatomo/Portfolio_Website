@@ -6,16 +6,21 @@ from app.models import Tracks
 
 @app.route('/playlist', methods=['GET', 'POST'])
 def playlist():
-    q = Tracks.query.all()
+    q = Tracks.query.order_by(Tracks.score.desc())
     tracks = []
+    count = 0
     for ele in q:
-        track = {}
-        track['title'] = ele.title
-        track['genre'] = ele.genre
-        track['image'] = ele.image
-        track['audio'] = ele.audio
-        track['url'] = ele.url
-        tracks.append(track)
+        if (count < 30):
+            count = count + 1
+            track = {}
+            track['count'] = count
+            track['title'] = ele.title
+            track['genre'] = ele.genre
+            track['image'] = ele.image
+            track['audio'] = ele.audio
+            track['score'] = ele.score
+            track['url'] = ele.url
+            tracks.append(track)
     return render_template('playlist.html', title='Playlist',  tracks=tracks)
 
 
@@ -24,10 +29,10 @@ def playlist():
 def index():
     projects = [
         {
-            "name" : 'Playlister - Alpha',
+            "name" : 'Playlister',
             "video" : '',
             "code" : '',
-            'description' : 'Playlist for reddit user submitted content. Still in development. There is a bug where loading this link will return a 502: Bad Gateway. Refreshing the page every 30s to 1min should resolve the issue after a few attempts. I will be looking to fix this in the future.',
+            'description' : 'Playlist for reddit user submitted modular content.',
             "endpoint" : "playlist",
             "image" : "mod_music.jpg"
         },
@@ -35,7 +40,7 @@ def index():
             "name" : 'HGRIC',
             "video" : '',
             "code" : '',
-            'description' : 'Bioinformatics core maintaing and developing a consortium research database.',
+            'description' : 'Bioinformatics core maintaining and developing a consortium research database.',
             "endpoint" : "hgric",
             "image" : "bioinformatics.jpg"
         },

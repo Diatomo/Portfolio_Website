@@ -40,10 +40,11 @@ p {
 	text-align: center;
 	height: 5%;
 	width: 100%;
+	background: #DFE3EE;
 }
 
 .track-info:hover{
-	background: #ffddca;
+	background: #FF6F69;
 }
 
 .track img {

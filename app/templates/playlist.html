@@ -17,8 +17,7 @@
 
 	{% for track in tracks %}
 		<div class="track">
-			<p>{{ track.number }}.</p>
-			<img src={{ track.image }} align="left">
+			<p>{{ track.count }}.</p>
 			<div class="track-info">
 
 
@@ -48,6 +47,7 @@
 					</div>
 				</div>
 			</div>
+			<p>{{ track.score }}.</p>
 		</div>
 		<hr width="75%" border-top="1px dashed gray">
 	{% endfor %}

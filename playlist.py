@@ -7,10 +7,10 @@ from app.models import Tracks
 
 def auth():
     reddit = praw.Reddit(
-        CLIENT_SECRET="qWt2mNuV_9doDaKsBm9FljTqbnZ1Sw"
-        CLIENT_ID="E06qX-Yn4cziFum7J4E8LQ"
-        REDIRECT_URI="http://127.0.0.1:5000/playlist"
-        USER_AGENT="playlist flask app"
+        client_secret="qWt2mNuV_9doDaKsBm9FljTqbnZ1Sw",
+        client_id="E06qX-Yn4cziFum7J4E8LQ",
+        redirect_uri="http://127.0.0.1:5000/playlist",
+        user_agent="playlist flask app"
     )
     return reddit
 
