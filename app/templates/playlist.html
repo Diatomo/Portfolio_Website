@@ -84,23 +84,42 @@
 		</svg>`;
 
 
-
+		var previous = null;
 		//Play Button Functions
 		function toggleAudio(evt) {
 			let index = evt.currentTarget.index;
+			console.log(audio[index].paused);
 			if (audio[index].paused) {
+				//handle current index
 				audio[index].play();
 				playerButtons[index].innerHTML = pauseIcon;
+				if (previous != null && previous != index){
+					//handle previous
+					audio[previous].pause()
+					playerButtons[previous].innerHTML = playIcon;
+				}
 			} else {
 				audio[index].pause();
 				playerButtons[index].innerHTML = playIcon;
 			}
+			previous = index;
 		}
 
 		//Audio Function
 		function audioEnded(params) {
 			let idx = params.target.index;
 			playerButtons[idx].innerHTML = playIcon;
+			playNext(idx);
+		}
+
+		//Automatically play the next song.
+		function playNext(idx){
+			if (idx < audio.length){
+				previous = idx;
+				idx = idx + 1;
+				audio[idx].play();
+				playerButtons[idx].innerHTML=pauseIcon;
+			}
 		}
 
 		//Timeline Functions
