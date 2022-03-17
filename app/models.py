@@ -9,6 +9,7 @@ class Tracks(db.Model):
     audio = db.Column(db.String(256))
     url = db.Column(db.String(256))
     score = db.Column(db.Integer())
+    date = db.Column(db.DateTime())
 
     def __repr__(self):
         return '<Track {}'.format(self.title)

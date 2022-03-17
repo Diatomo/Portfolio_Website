@@ -15,6 +15,12 @@
 	<hr>
 	<div style="padding-bottom:100px;"></div>
 
+
+	<div class="menu" style="width: 85%; padding-bottom:50px;">
+		<button class="newButt" style="float: right; padding-right: 10px;">New</button>
+		<button class="topButt" style="float: right; padding-right: 10px;">Top</button>
+	</div>
+
 	{% for track in tracks %}
 		<div class="track">
 			<p>{{ track.count }}.</p>
@@ -47,7 +53,8 @@
 					</div>
 				</div>
 			</div>
-			<p>{{ track.score }}.</p>
+			<p>{{ track.score }}</p>
+			<p>{{ track.date }}</p>
 		</div>
 		<hr width="75%" border-top="1px dashed gray">
 	{% endfor %}
@@ -84,6 +91,8 @@
 		</svg>`;
 
 
+		const  newButton = document.querySelector('.newButt');
+		const  topButton = document.querySelector('.topButt');
 		var previous = null;
 		//Play Button Functions
 		function toggleAudio(evt) {
@@ -131,31 +140,45 @@
 		}
 
 		//Audio Function
-		function changeSeek (evt) {
+		function changeSeek(evt) {
 			let i = evt.currentTarget.index;
 			const time = (timelines[i].value * audio[i].duration) / 100;
 			audio[i].currentTime = time;
 		}
 
 		//Sound Button Functions
-		function toggleSound (evt) {
+		function toggleSound(evt) {
 			let i = evt.currentTarget.index;
 			audio[i].muted = !audio[i].muted;
 			soundButtons[i].innerHTML = audio[i].muted ? muteIcon : soundIcon;
 		}
 
+		//newButton
+		function orderNew(evt){
+			console.log("is this working??");
+			window.location.replace("http://127.0.0.1:5000/playlist/new")
+		}
+
+		//topButton
+		function orderTop(evt){
+			console.log("is this working??");
+			window.location.replace("http://127.0.0.1:5000/playlist/top")
+		}
+
 		//Setup event listeners.
 		for (let i = 0; i < playerButtons.length; i++){
 			playerButtons[i].index = i;
-			playerButtons[i].addEventListener('click', toggleAudio)
+			playerButtons[i].addEventListener('click', toggleAudio);
 			soundButtons[i].index = i;
 			soundButtons[i].addEventListener('click', toggleSound);
 			timelines[i].index = i;
-			timelines[i].addEventListener('change', changeSeek)
+			timelines[i].addEventListener('change', changeSeek);
 			audio[i].index = i;
 			audio[i].onended = audioEnded;
 			audio[i].ontimeupdate = changeTimelinePosition;
 		}
+		newButton.addEventListener('click', orderNew);
+		topButton.addEventListener('click', orderTop);
 
 </script>
 

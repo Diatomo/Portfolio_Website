@@ -2,6 +2,7 @@
 import praw
 import pprint
 import os
+import datetime
 from app import db
 from app.models import Tracks 
 
@@ -16,7 +17,7 @@ def auth():
 
 def getPosts(reddit):
     performances = []
-    for submission in reddit.subreddit("modular").hot(limit=100):
+    for submission in reddit.subreddit("modular").hot(limit=500):
         performance = {}
         if (submission.is_video and submission.link_flair_text == 'Performance'):
             title = submission.title
@@ -31,6 +32,8 @@ def getPosts(reddit):
             audio = audio.split('?')[0]
             audio = audio[:audio.find('_')] + '_audio.mp4'
             performance['audio'] = audio
+            time = submission.created
+            performance['date'] = datetime.datetime.fromtimestamp(time)
             performance['genre'] = "modular"
             performances.append(performance)
     return performances
@@ -58,13 +61,12 @@ def generate():
 def insert(performances):
     addition = False
     for song in performances:
-        print("searching through songs")
         exists = db.session.query(Tracks.title).filter_by(title=str(song['title'])).first()
         if (exists is None):
             addition = True
             print("Adding new information")
             print(song['url'])
-            track = Tracks(title=song['title'], genre=song['genre'], image=song['image'], audio=song['audio'], url=song['url'], score=song['score'])
+            track = Tracks(title=song['title'], genre=song['genre'], image=song['image'], audio=song['audio'], url=song['url'], score=song['score'], date=song['date'])
             db.session.add(track)
 
     if (addition == True):

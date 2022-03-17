@@ -4,9 +4,12 @@ from app import db
 from app.models import Tracks
 
 
-@app.route('/playlist', methods=['GET', 'POST'])
-def playlist():
-    q = Tracks.query.order_by(Tracks.score.desc())
+@app.route('/playlist/<action>', methods=['GET', 'POST'])
+def playlist(action):
+    if (action == "new"):
+        q = Tracks.query.order_by(Tracks.date.desc())
+    else:
+        q = Tracks.query.order_by(Tracks.score.desc())
     tracks = []
     count = 0
     for ele in q:
@@ -19,6 +22,7 @@ def playlist():
             track['image'] = ele.image
             track['audio'] = ele.audio
             track['score'] = ele.score
+            track['date'] = ele.date
             track['url'] = ele.url
             tracks.append(track)
     return render_template('playlist.html', title='Playlist',  tracks=tracks)
