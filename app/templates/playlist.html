@@ -17,15 +17,14 @@
 
 
 	<div class="menu" style="width: 85%; padding-bottom:50px;">
-		<button class="newButt" style="float: right; padding-right: 10px;">New</button>
-		<button class="topButt" style="float: right; padding-right: 10px;">Top</button>
+		<button class="newButt" style="float: right; padding-right: 20px; padding-left: 20px; margin-left: 10px; background-color: #505A5B; color: #FFFFFF;">New</button>
+		<button class="topButt" style="float: right; padding-right: 20px; padding-left: 20px; margin-left: 10px; background-color: #343F3E; color: #FFFFFF;">Top</button>
 	</div>
 
 	{% for track in tracks %}
 		<div class="track">
-			<p>{{ track.count }}.</p>
+			<b style="width: 20%; padding-left: 40px;"><p style="font-size: 30px;">{{ track.count }}.</p></b>
 			<div class="track-info">
-
 
 				<div class="audio-player">
 					<audio src={{ track.audio }}></audio>
@@ -53,8 +52,12 @@
 					</div>
 				</div>
 			</div>
-			<p>{{ track.score }}</p>
-			<p>{{ track.date }}</p>
+			{% if track.date != 'N/A' %}
+				<p style="width: 20%; text-align: right; padding-right: 40px;">Score: {{ track.score }} <br> Date: {{ track.date }}</p>
+			{% endif %}
+			{% if track.date == 'N/A' %}
+				<p style="width: 20%; text-align: right; padding-right: 40px;">Score: {{ track.score }}</p>
+			{% endif %}
 		</div>
 		<hr width="75%" border-top="1px dashed gray">
 	{% endfor %}

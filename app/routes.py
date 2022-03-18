@@ -13,7 +13,7 @@ def playlist(action):
     tracks = []
     count = 0
     for ele in q:
-        if (count < 30):
+        if (count < 100):
             count = count + 1
             track = {}
             track['count'] = count
@@ -22,7 +22,10 @@ def playlist(action):
             track['image'] = ele.image
             track['audio'] = ele.audio
             track['score'] = ele.score
-            track['date'] = ele.date
+            if (ele.date != None):
+                track['date'] = str(ele.date.year) + '-' + str(ele.date.month) + '-' + str(ele.date.day)
+            else:
+                track['date'] = 'N/A'
             track['url'] = ele.url
             tracks.append(track)
     return render_template('playlist.html', title='Playlist',  tracks=tracks)

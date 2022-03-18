@@ -12,9 +12,7 @@ h1 {
 
 p {
 	padding-right: 20px;
-	padding-top: 30px;
 	padding-left: 10px;
-
 }
 
 
@@ -29,7 +27,7 @@ p {
 
 .track {
 	display: flex;
-	width: 75%;
+	width: 80%;
 	margin-right: auto;
 	margin-left: auto;
 }
@@ -40,11 +38,11 @@ p {
 	text-align: center;
 	height: 5%;
 	width: 100%;
-	background: #DFE3EE;
+	background: #FFFFFF;
 }
 
 .track-info:hover{
-	background: #FF6F69;
+	background: #8F91A2;
 }
 
 .track img {
