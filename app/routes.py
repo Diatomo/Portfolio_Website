@@ -40,7 +40,7 @@ def index():
             "video" : '',
             "code" : '',
             'description' : 'Playlist for reddit user submitted modular content.',
-            "endpoint" : "playlist",
+            "endpoint" : "playlist/top",
             "image" : "mod_music.jpg"
         },
         {
