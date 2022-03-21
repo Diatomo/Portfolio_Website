@@ -100,7 +100,6 @@
 		//Play Button Functions
 		function toggleAudio(evt) {
 			let index = evt.currentTarget.index;
-			console.log(audio[index].paused);
 			if (audio[index].paused) {
 				//handle current index
 				audio[index].play();
@@ -121,14 +120,15 @@
 		function audioEnded(params) {
 			let idx = params.target.index;
 			playerButtons[idx].innerHTML = playIcon;
+			audio[idx].pause();
 			playNext(idx);
 		}
 
 		//Automatically play the next song.
 		function playNext(idx){
 			if (idx < audio.length){
-				previous = idx;
 				idx = idx + 1;
+				previous = idx;
 				audio[idx].play();
 				playerButtons[idx].innerHTML=pauseIcon;
 			}
