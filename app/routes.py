@@ -1,34 +1,13 @@
-from flask import render_template, url_for, current_app
+from flask import render_template, url_for, current_app, jsonify
 from app import app
 from app import db
-from app.models import Tracks
 
 
-@app.route('/playlist/<action>', methods=['GET', 'POST'])
-def playlist(action):
-    if (action == "new"):
-        q = Tracks.query.order_by(Tracks.date.desc())
-    else:
-        q = Tracks.query.order_by(Tracks.score.desc())
-    tracks = []
-    count = 0
-    for ele in q:
-        if (count < 100):
-            count = count + 1
-            track = {}
-            track['count'] = count
-            track['title'] = ele.title
-            track['genre'] = ele.genre
-            track['image'] = ele.image
-            track['audio'] = ele.audio
-            track['score'] = ele.score
-            if (ele.date != None):
-                track['date'] = str(ele.date.year) + '-' + str(ele.date.month) + '-' + str(ele.date.day)
-            else:
-                track['date'] = 'N/A'
-            track['url'] = ele.url
-            tracks.append(track)
-    return render_template('playlist.html', title='Playlist',  tracks=tracks)
+from pydub import AudioSegment
+
+
+import os
+import io
 
 
 @app.route('/')
@@ -36,12 +15,12 @@ def playlist(action):
 def index():
     projects = [
         {
-            "name" : 'Playlister',
-            "video" : '',
-            "code" : '',
-            'description' : 'Playlist for reddit user submitted modular content.',
-            "endpoint" : "playlist/top",
-            "image" : "mod_music.jpg"
+            "name": 'Synth Clips',
+            "video": '',
+            "code": '',
+            "description": 'Synth club audio clips.',
+            "endpoint": "synthclips",
+            "image": "synth_clips.jpg"
         },
         {
             "name" : 'HGRIC',
@@ -49,7 +28,7 @@ def index():
             "code" : '',
             'description' : 'Bioinformatics core maintaining and developing a consortium research database.',
             "endpoint" : "hgric",
-            "image" : "bioinformatics.jpg"
+            "image" : "hgric.jpg"
         },
         {
             "name" : 'TIAS',
@@ -102,7 +81,7 @@ def index():
         {
             "name" : "Sleeper Pods",
             "image" : "otherworld_sleeper.jpg",
-            "description" : "When one interacts with the pods it beams your soul through soul sucking led animations", 
+            "description" : "When one interacts with the pods it beams your soul through soul sucking led animations",
             "code" : '',
             "video" : '',
             "endpoint" : ''
@@ -246,7 +225,72 @@ def index():
 
 
     ]
-    return render_template('index.html', title='Home', projects=projects)
+    return render_template('index.html', title='Diatom-Projects', projects=projects)
+
+
+
+months = {
+    '01': 'January',
+    '02': 'February',
+    '03': 'March',
+    '04': 'April',
+    '05': 'May',
+    '06': 'June',
+    '07': 'July',
+    '08': 'August',
+    '09': 'September',
+    '10': 'October',
+    '11': 'November',
+    '12': 'December'
+}
+
+
+@app.route('/synthclips')
+def synthclips():
+
+    directory_path = os.path.join(app.static_folder, 'synth_club_clips')
+    audioclips = os.listdir(directory_path)
+
+    baseurl = 'https://www.dropbox.com/home/Apps/diatomprojects-synthclips/'
+
+    result = []
+    sections = []
+    sectionTemp = []
+
+    for clip in audioclips:
+        section = clip[0:6]
+        month = clip[0:2]
+        day = clip[2:4]
+        year = clip[4:6]
+        sectionLabel = months[month] + ' - '+ day + ' - ' + '20' + year
+        if section not in sectionTemp:
+            sectionTemp.append(section)
+            entry = {}
+            entry['section'] = section
+            entry['label'] = sectionLabel
+            sections.append(entry)
+
+
+
+    for clip in audioclips:
+        temp = {}
+        temp['section'] = clip[0:6]
+        temp['label'] = clip[7:-14]
+        temp['audio'] = clip
+
+        audio = AudioSegment.from_file(directory_path + '/' + clip)
+        duration_ms = len(audio)
+        duration_seconds = duration_ms // 1000
+        minutes = duration_seconds // 60
+        seconds = duration_seconds % 60
+
+        if (len(str(seconds)) <= 1):
+            seconds = str(seconds) + '0'
+        temp['length'] = str(minutes) + ':' + str(seconds)
+
+        result.append(temp)
+
+    return render_template('synthclips.html', title='Synth Clips', dbxurl=baseurl, sections=sections,  audioclips=result)
 
 
 @app.route('/tias', methods=["GET", "POST"])

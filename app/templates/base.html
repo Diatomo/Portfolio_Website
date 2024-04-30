@@ -7,16 +7,13 @@
 {% block styles %}
 {{ super() }}
 <link rel= "stylesheet" type= "text/css" href="{{ url_for('static', filename='main.css') }}">
+<link rel="icon" type="image/png" href="static/images/diatomprojects.png">
 {% endblock %}
 
-<!-- block title -->
-{% block title %}
-{% if title %}
-<title>{{ title }} - Portfolio</title>
-{% else %}
-<title>Welcome to my Portfolio</title>
-{% endif %}
-{% endblock %}
+<head>
+<!--block title -->
+<title>{{ title }}</title>
+</head>
 
 <!-- block content -->
 {% block content %}
