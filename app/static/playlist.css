@@ -8,9 +8,14 @@ h1 {
 	font-size: 80px;
 	color: #FF8F4A;
 	margin: auto;
+    -webkit-text-stroke-width: 1px;
+    -webkit-text-stroke-color: black;
 }
 
 
+p{
+	font-family: Garamond,Baskerville,Baskerville Old Face,Hoefler Text,Times New Roman,serif;
+}
 
 .menu {
 	text-align: center;

@@ -175,7 +175,7 @@ def index():
             "endpoint" : ''
         },
         {
-            "name" : "The Ohio State Constitution Display",
+            "name" : "The Ohio State Constitution",
             "image" : 'roto_constitution.jpg',
             "description" : "First ever live display case of the authentic Ohio state consitution.",
             "code" : "https://github.com/Diatomo/Roto-Arduino-Scripts/blob/master/OHIO_STATEHOUSE/OhioConstitution/OhioConstitution.ino",

@@ -81,9 +81,10 @@ li{
 	margin-left: auto;
 	position: relative;
 	width: 50%;
+    border-width: 3px;
 	border-style: solid;
 	background-color: #F5F5F5;
-	border-color: #0000b3;
+	border-color: #000000;
 }
 
 li:hover{
@@ -92,7 +93,9 @@ li:hover{
 
 
 h1{
-font-family: 'Kalam';	
+    -webkit-text-stroke-width: 1px;
+    -webkit-text-stroke-color: black;
+    font-family: 'Kalam';	
 	text-align: center;
 	font-size: 80px;
 	color: #FF8F4A;
