@@ -338,6 +338,16 @@ def music():
     ]
     return render_template('music.html', title=title, description=description, projects=projects)
 
+@app.route('/about')
+def about():
+    title = "About"
+    info = {
+        "name" : "about",
+        "image" : 'profile_picture.jpg',
+    }
+    return render_template('about.html', title=title, info=info)
+
+
 @app.route('/hgric')
 def hgric():
     title = "Human Genetic Research Informatics Core"

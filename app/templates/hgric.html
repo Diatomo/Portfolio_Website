@@ -1,14 +1,119 @@
 
-{% extends "base.html" %}
 
+
+
+
+<link rel="icon" type="image/png" href="static/images/diatomprojects.png">
 
 {% block content %}
+
+    <style>
+        /* Style for the container */
+        .container {
+            position: relative;
+            width: 500px; /* Adjust as needed */
+            display: block;
+            border-style: solid;
+            border-width: 2px;
+            border-color: #000000;
+        
+        }
+
+        .container img {
+            width: 100%;
+            height: auto;
+            transition: transform 0.8s, width 0.8s ease;
+            z-index: 1;
+        }
+
+        .caption {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent black background */
+            color: #fff; /* Text color */
+            width: 100%;
+            padding: 10px;
+            box-sizing: border-box;
+            opacity: 0; /* Initially hidden */
+            transition: opacity 0.3s; /* Smooth transition */
+        }
+
+        .container:hover {
+            position: relative;
+            margin-left: auto;
+            margin-right: auto;
+        }
+ 
+        .container:hover img {
+            transform: scale(3);
+            width: 110%; /* Increase width to 110% */
+            position: relative; /* Reset position */
+            left: -5%; /* Move image to the left by 5% to center it */
+            z-index: 2;
+        }
+    
+        .container:hover .caption {
+            transform: scale(2);
+            opacity: 1;
+            z-index: 3;
+        }
+
+        .feed {
+            display: flex; /* Use flexbox */
+            flex-wrap: wrap; /* Allow items to wrap to the next row */
+            justify-content: flex-start; /* Align items to the start */
+            gap: 5px; /* Add some space between each container */
+            position: relative;
+        }
+
+        .title{
+            font-size: 30px;
+            font-family: Garamond,Baskerville,Baskerville Old Face,Hoefler Text,Times New Roman,serif;
+        }
+
+        p{
+            font-family: Garamond,Baskerville,Baskerville Old Face,Hoefler Text,Times New Roman,serif;
+        }
+
+
+        .menu {
+            text-align: center;
+        }
+
+        .menu a{
+            padding-right: 30px;
+        }
+
+
+        h1{
+            -webkit-text-stroke-width: 1px;
+            -webkit-text-stroke-color: black;
+            font-family: 'Kalam';	
+            text-align: center;
+            font-size: 80px;
+            color: #FF8F4A;
+        }
+
+        .introduction{
+            margin-left: auto;
+            margin-right: auto;
+            float:center;
+            text-align: center;
+            width: 500px;
+            height: auto;
+        }
+
+
+    </style>
+
 
 	<!-- title -->
 	<h1><b>{{ title }}</b></h1>
 	<div class="menu">
 		<a href={{ url_for('index') }}>Projects</a>
 		<a href='https://techrez.io/resume/charles-stevenson'>Resume</a>
+        <a href={{ url_for('about') }}>About</a>
 	</div>
 	<hr>
 
@@ -40,7 +145,6 @@
 		<hr>
 		<br>
 		<h2 style="text-align: center;">Technology</h2>
-        <br>
 		<p style="text-align: left;">
         The platform is build in django that servers as the backend and react which serves as the front end. Currently, I have built an authentication
         layer where all users will login with a keycloak authentication server, table / navigation react application as well as a form system that users
@@ -51,7 +155,6 @@
 		<hr>
 		<br>
 		<h2 style="text-align:center;">Skills</h2>
-        <br>
 		<p style="text-align:left;">
 			HGRIC has been my first full time software engineering job and I've learned many aspects of a profession software engineer. This includes,
 			version control, datebase programming, project management software, developing code, creating test cases, communicating with other software engineers, and 
@@ -59,9 +162,64 @@
             python web frameworks as well as utilizing react for the front end. 
 		</p>
 		<br>
+		<hr>
 		<br>
+		<h2 style="text-align: center;">Development</h2>
+		<p style="text-align: left;">
+        Below are screenshots of hgrics data management platform development, which is my main project. Features include anything from login/authentication, custom user model, table viewer, data viewer and 
+        form system.
+		</p>
 		<br>
-	</div>
+		<hr>
+        <br>
+    </div>
+    <div style="width:40%; margin-left: auto; margin-right:auto;">
+        <div class="feed">
+
+            <div class="container">
+                <img src="static/images/login_page.png" alt=login_page />
+                <div class="caption">Login Page, mix of html and javascript, making sure users have read the fineprint</div>
+            </div>
+
+            <div class="container">
+                <img src="static/images/osc_idp.png" alt=osc_idp />
+                <div class="caption">Login page redirects to the ohio supercomputer centers, identity provider page</div>
+            </div>
+
+            <div class="container">
+                <img src="static/images/Development_Page.png" alt=dev_page />
+                <div class="caption">Development Page, home page that is a temporary space for test and navigation.</div>
+            </div>
+
+            <div class="container">
+                <img src="static/images/Table_Viewer.png" alt=table_viewer />
+                <div class="caption">Hitting the REST api, tables/views are separated into folders</div>
+            </div>
+
+            <div class="container">
+                <img src="static/images/data_preview.png" alt=data_preview />
+                <div class="caption">Data preview, mapping backend data to user readable labels</div>
+            </div>
+
+            <div class="container">
+                <img src="static/images/Variable_List.png"  alt=variable_list />
+                <div class="caption">Table meta information is entered into the database and produces variable keys for users.</div>
+            </div>
+
+            <div class="container">
+                <img src="static/images/Data_Grid.png" alt=table_viewer />
+                <div class="caption">Community ag-grid, which was propreitary software utilize in the previous data management platform.</div>
+            </div>
+
+            <!-- Add more image-caption pairs as needed -->
+        </div>
+    </div>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
 
 {% endblock %}
 
