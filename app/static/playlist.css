@@ -31,7 +31,8 @@ p{
     width: 70%;
     height: 5%;
     margin-left: auto;
-    margin-right: 18%;
+    margin-right: auto;
+    justify-content: center;
 }
 
 .track:hover{
@@ -40,7 +41,7 @@ p{
 
 .track-info{
     text-align: left;
-    margin-left: 35%;
+    margin-left: 28%;
     flex-grow: 1;
     margin-top: auto;
     margin-bottom: 10px;
@@ -55,7 +56,7 @@ p{
 
 .audio-player {
     margin-top: 4px;
-    margin-right: 35%;
+    margin-right: 28%;
     text-align: right;
 	width: 20rem;
 	height: 5rem;
