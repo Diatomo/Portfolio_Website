@@ -1,0 +1,320 @@
+
+
+
+<link rel= "stylesheet" type= "text/css" href="{{ url_for('static', filename='playlist.css') }}">
+<link rel="icon" type="image/png" href="static/images/diatomprojects.png">
+
+
+{% block content %}
+
+
+<style>
+
+.video-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+video {
+    width:400px;
+    height:400px;
+    margin-left:auto;
+    margin-right:auto;
+    height: auto;
+}
+
+.bordered-video {
+    max-width: 100%;
+    height: auto;
+    border: 2px solid black; /* Black border around the video */
+}
+
+.schematic-container {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: repeat(2, 1fr);
+    gap: 10px; /* Adjust the gap between images */
+    width: 600px; /* Adjust the width as needed */
+    height: 600px; /* Adjust the height as needed */
+}
+
+.grid-item {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative; /* Required for positioning the hover effect */
+    overflow: hidden; /* Ensure the hover effect doesn't overflow */
+}
+
+.schematic-container img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Ensures the images cover their grid cells */
+    border-radius: 5px; /* Optional: adds rounded corners to the images */
+}
+
+.grid-item:hover img {
+    transform: scale(1.1); /* Enlarge the image on hover */
+}
+
+.vco-audio {
+    width:90%;
+
+}
+
+
+</style>
+
+
+<h1><b>Triple Volatage Controlled Oscillator</b></h1>
+	<div class="menu">
+		<a href={{ url_for('index') }}>Projects</a>
+		<a href='https://techrez.io/resume/charles-stevenson'>Resume</a>
+	</div>
+    <hr>
+
+
+	<!-- Introduction -->
+	<div class="introduction">
+		<div class="article">
+		<!-- description -->
+			<div class="description">
+				<p style="width: 50%; text-align:center; margin-right:auto; margin-left:auto;"class="intro-description">
+                    Triple Voltage Controlled Oscillator for Modular Synthesizer.
+				</p>
+			</div>
+		</div>
+	</div>
+	<hr>
+
+
+    <div style="width:50%; margin-left:auto; margin-right:auto;"</h3>
+        <h3 style="text-align:center;">Working prototype</h3>
+        <p style="text-align:center; text-align:left;">Started out building a prototype on the breadboard and trouble shooting with a multimeter and an oscilloscope. Here
+        I have the breadboard hooked up to a sequencer on the modular synthesizer and viewing the waveforms.</p>
+    </div>
+    <div class="video-container">
+        <video controls class="bordered-video">
+            <source src="static/videos/osc_prototype_video.mp4" type="video/mp4">
+            Your browser does not support the video tag.
+        </video>
+    </div>
+
+    
+    <div style="width:50%; margin-left:auto; margin-right:auto;"</h3>
+        <h3 style="text-align:center;">Schematics Design</h3>
+        <p style="text-align:center; text-align:left;">
+            Next, I finalized the schematics using Eagle, which I learned when working at Roto. I tried making the schematic clean by breaking the
+            oscillator down into its fundamental components, such as mixer, schmitt trigger, output, etc... In order to save on space, I also made an interface schematics with
+            knobs and jacks so I could stack that ontop of the logic part of the oscillator. After that Eagle places all the component foot prints in another interface
+            with all thier linkages and one then must organize and fit all the components onto the board. There isn't much of a trick but, for me, was very time consuming and
+            a lot of trial and error.
+        </p>
+    </div>
+
+    <div style="display:flex; width:100%; justify-content:center; align-items:center;">
+        <div class="schematic-container">
+            <img class="grid-item" src="static/images/osc_schematic_bottom.PNG" alt="bottom_schematic">
+            <img class="grid-item" src="static/images/osc_schematic_top.PNG" alt="top_schematics">
+            <img class="grid-item" src="static/images/osc_brd_board_bottom.png" alt="pcb_board_bottom">
+            <img class="grid-item" src="static/images/osc_brd_board_top.png" alt="pcb_board_top">
+        </div>
+    </div>
+
+
+    <div style="width:50%; margin-left:auto; margin-right:auto;"</h3>
+        <h3 style="text-align:center;">Final PCB</h3>
+        <p style="text-align:left;">
+            After the design was done, I reached out to a company to print and route my pcb. A few weeks later I ended up with a profession silkscreened pcb.
+            I then wrote up a parts list and sourced all the parts through websites like mcmaster and digitkey. For some of the more eurorack centric parts,
+            I would pick those up from various parts stores, such as the knobs and the jacks. Getting a working PCB, took several attempts, and often times
+            would have to solder test wires on to see where in the circuit the signal was getting futzed. Overall though, I found it came out looking and sounding
+            fairly professional.
+        </p>
+    </div>
+
+    <div style="display:flex; width:100%; justify-content:center; align-items:center;">
+        <div class="schematic-container">
+            <img class="grid-item" src="static/images/final_knobs.jpg" alt="final_knobs">
+            <img class="grid-item" src="static/images/final_layer.jpg" alt="final_layer">
+            <img class="grid-item" src="static/images/final_solder.jpg" alt="final_solder">
+            <img class="grid-item" src="static/images/final_components.jpg" alt="final_components">
+        </div>
+    </div>
+
+
+    <div style="width:50%; margin-left:auto; margin-right:auto;"</h3>
+        <h3 style="text-align:center;">Audio Samples</h3>
+    </div>
+
+
+    <div class="vco-audio">
+        {% for clip in audioclips %}
+            <div class="track">
+                <div class="track-info">
+                    <p style="font-family:Courier New;"><b>{{ clip.label }}</b><p>
+                </div>
+                <div class="audio-player">
+                    <audio src={{ url_for('static', filename='trivco_audio/' + clip.audio) }}></audio>
+                    <div class="controls">
+                        <button class="player-button">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="#3D3132">
+                                  <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM9.555 
+                                    7.168A1 1 0 008 8v4a1 1 0 001.555.832l3-2a1 1 0 000-1.664l-3-2z" 
+                                  clip-rule="evenodd" />
+                            </svg>
+                        </button>
+                        <input type="range" class="timeline" max="100" value="0">
+                        <button class="sound-button">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="#3D3132">
+                                <path fill-rule="evenodd" d="M9.383 3.076A1 1 0 0110 4v12a1 1 0 01-1.707.707L4.586 
+                                    13H2a1 1 0 01-1-1V8a1 1 0 011-1h2.586l3.707-3.707a1 1 0 011.09-.217zM14.657 
+                                    2.929a1 1 0 011.414 0A9.972 9.972 0 0119 10a9.972 9.972 0 01-2.929 7.071 1 
+                                    1 0 01-1.414-1.414A7.971 7.971 0 0017 10c0-2.21-.894-4.208-2.343-5.657a1 1 
+                                    0 010-1.414zm-2.829 2.828a1 1 0 011.415 0A5.983 5.983 0 0115 10a5.984 5.984 
+                                    0 01-1.757 4.243 1 1 0 01-1.415-1.415A3.984 3.984 0 0013 10a3.983 3.983 0 
+                                    00-1.172-2.828 1 1 0 010-1.415z" clip-rule="evenodd" />
+                            </svg>
+                        </button>
+                        <p class=track-time style="font-family:Courier New;">{{ clip.length }}<p>
+                    </div>
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+
+
+    <div style="width:50%; margin-left:auto; margin-right:auto;"</h3>
+        <h3 style="text-align:center;">Links</h3>
+        <a href="https://www.dropbox.com/home/ARCHIVE/Eagle/Schematics/triVCO">Schematic and Breadboard Eagle Files</a><br>
+        <a href="https://docs.google.com/spreadsheets/d/1MmHPlMmu6mu_R20k0y6zFxNKzDcycyLcL4w8gBB1YvE/edit#gid=0">Oscillator Bill of Materials</a><br>
+        <a href="https://www.youtube.com/watch?v=QBatvo8bCa4&list=PLHeL0JWdJLvTuGCyC3qvx0RM39YvopVQN&ab_channel=MoritzKlein">Moritz Klein Schematic Design</a><br>
+    </div>
+
+
+
+{% endblock %}
+
+
+{% block scripts %}
+	<script>
+
+		const playerButtons = document.querySelectorAll('.player-button'),
+		audio = document.querySelectorAll('audio'),
+		playIcon = `
+			<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="#3D3132">
+			<path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM9.555 7.168A1 1 0 008 8v4a1 1 0 001.555.832l3-2a1 1 0 000-1.664l-3-2z" clip-rule="evenodd" />
+			</svg>
+		`,
+		pauseIcon = `
+			<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="#3D3132">
+			<path fill-rule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zM7 8a1 1 0 012 0v4a1 1 0 11-2 0V8zm5-1a1 1 0 00-1 1v4a1 1 0 102 0V8a1 1 0 00-1-1z" clip-rule="evenodd" />
+			</svg>
+	`	;
+
+		const timelines = document.querySelectorAll('.timeline');
+
+		const soundButtons = document.querySelectorAll('.sound-button'),
+		soundIcon = `
+			<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="#3D3132">
+			<path fill-rule="evenodd" d="M9.383 3.076A1 1 0 0110 4v12a1 1 0 01-1.707.707L4.586 13H2a1 1 0 01-1-1V8a1 1 0 011-1h2.586l3.707-3.707a1 1 0 011.09-.217zM14.657 2.929a1 1 0 011.414 0A9.972 9.972 0 0119 10a9.972 9.972 0 01-2.929 7.071 1 1 0 01-1.414-1.414A7.971 7.971 0 0017 10c0-2.21-.894-4.208-2.343-5.657a1 1 0 010-1.414zm-2.829 2.828a1 1 0 011.415 0A5.983 5.983 0 0115 10a5.984 5.984 0 01-1.757 4.243 1 1 0 01-1.415-1.415A3.984 3.984 0 0013 10a3.983 3.983 0 00-1.172-2.828 1 1 0 010-1.415z" clip-rule="evenodd" />
+			</svg>`,
+		muteIcon = `
+			<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="#3D3132">
+			<path fill-rule="evenodd" d="M9.383 3.076A1 1 0 0110 4v12a1 1 0 01-1.707.707L4.586 13H2a1 1 0 01-1-1V8a1 1 0 011-1h2.586l3.707-3.707a1 1 0 011.09-.217zM12.293 7.293a1 1 0 011.414 0L15 8.586l1.293-1.293a1 1 0 111.414 1.414L16.414 10l1.293 1.293a1 1 0 01-1.414 1.414L15 11.414l-1.293 1.293a1 1 0 01-1.414-1.414L13.586 10l-1.293-1.293a1 1 0 010-1.414z" clip-rule="evenodd" />
+		</svg>`;
+
+
+		const  newButton = document.querySelector('.newButt');
+		const  topButton = document.querySelector('.topButt');
+		var previous = null;
+		//Play Button Functions
+		function toggleAudio(evt) {
+			let index = evt.currentTarget.index;
+			if (audio[index].paused) {
+				//handle current index
+				audio[index].play();
+				playerButtons[index].innerHTML = pauseIcon;
+				if (previous != null && previous != index){
+					//handle previous
+					audio[previous].pause()
+					playerButtons[previous].innerHTML = playIcon;
+				}
+			} else {
+				audio[index].pause();
+				playerButtons[index].innerHTML = playIcon;
+			}
+			previous = index;
+		}
+
+		//Audio Function
+		function audioEnded(params) {
+			let idx = params.target.index;
+			playerButtons[idx].innerHTML = playIcon;
+			audio[idx].pause();
+			playNext(idx);
+		}
+
+		//Automatically play the next song.
+		function playNext(idx){
+			if (idx < audio.length){
+				idx = idx + 1;
+				previous = idx;
+				audio[idx].play();
+				playerButtons[idx].innerHTML=pauseIcon;
+			}
+		}
+
+		//Timeline Functions
+		function changeTimelinePosition(params) {
+			let idx = params.target.index;
+			const percentagePosition = (100*audio[idx].currentTime) / audio[idx].duration;
+			timelines[idx].style.backgroundSize = `${percentagePosition}% 100%`;
+			timelines[idx].value = percentagePosition;
+		}
+
+		//Audio Function
+		function changeSeek(evt) {
+			let i = evt.currentTarget.index;
+			const time = (timelines[i].value * audio[i].duration) / 100;
+			audio[i].currentTime = time;
+		}
+
+		//Sound Button Functions
+		function toggleSound(evt) {
+			let i = evt.currentTarget.index;
+			audio[i].muted = !audio[i].muted;
+			soundButtons[i].innerHTML = audio[i].muted ? muteIcon : soundIcon;
+		}
+
+		//newButton
+		function orderNew(evt){
+			window.location.replace("https://diatomprojects.com/playlist/new")
+		}
+
+		//topButton
+		function orderTop(evt){
+			window.location.replace("https://diatomprojects.com/playlist/top")
+		}
+
+		//Setup event listeners.
+		for (let i = 0; i < playerButtons.length; i++){
+			playerButtons[i].index = i;
+			playerButtons[i].addEventListener('click', toggleAudio);
+			soundButtons[i].index = i;
+			soundButtons[i].addEventListener('click', toggleSound);
+			timelines[i].index = i;
+			timelines[i].addEventListener('change', changeSeek);
+			audio[i].index = i;
+			audio[i].onended = audioEnded;
+			audio[i].ontimeupdate = changeTimelinePosition;
+		}
+		newButton.addEventListener('click', orderNew);
+		topButton.addEventListener('click', orderTop);
+
+</script>
+
+
+
+{% endblock %}

@@ -6,3 +6,7 @@ venv
 *.swl
 *.swk
 *.pyc
+app/static/images
+app/static/synth_club_clips
+app/static/videos
+app/static/trivco_audio

@@ -18,6 +18,14 @@ def splash():
 def index():
     projects = [
         {
+            "name": 'Tri VCO',
+            "video": '',
+            "code": '',
+            "description": 'Triple Voltage Controlled Oscillator build for a modular synthesizer.',
+            "endpoint": "trivco",
+            "image": "osc_prototype_oscilloscope.jpg"
+        },
+        {
             "name": 'Synth Clips',
             "video": '',
             "code": '',
@@ -356,3 +364,37 @@ def hgric():
     title = "Human Genetic Research Informatics Core"
     description = "Bioinformatics research lab seeking the genetic causes of Dilated Cardiomyopathy (DCM)"
     return render_template('hgric.html', title=title, description=description)
+
+
+@app.route('/trivco')
+def trivco():
+    title = "Triple Voltage Controlled Oscillator"
+    description = "Project to learn about hardware electronics, triple voltage controlled oscillator for modular synthesizer."
+
+    directory_path = os.path.join(app.static_folder, 'trivco_audio')
+    audioclips = os.listdir(directory_path)
+
+    result = []
+
+    for clip in audioclips:
+        temp = {}
+        if (clip == 'trivco_raw_processed.wav'):
+            temp['label'] = 'raw oscillator'
+        else:
+            temp['label'] = 'reverb oscillator'
+        temp['audio'] = clip
+
+        audio = AudioSegment.from_file(directory_path + '/' + clip)
+        duration_ms = len(audio)
+        duration_seconds = duration_ms // 1000
+        minutes = duration_seconds // 60
+        seconds = duration_seconds % 60
+
+        if (len(str(seconds)) <= 1):
+            seconds = str(seconds) + '0'
+        temp['length'] = str(minutes) + ':' + str(seconds)
+
+        result.append(temp)
+
+    return render_template('trivco.html', title=title, audioclips=result)
+
