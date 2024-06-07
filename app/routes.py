@@ -9,12 +9,8 @@ from pydub import AudioSegment
 import os
 import io
 
+
 @app.route('/')
-def splash():
-    return render_template('splash.html', title='Diatom-Projects')
-
-
-@app.route('/index')
 def index():
     projects = [
         {

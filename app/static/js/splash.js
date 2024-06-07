@@ -7,8 +7,7 @@ var debug = false;
 //===============================
 // Create the PixiJS application
 const app = new PIXI.Application({
-    width: window.innerWidth,  // Width of the canvas
-    height: window.innerHeight, // Height of the canvas
+    resizeTo: window,
     backgroundColor: 0xffffff, // Background color
 });
 
