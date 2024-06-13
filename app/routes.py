@@ -1,4 +1,6 @@
 from flask import render_template, url_for, current_app, jsonify
+from flask import send_from_directory
+
 from app import app
 from app import db
 
@@ -8,6 +10,11 @@ from pydub import AudioSegment
 
 import os
 import io
+
+# Route to serve the JSON file
+@app.route('/assets/particles.json')
+def serve_particles():
+    return send_from_directory('assets', 'particles.json')
 
 
 @app.route('/')

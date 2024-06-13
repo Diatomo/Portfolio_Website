@@ -1,0 +1,71 @@
+
+{% extends "base.html" %}
+
+
+{% block content %}
+
+
+<h1><b>Charles C. Stevenson</b></h1>
+	<div class="menu">
+		<a href={{ url_for('index') }}>Projects</a>
+		<a href='https://techrez.io/resume/charles-stevenson'>Resume</a>
+        <a href={{ url_for('about') }}>About</a>
+	</div>
+	<hr>
+
+
+
+	<ul class="projects-ul">
+	{% for project in projects %}
+		<li class="projects-li">
+
+			<!--<div class="container">-->
+
+			<!-- title -->
+			<div class="projects-title">
+				<p>
+					{% if project.endpoint  == 'asteroids' %}
+					<u><b><a href={{ project.code }}>{{ project.name }}</a></b></u>
+					{% endif %}
+					{% if project.endpoint == '' %}
+					<u><b>{{ project.name }}</a></b></u>
+					{% endif %}
+					{% if project.endpoint != '' and project.endpoint != 'asteroids' %}
+					<u><b> <a href={{ project.endpoint }}>{{ project.name }}</a></b></u>
+					{% endif %}
+				</p>
+			</div>
+
+
+			<!-- information links -->
+			<div class="projects-links">
+				{% if project.video != '' %}
+				<a href={{ project.video }}>Video</a>
+				{% endif %}
+				{% if project.video != '' and project.code != '' %}
+				   	-
+				{% endif %}
+				{% if project.code != '' %}
+				<a href={{ project.code }}>Code</a>
+				{% endif %}
+				{% if project.video == '' and project.code == '' %}
+					<br>
+				{% endif %}
+			</div>
+
+		<!-- image -->
+				<div class="projects-image">
+					<img src="static/images/{{ project.image }}" class="img-rounded" alt={{ project.name }}/>
+				</div>
+
+			<!-- description -->
+			<div class="projects-description">
+				<p class="projects-paragraph">{{ project.description }}</p>
+			</div>
+
+			<!--</div>-->
+			<!--<hr width="500">-->
+	</li>
+	{% endfor %}
+	</ul>
+{% endblock %}

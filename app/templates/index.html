@@ -1,71 +1,278 @@
 
-{% extends "base.html" %}
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Charles Stevenson | Full Stack Web Developer</title>
+    <link rel="icon" type="image/png" href="static/images/diatomprojects.png">
+    <script src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js"></script>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/portfolio.css') }}">
+</head>
 
-
+<!-- <script src="{{ url_for('static', filename='js/portfolio.js') }}"></script> -->
 {% block content %}
 
+<body>
 
-<h1><b>Charles C. Stevenson</b></h1>
-	<div class="menu">
-		<a href={{ url_for('index') }}>Projects</a>
-		<a href='https://techrez.io/resume/charles-stevenson'>Resume</a>
-        <a href={{ url_for('about') }}>About</a>
-	</div>
-	<hr>
+    <!-- CANVAS #1 -->
+    <div class=home id="home" style="display:flex;">
+
+        <div class="canvas" id="particles-js-1">
+        </div>
+        
+        <div class="heading">
+            <div class="heading_line-1">
+                <span>Diatom</span>
+                Projects
+            </div>
+            <a href="#about" class="heading-link">
+            <div class="heading-cta">
+                Dive Below
+            </div>
+        </div>
+
+    </div>
+
+    <!-- NAVIGATION -->
+    <nav class="navigation-bar">
+        <ul class="navigation">
+            <li class="navigation-item navigation-li navigation-item--active" id="nav-home">
+		        <a href="#home">Home</a>
+            </li>
+            <li class="navigation-item navigation-li" id="nav-about">
+		        <a href="#about">About</a>
+            </li>
+            <li class="navigation-item navigation-li" id="nav-projects">
+		        <a href="#projects">Projects</a>
+            </li>
+            <li class="navigation-item navigation-li" id="nav-contact">
+		        <a href="#contact">Contact</a>
+            </li>
+        </ul>
+    </nav>
+
+    <!-- CANVAS #2 -->
+    <div class="main-bg">
+        <div class="canvas-2" id="particles-js-2"></div>
+    </div>
+
+
+    <!-- ABOUT -->
+    <section class="about" id="about">
+        <h2 class="about-heading section-heading">About</h2>
+        <div class="about-content">
+            <div class="profile">
+
+                <div class="profile-picture">
+
+    <svg class="fp_eye--svg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 598 370">
+                        <mask id="eyeMask">
+                            <rect fill="#000000" width="598" height="370"></rect>
+                            <path class="fp_eye--svg-eyelids__mask" fill="#FFFFFF" d="M309.5,5h-23.9l0,0c-73.9,0-160.7,45.3-260,136.8l-3,2.8l0,0C11.4,155,5.5,168.8,5,182.9c-0.6,14.1,4.3,28.4,14.6,39.5c0.9,1,1.9,2,2.9,2.9C123.1,318.8,210.9,365,285.6,365h23.9c74.7,0,162.5-46.2,263.1-139.7c1-0.9,2-1.9,2.9-2.9c10.3-11.1,15.2-25.4,14.6-39.5c-0.5-14.1-6.4-27.9-17.6-38.3l0,0l-3-2.8C470.2,50.3,383.4,5,309.5,5L309.5,5" data-original="M577.9,222.4c-0.9,1-1.9,2-2.9,2.9C474.4,318.8,386.6,365,311.9,365H288c-74.7,0-162.5-46.2-263.1-139.7
+        c-1-0.9-2-1.9-2.9-2.9C11.7,211.3,6.8,197,7.4,182.9c0.5-14.1,6.4-27.9,17.6-38.3l3-2.8C127.3,50.3,214.1,5,288,5h23.9
+        c73.9,0,160.7,45.3,260,136.8l3,2.8c11.2,10.4,17.1,24.2,17.6,38.3C593.1,197,588.2,211.3,577.9,222.4z"></path>
+                        </mask>
+                        <path fill="#FFFFFF" d="M577.9,222.4c-0.9,1-1.9,2-2.9,2.9C474.4,318.8,386.6,365,311.9,365H288c-74.7,0-162.5-46.2-263.1-139.7
+        c-1-0.9-2-1.9-2.9-2.9C11.7,211.3,6.8,197,7.4,182.9c0.5-14.1,6.4-27.9,17.6-38.3l3-2.8C127.3,50.3,214.1,5,288,5h23.9
+        c73.9,0,160.7,45.3,260,136.8l3,2.8c11.2,10.4,17.1,24.2,17.6,38.3C593.1,197,588.2,211.3,577.9,222.4z"></path>
+                        <g mask="url(#eyeMask)">
+                            <circle class="fp_eye--svg-iris" fill-rule="evenodd" clip-rule="evenodd" fill="#E0F3F0" stroke="#3B3342" stroke-width="10" cx="299" cy="185" r="106" data-svg-origin="193 79" transform="matrix(1,0,0,1,16.3029,-13.6407)" style="transform-origin: 0px 0px;"></circle>
+                            <ellipse class="fp_eye--svg-pupil" fill-rule="evenodd" clip-rule="evenodd" fill="#3B3342" cx="299" cy="185" rx="53" ry="56" data-svg-origin="246 129" transform="matrix(1,0,0,1,21.1938,-17.7329)" style="transform-origin: 0px 0px;"></ellipse>
+                        </g>
+                        <path class="fp_eye--svg-eyelids" fill="none" stroke="#3B3342" stroke-width="10" d="M309.5,5h-23.9l0,0c-73.9,0-160.7,45.3-260,136.8l-3,2.8l0,0C11.4,155,5.5,168.8,5,182.9c-0.6,14.1,4.3,28.4,14.6,39.5c0.9,1,1.9,2,2.9,2.9C123.1,318.8,210.9,365,285.6,365h23.9c74.7,0,162.5-46.2,263.1-139.7c1-0.9,2-1.9,2.9-2.9c10.3-11.1,15.2-25.4,14.6-39.5c-0.5-14.1-6.4-27.9-17.6-38.3l0,0l-3-2.8C470.2,50.3,383.4,5,309.5,5L309.5,5" data-original="M309.5,5h-23.9l0,0c-73.9,0-160.7,45.3-260,136.8l-3,2.8l0,0C11.4,155,5.5,168.8,5,182.9c-0.6,14.1,4.3,28.4,14.6,39.5c0.9,1,1.9,2,2.9,2.9C123.1,318.8,210.9,365,285.6,365h23.9c74.7,0,162.5-46.2,263.1-139.7c1-0.9,2-1.9,2.9-2.9c10.3-11.1,15.2-25.4,14.6-39.5c-0.5-14.1-6.4-27.9-17.6-38.3l0,0l-3-2.8C470.2,50.3,383.4,5,309.5,5L309.5,5"></path>
+
+                        <path class="fp_eye--svg-eyelids__close" d="M311.9,185H288l0,0c-73.9,0-160.7,0-260,0h-3l0,0c-11.2,0-17.1,0-17.6,0c-0.6,0,4.3,0,14.6,0c0.9,0,1.9,0,2.9,0
+        c100.6,0,188.4,0,263.1,0L311.9,185c74.7,0,162.5,0,263.1,0c1,0,2,0,2.9,0c10.3,0,15.2,0,14.6,0c-0.5,0-6.4,0-17.6,0l0,0h-3
+        C472.6,185,385.8,185,311.9,185L311.9,185"></path>
+                    </svg>
+
+                </div>
+
+                <p class="profile-summary">
+                <span>
+                As an artist, software engineer, musician, and biologist,
+                </span>
+                I'm fully dedicated to the pursuit of life-long learning. Whether it be solving problems or planting potatoes in an afternoon sun. I find that
+                actions speak louder than words and thus am building out this portfolio to highlight my interest as well as my personal pursuits in my years as a software developer.
+                </p>
+
+            </div>
+        </div>
+
+        <div class="skills">
+            <div class="about-skill">
+                <img src="static/images/python_icon.png" alt="python">
+                <div class="skills-item-name">PYTHON</div>
+            </div>
+            <div class="about-skill">
+                <img src="static/images/javascript_icon.png" alt="javascript">
+                <div class="skills-item-name">JAVASCRIPT</div>
+            </div>
+            <div class="about-skill">
+                <img src="static/images/java_icon.png" alt="java">
+                <div class="skills-item-name">JAVA</div>
+            </div>
+            <div class="about-skill">
+                <img src="static/images/git_icon.png" alt="git">
+                <div class="skills-item-name">GIT</div>
+            </div>
+            <div class="about-skill">
+                <img src="static/images/db2_icon.png" alt="db2">
+                <div class="skills-item-name">DB2</div>
+            </div>
+            <div class="about-skill">
+                <img src="static/images/flask_icon.png" alt="flask">
+                <div class="skills-item-name">FLASK</div>
+            </div>
+            <div class="about-skill">
+                <img src="static/images/django_icon.png" alt="django">
+                <div class="skills-item-name">DJANGO</div>
+            </div>
+            <div class="about-skill">
+                <img src="static/images/react_icon.png" alt="react">
+                <div class="skills-item-name">REACT</div>
+            </div>
+            <div class="about-skill">
+                <img src="static/images/linux_icon.png" alt="linux">
+                <div class="skills-item-name">LINUX</div>
+            </div>
+        </div>
+    </section>
+
+
+    <!-- PROJECTS -->
+    <section class="projects" id="projects">
+        <h2 class="projects-heading projects-section-heading">Projects</h2>
+        <p class="projects-blurb">
+        <span>This site was recently revamped.</span>
+        Therefore, most projects below will link to the older interface. I may update but also may leave for something to look back on.
+        </p>
+        <div class="projects-content">
+            
+            <div class="projects-grid">
+            {% for project in projects %}
+                <div class="projects-grid-item">
+
+                    <!--<div class="container">-->
+
+                    <!-- title -->
+                    <div class="projects-title">
+                        <p class="projects-title-p">
+                            {% if project.endpoint  == 'asteroids' %}
+                            <b><a href={{ project.code }}>{{ project.name }}</a></b>
+                            {% endif %}
+                            {% if project.endpoint ==  '' %}
+                            <b>{{ project.name }}</a></b></u>
+                            {% endif %}
+                            {% if project.endpoint != '' and project.endpoint != 'asteroids' %}
+                            <b> <a href={{ project.endpoint }}>{{ project.name }}</a></b>
+                            {% endif %}
+                        </p>
+                    </div>
+
+
+                    <!-- information links -->
+                    <div class="projects-links">
+                        {% if project.video != '' %}
+                        <a href={{ project.video }}>Video</a>
+                        {% endif %}
+                        {% if project.video != '' and project.code != '' %}
+                            -
+                        {% endif %}
+                        {% if project.code != '' %}
+                        <a href={{ project.code }}>Code</a>
+                        {% endif %}
+                        {% if project.video == '' and project.code == '' %}
+                            <br>
+                        {% endif %}
+                    </div>
+
+                <!-- image -->
+                        <div class="projects-image-container">
+                            <img class="projects-image" src="static/images/{{ project.image }}" class="img-rounded" alt={{ project.name }}/>
+                        </div>
+
+                    <!-- description -->
+                    <div class="projects-description">
+                        <p class="projects-paragraph">{{ project.description }}</p>
+                    </div>
+
+                    <!--</div>-->
+                    <!--<hr width="500">-->
+            </div>
+            {% endfor %}
+            </div>
+        </div>
+    </section>
+
+    <!-- CONTACT -->
+    <section class="contact" id="contact">
+        <h2 class="contact-heading section-heading">
+            Contact
+        </h2>
+        <p class="contact-text">
+            Have a question or would like to work together? Please leave your details and I'll get back to you soon as possible.
+        </p>
+
+        <form class="contact_form" id="contact_form-1" action="https://formspree.io/f/xdoqqarn" method="POST">
+            <input class="contact_form-name" id="contact_form-name-1" name="name" placeholder="Name">
+            <input class="contact_form-email" id="contact_form-email-1" type="email" name="_replyto" placeholder="Email">
+            <textarea class="contact_form-message" id="contact_form-message-1" name="message" placeholder="Message"></textarea>
+            <div class="contact_form-error-submit">
+                <div class="form_error">
+                    <div class="form_error-name" id="form_error-name-1">
+                        Please enter your <span>name.</span>
+                    </div>
+                    <div class="form_error-email" id="form_error-email-1">
+                        Please enter a valid <span>email.</span>
+                    </div>
+                    <div class="form_error-message" id="form_error-message-1">
+                        Please enter a valid <span>message.</span>
+                    </div>
+                </div>
+                <button type="button" class="contact_form-submit-2 project_live-2" id="form-submit">
+                    Submit
+                </button>
+            </div>
+        </form>
+    </section>
 
 
 
-	<ul>
-	{% for project in projects %}
-		<li>
-
-			<!--<div class="container">-->
-
-			<!-- title -->
-			<div class="title">
-				<p>
-					{% if project.endpoint  == 'asteroids' %}
-					<u><b><a href={{ project.code }}>{{ project.name }}</a></b></u>
-					{% endif %}
-					{% if project.endpoint == '' %}
-					<u><b>{{ project.name }}</a></b></u>
-					{% endif %}
-					{% if project.endpoint != '' and project.endpoint != 'asteroids' %}
-					<u><b> <a href={{ project.endpoint }}>{{ project.name }}</a></b></u>
-					{% endif %}
-				</p>
-			</div>
 
 
-			<!-- information links -->
-			<div class="externalLinks">
-				{% if project.video != '' %}
-				<a href={{ project.video }}>Video</a>
-				{% endif %}
-				{% if project.video != '' and project.code != '' %}
-				   	-
-				{% endif %}
-				{% if project.code != '' %}
-				<a href={{ project.code }}>Code</a>
-				{% endif %}
-				{% if project.video == '' and project.code == '' %}
-					<br>
-				{% endif %}
-			</div>
+    <div class="return">
+        <a href="#home">
+            Return to Top
+        </a>
+    </div>
 
-		<!-- image -->
-				<div class="image">
-					<img src="static/images/{{ project.image }}" class="img-rounded" alt={{ project.name }} width="400" height="200"/>
-				</div>
+    <!-- FOOTER -->
+    <footer class="footer">
+        <div class="socials">
+            <div class="socials-github socials-item">
+                <a href="https://github.com/Inkozi" target="_blank">
+                    <img src="static/images/github_icon.png" alt="github">
+                </a>
+            </div>
+            <div class="socials-linkedin socials-item">
+                <a href="https://linkedin.com/in/charles-stevenson-87a9b0aa" target="_blank">
+                    <img src="static/images/linkedin_icon.png" alt="linkedin">
+                </a>
+            </div>
+            <div class="socials-email socials-item">
+                <a href="mailto:charles.stevenson222@gmail.com" target="_blank">
+                    <img src="static/images/email_icon.png" alt="email">
+                </a>
+            </div>
+        </div>
+        <p class="copyright">
+            Charles Stevenson
+        </p>
+    </footer>
 
-			<!-- description -->
-			<div class="description">
-				<p style="width:80%; margin-left:10%;">{{ project.description }}</p>
-			</div>
+    <script src="/static/js/portfolio.js"></script>
+    <script src="{{ url_for('static', filename='js/portfolio-particles.js') }}"></script>
+</body>
 
-			<!--</div>-->
-			<!--<hr width="500">-->
-	</li>
-	{% endfor %}
-	</ul>
+
 {% endblock %}
