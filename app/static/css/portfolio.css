@@ -245,8 +245,14 @@ nav {
 .skills {
     display: flex;
     max-width: 1300px;
+    justify-content: center;
+}
+
+.skills-2 {
+    margin-top: 1rem;
     margin-bottom: 12rem;
 }
+
 
 .skills-item-name {
     font-size: 0.9rem;
@@ -266,6 +272,7 @@ nav {
 .about-skill {
     max-width: 100px;
     margin-left: 2rem;
+    margin-top: 3rem;
     transition: transform 0.5s;
 }
 
@@ -274,7 +281,7 @@ nav {
 }
 
 .profile-summary {
-    margin-bottom: 9rem;
+    margin-bottom: 2rem;
     width: 50%;
 }
 
