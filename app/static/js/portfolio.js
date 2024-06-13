@@ -81,8 +81,22 @@ document.getElementById('form-submit').addEventListener('click', function(event)
         return validated;
     }
 
-
-
 })
 
 
+// Wait for the canvas to be created and then add a class to it
+window.addEventListener('load', function() {
+    var canvas = document.querySelector('#particles-js-1 > canvas');
+    if (canvas) {
+        canvas.classList.add('home-canvas');
+    }
+});
+
+
+// Wait for the canvas to be created and then add a class to it
+window.addEventListener('load', function() {
+    var canvas = document.querySelector('#particles-js-2 > canvas');
+    if (canvas) {
+        canvas.classList.add('bg-canvas');
+    }
+});

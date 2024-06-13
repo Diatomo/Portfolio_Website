@@ -116,7 +116,7 @@ body {
     font-family: montserrat, sans-serif;
     background-color: #1a1a1a;
     overflow-x: hidden;
-    margin: 0
+    margin: 0;
 }
 
 .navigation-item--active {
@@ -288,7 +288,6 @@ nav {
     width: 100%;
 }
 
-
 .projects {
     display: flex;
     flex-direction: column;
@@ -314,7 +313,6 @@ nav {
     text-align:center;
     z-index:4;
 }
-
 
 .projects-grid{
     padding: 20px;
@@ -496,11 +494,20 @@ nav {
     left: 0;
     bottom: 0;
     width: 100%;
-    height: 100vh;
+    height: 100%;
     background-color: #1a1a1a;
-    overflow: clip;
+    overflow: hidden;
 }
 
+.home-canvas {
+    max-width: 100%;
+    max-height: 100%;
+    display: block;
+}
+
+.bg-canvas {
+    display: block;
+}
 
 @media (max-width: 410px) {
     .about-skill img {
@@ -581,5 +588,27 @@ nav {
 @media (max-width: 700px) {
     .navigation-bar {
         justify-content: center;
+    }
+}
+
+@media (max-width: 615px) {
+    html {
+        font-size: 40%;
+    }
+}
+
+@media (max-width: 770px) {
+    html {
+        font-size: 43.75%;
+    }
+}
+@media (max-width: 1200px) {
+    html {
+        font-size: 50%;
+    }
+}
+@media (max-width: 1500px) {
+    html {
+        font-size: 57.25%;
     }
 }
