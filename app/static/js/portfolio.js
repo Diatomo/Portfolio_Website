@@ -14,26 +14,30 @@ window.addEventListener("scroll", () => {
 
     const OFFSET = 50;
     if (pageYOffset > sectionTop - OFFSET) {
-      current = section.getAttribute("id");
+        current = section.getAttribute("id");
     }
   });
 
-  if (prevCurrent != current) {
-      prevCurrent = current;
-      navLi.forEach((li) => {
+    if (prevCurrent != current) {
+        //alias
+        prevCurrent = current;
 
-        const classActiveName = "navigation-item--active";
-        li.classList.remove(classActiveName);
-        const currentElement = document.getElementById("nav-" + current)
+        // loop through nav-bar list
+        navLi.forEach((li) => {
 
-        if (currentElement != null) {
-            currentElement.classList.add(classActiveName);
-        }
-        else {
-            navHome.classList.add(classActiveName);
-        }
-      });
-  };
+            const classActiveName = "navigation-item--active";
+            li.classList.remove(classActiveName);
+            const currentElement = document.getElementById("nav-" + current)
+
+            if (currentElement != null) {
+                currentElement.classList.add(classActiveName);
+            }
+            else {
+                navHome.classList.add(classActiveName);
+            }
+
+        });
+    };
 });
 
 
