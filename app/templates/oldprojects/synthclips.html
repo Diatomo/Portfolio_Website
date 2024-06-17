@@ -1,68 +1,75 @@
 
 
 
-<link rel= "stylesheet" type= "text/css" href="{{ url_for('static', filename='playlist.css') }}">
+<link rel= "stylesheet" type= "text/css" href="{{ url_for('static', filename='css/playlist.css') }}">
+<link rel="icon" type="image/png" href="static/images/diatomprojects.png">
 
 
 {% block content %}
 
-<link rel="icon" type="image/png" href="static/images/diatomprojects.png">
 
-<h1><b>Playlist</b></h1>
+<h1><b>Synth Clips</b></h1>
 	<div class="menu">
 		<a href={{ url_for('index') }}>Projects</a>
 		<a href='https://techrez.io/resume/charles-stevenson'>Resume</a>
 	</div>
-	<hr>
-	<div style="padding-bottom:100px;"></div>
+    <hr>
 
 
-	<div class="menu" style="width: 85%; padding-bottom:50px;">
-		<button class="newButt" style="float: right; padding-right: 20px; padding-left: 20px; margin-left: 10px; background-color: #505A5B; color: #FFFFFF;">New</button>
-		<button class="topButt" style="float: right; padding-right: 20px; padding-left: 20px; margin-left: 10px; background-color: #343F3E; color: #FFFFFF;">Top</button>
-	</div>
-
-	{% for track in tracks %}
-		<div class="track">
-			<b style="width: 20%; padding-left: 40px;"><p style="font-size: 30px;">{{ track.count }}.</p></b>
-			<div class="track-info">
-
-				<div class="audio-player">
-					<audio src={{ track.audio }}></audio>
-					<u><b><a href={{ track.url }}>{{ track.title }}</a></b></u>
-					<div class="controls">
-						<button class="player-button">
-							<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="#3D3132">
-								  <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM9.555 
-									7.168A1 1 0 008 8v4a1 1 0 001.555.832l3-2a1 1 0 000-1.664l-3-2z" 
-								  clip-rule="evenodd" />
-							</svg>
-						</button>
-						<input type="range" class="timeline" max="100" value="0">
-						<button class="sound-button">
-							<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="#3D3132">
-								<path fill-rule="evenodd" d="M9.383 3.076A1 1 0 0110 4v12a1 1 0 01-1.707.707L4.586 
-									13H2a1 1 0 01-1-1V8a1 1 0 011-1h2.586l3.707-3.707a1 1 0 011.09-.217zM14.657 
-									2.929a1 1 0 011.414 0A9.972 9.972 0 0119 10a9.972 9.972 0 01-2.929 7.071 1 
-									1 0 01-1.414-1.414A7.971 7.971 0 0017 10c0-2.21-.894-4.208-2.343-5.657a1 1 
-									0 010-1.414zm-2.829 2.828a1 1 0 011.415 0A5.983 5.983 0 0115 10a5.984 5.984 
-									0 01-1.757 4.243 1 1 0 01-1.415-1.415A3.984 3.984 0 0013 10a3.983 3.983 0 
-									00-1.172-2.828 1 1 0 010-1.415z" clip-rule="evenodd" />
-							</svg>
-						</button>
-					</div>
-				</div>
+	<!-- Introduction -->
+	<div class="introduction">
+		<div class="article">
+		<!-- description -->
+			<div class="description">
+				<p style="width: 50%; text-align:center; margin-right:auto; margin-left:auto;"class="intro-description">
+					Event group composed of synth enthusiast playing public improvised jam sessions. Below are featured clips with a custom built audio player.
+				</p>
 			</div>
-			{% if track.date != 'N/A' %}
-				<p style="width: 20%; text-align: right; padding-right: 40px;">Score: {{ track.score }} <br> Date: {{ track.date }}</p>
-			{% endif %}
-			{% if track.date == 'N/A' %}
-				<p style="width: 20%; text-align: right; padding-right: 40px;">Score: {{ track.score }}</p>
-			{% endif %}
 		</div>
-		<hr width="75%" border-top="1px dashed gray">
-	{% endfor %}
+	</div>
+	<hr>
 
+
+    <div>
+    {% for section in sections %}
+        <h2 style="width:100%;text-align:center;"><a href={{ dbxurl }}{{ section.section }}>{{ section.label }}</a></h2>
+        {% set ns = namespace(counter = 1) %}
+	    {% for clip in audioclips %}
+            {% if clip.section == section.section %}
+                <div class="track">
+                    <div class="track-info">
+                        <p style="font-family:Courier New;"><b>{{ ns.counter }}. {{ clip.label }}</b><p>
+                    </div>
+                    {% set ns.counter = ns.counter + 1 %}
+                    <div class="audio-player">
+                        <audio src={{ url_for('static', filename='synth_club_clips/' + clip.audio) }}></audio>
+                        <div class="controls">
+                            <button class="player-button">
+                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="#3D3132">
+                                      <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM9.555 
+                                        7.168A1 1 0 008 8v4a1 1 0 001.555.832l3-2a1 1 0 000-1.664l-3-2z" 
+                                      clip-rule="evenodd" />
+                                </svg>
+                            </button>
+                            <input type="range" class="timeline" max="100" value="0">
+                            <button class="sound-button">
+                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="#3D3132">
+                                    <path fill-rule="evenodd" d="M9.383 3.076A1 1 0 0110 4v12a1 1 0 01-1.707.707L4.586 
+                                        13H2a1 1 0 01-1-1V8a1 1 0 011-1h2.586l3.707-3.707a1 1 0 011.09-.217zM14.657 
+                                        2.929a1 1 0 011.414 0A9.972 9.972 0 0119 10a9.972 9.972 0 01-2.929 7.071 1 
+                                        1 0 01-1.414-1.414A7.971 7.971 0 0017 10c0-2.21-.894-4.208-2.343-5.657a1 1 
+                                        0 010-1.414zm-2.829 2.828a1 1 0 011.415 0A5.983 5.983 0 0115 10a5.984 5.984 
+                                        0 01-1.757 4.243 1 1 0 01-1.415-1.415A3.984 3.984 0 0013 10a3.983 3.983 0 
+                                        00-1.172-2.828 1 1 0 010-1.415z" clip-rule="evenodd" />
+                                </svg>
+                            </button>
+                            <p class=track-time style="font-family:Courier New;">{{ clip.length }}<p>
+                        </div>
+                    </div>
+		        </div>
+            {% endif %}
+	    {% endfor %}
+    {% endfor %}
 {% endblock %}
 
 

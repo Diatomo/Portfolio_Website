@@ -27,13 +27,16 @@ def index():
             "description": 'Triple Voltage Controlled Oscillator build for a modular synthesizer.',
             "endpoint": "trivco",
             "image": "osc_prototype_oscilloscope.jpg"
-        },
+        }
+    ]
+
+    oldprojects = [
         {
             "name": 'Synth Clips',
             "video": '',
             "code": '',
             "description": 'Synth club audio clips.',
-            "endpoint": "synthclips",
+            "endpoint": "old_synthclips",
             "image": "synth_clips.jpg"
         },
         {
@@ -41,7 +44,7 @@ def index():
             "video" : '',
             "code" : '',
             'description' : 'Bioinformatics core maintaining and developing a consortium research database.',
-            "endpoint" : "hgric",
+            "endpoint" : "old_hgric",
             "image" : "hgric.jpg"
         },
         {
@@ -49,7 +52,7 @@ def index():
             "video" : 'https://www.youtube.com/watch?v=p27bZ5V9P7E&feature=youtu.be',
             "code" : 'https://github.com/Diatomo/School/tree/master/Tessellated-Information-Auditory-System',
             'description' : "Step Sequencer : With looping effects && layering multiple instruments. Try clicking on help on the top left and clicking on a few squares.",
-            "endpoint" : "tias",
+            "endpoint" : "old_tias",
             "image" : "tias.png"
         },
         {
@@ -57,7 +60,7 @@ def index():
             "video" : 'https://www.youtube.com/watch?v=Ysz68Mc6vs8&feature=youtu.be',
             "code" : 'https://github.com/Diatomo/Gravity',
             'description' : "Gravity Simulator : Emulates orbits of spawned planets around a sun, click around and watch the little planets orbit.",
-            "endpoint" : "gravity",
+            "endpoint" : "old_gravity",
             "image" : "gravity.png"
         },
         {
@@ -67,14 +70,6 @@ def index():
             'description' : 'Asteroids, one my first programs, with circle to cicle collisions and ammo',
             "endpoint" : "asteroids",
             "image" : "asteroids.png"
-        },
-        {
-            "name" : 'Patches - Incomplete',
-            "video" : 'https://www.youtube.com/watch?v=X491o8rT-u4&feature=youtu.be',
-            "code" : 'https://github.com/Diatomo/Mother32_Preset',
-            'description' : 'Moog Semimodular documentation application for patching.',
-            "endpoint" : "mother32",
-            "image" : "mother32.png",
         },
         {
             "name" : "School Projects",
@@ -236,137 +231,11 @@ def index():
             "video" : '',
             "endpoint" : ''
         }
-
-
     ]
+
+    projects = projects + oldprojects
     return render_template('index.html', title='Diatom-Projects', projects=projects)
 
-
-
-months = {
-    '01': 'January',
-    '02': 'February',
-    '03': 'March',
-    '04': 'April',
-    '05': 'May',
-    '06': 'June',
-    '07': 'July',
-    '08': 'August',
-    '09': 'September',
-    '10': 'October',
-    '11': 'November',
-    '12': 'December'
-}
-
-
-@app.route('/synthclips')
-def synthclips():
-
-    directory_path = os.path.join(app.static_folder, 'synth_club_clips')
-    audioclips = os.listdir(directory_path)
-
-    baseurl = 'https://www.dropbox.com/home/Apps/diatomprojects-synthclips/'
-
-    result = []
-    sections = []
-    sectionTemp = []
-
-    for clip in audioclips:
-        section = clip[0:6]
-        month = clip[0:2]
-        day = clip[2:4]
-        year = clip[4:6]
-        sectionLabel = months[month] + ' - '+ day + ' - ' + '20' + year
-        if section not in sectionTemp:
-            sectionTemp.append(section)
-            entry = {}
-            entry['section'] = section
-            entry['label'] = sectionLabel
-            sections.append(entry)
-
-
-
-    for clip in audioclips:
-        temp = {}
-        temp['section'] = clip[0:6]
-        temp['label'] = clip[7:-14]
-        temp['audio'] = clip
-
-        audio = AudioSegment.from_file(directory_path + '/' + clip)
-        duration_ms = len(audio)
-        duration_seconds = duration_ms // 1000
-        minutes = duration_seconds // 60
-        seconds = duration_seconds % 60
-
-        if (len(str(seconds)) <= 1):
-            seconds = str(seconds) + '0'
-        temp['length'] = str(minutes) + ':' + str(seconds)
-
-        result.append(temp)
-
-    return render_template('synthclips.html', title='Synth Clips', dbxurl=baseurl, sections=sections,  audioclips=result)
-
-
-@app.route('/tias', methods=["GET", "POST"])
-def tias():
-    return current_app.send_static_file('tias.html')
-
-@app.route('/gravity')
-def gravity():
-    return render_template('gravity.html')
-
-@app.route('/mother32')
-def mother():
-    return render_template('mother32.html')
-
-@app.route('/music')
-def music():
-    title = "Music"
-    description = ''' Music '''
-    projects = [
-        {
-            "name" : "Dark Portal",
-            "image" : 'dark_portal.png',
-            "description" : "Dark Portal Summoning Spirits.",
-            "music" : "https://www.dropbox.com/s/c15pwe9ibzpics4/Late_Night_Portal.mp4?dl=0"
-        },
-        {
-            "name" : "Ambient_001",
-            "image" : 'ambient_001.png',
-            "description" : "Ambient 001",
-            "music" : "https://www.dropbox.com/s/freczmem7fk6kl2/AMBIENT%20001.mp4?dl=0"
-        },
-        {
-            "name" : "Ambient_002",
-            "image" : 'ambient_002.png',
-            "description" : "Ambient 002",
-            "music" : "https://www.dropbox.com/s/ynhztbddnpki1ol/ambient_002.mp4?dl=0"
-        },
-        {
-            "name" : "October Track",
-            "image" : 'october.png',
-            "description" : "October Track",
-            "music" : "https://www.dropbox.com/s/fpvs72uqposn1pc/Instagram_10.11.2021.mp4?dl=0"
-        }
-
-    ]
-    return render_template('music.html', title=title, description=description, projects=projects)
-
-@app.route('/about')
-def about():
-    title = "About"
-    info = {
-        "name" : "about",
-        "image" : 'profile_picture.jpg',
-    }
-    return render_template('about.html', title=title, info=info)
-
-
-@app.route('/hgric')
-def hgric():
-    title = "Human Genetic Research Informatics Core"
-    description = "Bioinformatics research lab seeking the genetic causes of Dilated Cardiomyopathy (DCM)"
-    return render_template('hgric.html', title=title, description=description)
 
 
 @app.route('/trivco')
@@ -400,4 +269,107 @@ def trivco():
         result.append(temp)
 
     return render_template('trivco.html', title=title, audioclips=result)
+
+
+
+
+
+
+
+
+#==========================================================================
+'''
+    OLD ROUTES
+
+    progress is halted on these projects. I think I have hit a point in
+    my career where I need to create better quality applications. I will
+    keep everything here for completion and something to look back on.
+'''
+#==========================================================================
+
+
+@app.route('/old_synthclips')
+def synthclips():
+
+    months = {
+        '01': 'January',
+        '02': 'February',
+        '03': 'March',
+        '04': 'April',
+        '05': 'May',
+        '06': 'June',
+        '07': 'July',
+        '08': 'August',
+        '09': 'September',
+        '10': 'October',
+        '11': 'November',
+        '12': 'December'
+    }
+
+
+    directory_path = os.path.join(app.static_folder, 'synth_club_clips')
+    audioclips = os.listdir(directory_path)
+
+    baseurl = 'https://www.dropbox.com/home/Apps/diatomprojects-synthclips/'
+
+    result = []
+    sections = []
+    sectionTemp = []
+
+    for clip in audioclips:
+        section = clip[0:6]
+        month = clip[0:2]
+        day = clip[2:4]
+        year = clip[4:6]
+        sectionLabel = months[month] + ' - '+ day + ' - ' + '20' + year
+        if section not in sectionTemp:
+            sectionTemp.append(section)
+            entry = {}
+            entry['section'] = section
+            entry['label'] = sectionLabel
+            sections.append(entry)
+
+    for clip in audioclips:
+        temp = {}
+        temp['section'] = clip[0:6]
+        temp['label'] = clip[7:-14]
+        temp['audio'] = clip
+
+        audio = AudioSegment.from_file(directory_path + '/' + clip)
+        duration_ms = len(audio)
+        duration_seconds = duration_ms // 1000
+        minutes = duration_seconds // 60
+        seconds = duration_seconds % 60
+
+        if (len(str(seconds)) <= 1):
+            seconds = str(seconds) + '0'
+        temp['length'] = str(minutes) + ':' + str(seconds)
+
+        result.append(temp)
+
+    return render_template('oldprojects/synthclips.html', title='Synth Clips', dbxurl=baseurl, sections=sections,  audioclips=result)
+
+
+@app.route('/old_tias', methods=["GET", "POST"])
+def tias():
+    return current_app.send_static_file('processing/tias.html')
+
+@app.route('/old_gravity')
+def gravity():
+    return render_template('oldprojects/gravity.html')
+
+@app.route('/old_about')
+def about():
+    title = "About"
+    info = {
+        "name" : "about",
+        "image" : 'profile_picture.jpg',
+    }
+    return render_template('oldprojects/about.html', title=title, info=info)
+
+@app.route('/old_hgric')
+def hgric():
+    title = "Human Genetic Research Informatics Core"
+    description = "Bioinformatics research lab seeking the genetic causes of Dilated Cardiomyopathy (DCM)"
+    return render_template('oldprojects/hgric.html', title=title, description=description)
 

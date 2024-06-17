@@ -12,7 +12,7 @@ window.addEventListener("scroll", () => {
     const sectionTop = section.offsetTop;
     const sectionHeight = section.clientHeight;
 
-    const OFFSET = 50;
+    const OFFSET = 300;
     if (pageYOffset > sectionTop - OFFSET) {
         current = section.getAttribute("id");
     }
