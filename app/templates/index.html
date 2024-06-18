@@ -3,12 +3,11 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Charles Stevenson | Full Stack Web Developer</title>
-    <link rel="icon" type="image/png" href="static/images/diatomprojects.png">
+    <link rel="icon" type="image/png" href="{{ static_url_for('static', filename='images/diatomprojects.png') }}">
     <script src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js"></script>
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/portfolio.css') }}">
+    <link rel="stylesheet" href="{{ static_url_for('static', filename='css/portfolio.css') }}">
 </head>
 
-<!-- <script src="{{ url_for('static', filename='js/portfolio.js') }}"></script> -->
 {% block content %}
 
 <body>
@@ -99,47 +98,47 @@
                 <span>
                 As an artist, software engineer, musician, and biologist,
                 </span>
-                I'm fully dedicated to the pursuit of life-long learning. Whether it be solving problems or planting potatoes in an afternoon sun. I find that
-                actions speak louder than words and thus am building out this portfolio to highlight my interest as well as my personal pursuits in my years as a software developer.
+                I'm fully dedicated to the pursuit of life-long learning. Whether it be solving problems or planting potatoes the afternoon sun. I find that
+                actions speak louder than words and thus am building out this portfolio to highlight my interests as well as my personal pursuits.
                 </p>
 
             </div>
 
             <div class="skills" id="skills">
                 <div class="about-skill">
-                    <img src="static/images/linux_icon.png" alt="linux">
+                    <img src="{{ static_url_for('static', filename='images/linux_icon.png')}}" alt="linux">
                     <div class="skills-item-name">LINUX</div>
                 </div>
                 <div class="about-skill">
-                    <img src="static/images/java_icon.png" alt="java">
+                    <img src="{{ static_url_for('static', filename='images/java_icon.png')}}" alt="java">
                     <div class="skills-item-name">JAVA</div>
                 </div>
                 <div class="about-skill">
-                    <img src="static/images/django_icon.png" alt="django">
+                    <img src="{{ static_url_for('static', filename='images/django_icon.png')}}" alt="django">
                     <div class="skills-item-name">DJANGO</div>
                 </div>
                 <div class="about-skill">
-                    <img src="static/images/python_icon.png" alt="python">
+                    <img src="{{ static_url_for('static', filename='images/python_icon.png')}}" alt="python">
                     <div class="skills-item-name">PYTHON</div>
                 </div>
                 <div class="about-skill">
-                    <img src="static/images/flask_icon.png" alt="flask">
+                    <img src="{{ static_url_for('static', filename='images/flask_icon.png')}}" alt="flask">
                     <div class="skills-item-name">FLASK</div>
                 </div>
                 <div class="about-skill">
-                    <img src="static/images/react_icon.png" alt="react">
+                    <img src="{{ static_url_for('static', filename='images/react_icon.png')}}" alt="react">
                     <div class="skills-item-name">REACT</div>
                 </div>
                 <div class="about-skill">
-                    <img src="static/images/db2_icon.png" alt="db2">
+                    <img src="{{ static_url_for('static', filename='images/db2_icon.png')}}" alt="db2">
                     <div class="skills-item-name">DB2</div>
                 </div>
                 <div class="about-skill">
-                    <img src="static/images/git_icon.png" alt="git">
+                    <img src="{{ static_url_for('static', filename='images/git_icon.png')}}" alt="git">
                     <div class="skills-item-name">GIT</div>
                 </div>
                 <div class="about-skill">
-                    <img src="static/images/javascript_icon.png" alt="javascript">
+                    <img src="{{ static_url_for('static', filename='images/javascript_icon.png')}}" alt="javascript">
                     <div class="skills-item-name">
                         <span class="long-text">JAVASCRIPT</span>
                         <span class="short-text">JS</span>
@@ -199,7 +198,7 @@
 
                 <!-- image -->
                         <div class="projects-image-container">
-                            <img class="projects-image" src="static/images/{{ project.image }}" class="img-rounded" alt={{ project.name }}/>
+                            <img class="projects-image" src="{{ static_url_for('static', filename='images/'+project.image) }}" class="img-rounded" alt={{ project.name }}/>
                         </div>
 
                     <!-- description -->
@@ -262,17 +261,17 @@
         <div class="socials">
             <div class="socials-github socials-item">
                 <a href="https://github.com/Inkozi" target="_blank">
-                    <img src="static/images/github_icon.png" alt="github">
+                    <img src="{{ static_url_for('static', filename='images/github_icon.png') }}" alt="github">
                 </a>
             </div>
             <div class="socials-linkedin socials-item">
                 <a href="https://linkedin.com/in/charles-stevenson-87a9b0aa" target="_blank">
-                    <img src="static/images/linkedin_icon.png" alt="linkedin">
+                    <img src="{{ static_url_for('static', filename='images/linkedin_icon.png') }}" alt="linkedin">
                 </a>
             </div>
             <div class="socials-email socials-item">
                 <a href="mailto:charles.stevenson222@gmail.com" target="_blank">
-                    <img src="static/images/email_icon.png" alt="email">
+                    <img src="{{ static_url_for('static', filename='images/email_icon.png') }}" alt="email">
                 </a>
             </div>
         </div>
@@ -281,8 +280,8 @@
         </p>
     </footer>
 
-    <script src="/static/js/portfolio.js"></script>
-    <script src="{{ url_for('static', filename='js/portfolio-particles.js') }}"></script>
+    <script src="{{ static_url_for('static', filename='js/portfolio.js') }}"></script>
+    <script src="{{ static_url_for('static', filename='js/portfolio-particles.js') }}"></script>
 </body>
 
 
