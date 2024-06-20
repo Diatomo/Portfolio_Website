@@ -39,14 +39,6 @@ def index():
             "image": "synth_clips.jpg"
         },
         {
-            "name" : 'HGRIC',
-            "video" : '',
-            "code" : '',
-            'description' : 'Bioinformatics core maintaining and developing a consortium research database.',
-            "endpoint" : "old_hgric",
-            "image" : "hgric.jpg"
-        },
-        {
             "name" : 'TIAS',
             "video" : 'https://www.youtube.com/watch?v=p27bZ5V9P7E&feature=youtu.be',
             "code" : 'https://github.com/Diatomo/School/tree/master/Tessellated-Information-Auditory-System',
@@ -365,10 +357,4 @@ def about():
         "image" : 'profile_picture.jpg',
     }
     return render_template('oldprojects/about.html', title=title, info=info)
-
-@app.route('/old_hgric')
-def hgric():
-    title = "Human Genetic Research Informatics Core"
-    description = "Bioinformatics research lab seeking the genetic causes of Dilated Cardiomyopathy (DCM)"
-    return render_template('oldprojects/hgric.html', title=title, description=description)
 
