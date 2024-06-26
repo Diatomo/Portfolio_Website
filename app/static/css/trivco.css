@@ -1,0 +1,138 @@
+
+
+/* 
+ *
+ * ================
+ *     GLOBAL 
+ * ================
+ * 
+ * */
+
+video {
+    width:400px;
+    height:400px;
+    margin-left:auto;
+    margin-right:auto;
+    height: auto;
+}
+
+h1 {
+	font-family: 'Kalam';
+	text-align: center;
+	font-size: 80px;
+	color: #FF8F4A;
+	margin: auto;
+    -webkit-text-stroke-width: 1px;
+    -webkit-text-stroke-color: black;
+}
+
+
+body {
+    min-height: 100vh;
+    color: #fafafa;
+    font-family: montserrat, sans-serif;
+    background-color: #1a1a1a;
+    overflow-x: hidden;
+    margin: 0;
+}
+
+h3 {
+    font-family: montserrat, sans-serif;
+    font-size: 50px;
+}
+
+
+/* 
+ *
+ * ================
+ *     Video 
+ * ================
+ * 
+ * */
+.video-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.bordered-video {
+    max-width: 100%;
+    height: auto;
+    border: 2px solid black; /* Black border around the video */
+}
+
+
+
+/* 
+ *
+ * ================
+ *     Images 
+ * ================
+ * 
+ * */
+
+.schematic-container {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: repeat(2, 1fr);
+    gap: 10px; /* Adjust the gap between images */
+    width: 600px; /* Adjust the width as needed */
+    height: 600px; /* Adjust the height as needed */
+}
+
+.grid-item img{
+    width: 100%;
+    height: 100%;
+
+}
+
+.grid-item {
+    display: flex;
+    border: 1px solid #000000;
+    justify-content: center;
+    align-items: center;
+    z-index: 3;
+    position: relative; /* Required for positioning the hover effect */
+    overflow: hidden; /* Ensure the hover effect doesn't overflow */
+    transition: transform 0.5s;
+
+}
+
+.grid-item:hover{
+    z-index:4;
+    transform: scale(2); /* Enlarge the image on hover */
+}
+
+.schematic-container img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Ensures the images cover their grid cells */
+    border-radius: 5px; /* Optional: adds rounded corners to the images */
+}
+
+
+/* 
+ *
+ * ================
+ *     Links 
+ * ================
+ * 
+ * */
+
+.links {
+    text-align: center;
+}
+
+.menu {
+	text-align: center;
+}
+
+.menu a{
+	padding-right: 30px;
+    color: #ff4d5a; 
+}
+
+.vco-audio {
+    width:90%;
+
+}
