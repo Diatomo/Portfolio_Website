@@ -613,8 +613,8 @@ nav {
 .socials-item {
     display: flex;
     justify-content: center;
-    align-items: center;
     height: 35px;
+    width: 35px;
     background-color: transparent;
     cursor: pointer;
     transition: transform 0.5s;
