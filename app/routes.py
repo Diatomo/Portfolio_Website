@@ -1,14 +1,21 @@
 from flask import render_template, url_for, current_app, jsonify
 from flask import send_from_directory
-
-from app import app
-
-
+from flask import request, flash, redirect
+from flask_login import login_required, login_user, logout_user, UserMixin
+from flask import session
+from .forms import LoginForm
+from dotenv import load_dotenv
+from app import app, login_manager
 from pydub import AudioSegment
-
-
+import time
+import math
 import os
 import io
+
+load_dotenv()
+app.secret_key = os.environ.get("SECRET_KEY")
+debug = False
+
 
 # Route to serve the JSON file
 @app.route('/assets/particles.json')
@@ -16,9 +23,32 @@ def serve_particles():
     return send_from_directory('assets', 'particles.json')
 
 
+# User class
+class User(UserMixin):
+    def __init__(self, id):
+        self.id = id
+
+
+#Very low security w/ a global lockout.
+FAMILY_USERNAME = os.environ.get("FAMILY_USERNAME")
+FAMILY_PASSWORD = os.environ.get("FAMILY_PASSWORD")
+# In-memory user store,
+users = {FAMILY_USERNAME: {'password': FAMILY_PASSWORD}}
+lockout = False
+lockout_count = 0
+
+
 @app.route('/')
 def index():
     projects = [
+        {
+            "name": 'Photo_Viewer',
+            "video": '',
+            "code": '',
+            "description": "Dropbox media repository viewer. Meant for family members only. Demo is available at bottom of login page.",
+            "endpoint": "family_menu",
+            "image": "photo_viewer.jpg"
+        },
         {
             "name": 'Tri VCO',
             "video": '',
@@ -263,10 +293,155 @@ def trivco():
 
 
 
+# User class
+class User(UserMixin):
+    def __init__(self, id):
+        self.id = id
+
+@login_manager.user_loader
+def load_user(user_id):
+    if user_id in users:
+        return User(user_id)
+    return None
+
+
+def imageCheck(photos):
+    result = True
+    FILETYPE = ".jpg"
+
+    if (not photos):
+        result = False
+
+    for photo in photos:
+        if (photo[-4:] !=  FILETYPE):
+            result = False
+
+    if debug:
+        print("imageCheck status: " + str(result))
+
+    return result
+
+
+@app.route('/<path:path>/family', methods=['GET'])
+@login_required
+def family(path):
+
+    if debug:
+        print("fxn: family(path); PATH")
+        print(path)
+
+
+    root = "family_photos/"
+    #path, specified by the request
+    var_path = root + path + "/"
+    if (root in path):
+        var_path = path + "/"
+    #full path to the photo files
+    abs_path = os.path.join(app.static_folder, var_path)
+    #collection of photo names
+    photos = os.listdir(abs_path)
+
+    if debug:
+        print(path)
+        print("photo name: " + photos[0])
+
+    if (imageCheck(photos)):
+        return render_template('family.html', photos=photos, endpoint=var_path, title=var_path)
+    else:
+        return render_template('family_menu.html', dirs=photos, title=var_path, tag=var_path)
+
+
+
+@app.route('/family_menu')
+@login_required
+def family_menu():
+    title = "Menu"
+    directory_path = os.path.join(app.static_folder, 'family_photos')
+    dirs = os.listdir(directory_path)
+    return render_template('family_menu.html', dirs=dirs, title=title, tag=None)
+
+
+@app.route('/photo_demo')
+def photo_demo():
+    title = "images"
+    directory_path = os.path.join(app.static_folder, title)
+    endpoint = directory_path.split('/')
+    endpoint = endpoint[-1]
+    photos = os.listdir(directory_path)
+    return render_template('family.html', photos=photos, endpoint=endpoint, title=title)
+
+
+def userListExists():
+
+    try:
+        if (not session['users']):
+            session['users'] = []
+    except:
+        session['users'] = []
 
 
 
 
+def clearSessionTimeouts(username):
+
+    lockout_time = 15*60 #15 minutes
+    userListExists()
+    if (len(session['users']) > 0):
+        for user in session['users']:
+            if ((math.floor(time.time() - session[username]['creation_time'])) >= lockout_time):
+                session.pop(username, None)
+                session['users'].remove(username)
+
+def lockoutCheck(username):
+
+    if (username not in session):
+        userListExists()
+        session['users'].append(username)
+        session[username] = {'pw_attempts': 1, 'lockout': False, 'creation_time': time.time() }
+        if debug:
+            print(session[username])
+    else:
+        clearSessionTimeouts(username)
+        if (session[username]['pw_attempts'] < 5):
+            session[username]['pw_attempts'] += 1
+            session.modified = True
+        else:
+            session[username]['lockout'] = True
+
+    return session[username]['lockout']
+
+
+
+@app.route('/login', methods=['GET', 'POST'])
+def login():
+    form = LoginForm()
+    error = None
+    if form.validate_on_submit():
+        if request.method == 'POST':
+            username = request.form['username']
+            password = request.form['password']
+            print(username)
+            if (not lockoutCheck(username)):
+                if username in users and users[username]['password'] == password:
+                    print(users)
+                    session.pop(username, None)
+                    user = User(username)
+                    login_user(user)
+                    directory_path = os.path.join(app.static_folder, 'family_photos')
+                    photos = os.listdir(directory_path)
+                    return redirect(url_for('family_menu'))
+                else:
+                    return redirect(url_for('login'))
+            else:
+                error = 'Username is Locked out, Please try again later.'
+
+    return render_template('login.html', form=form, error=error)
+
+@app.route('/logout')
+@login_required
+def logout():
+    logout_user()
+    return redirect(url_for('login'))
 
 #==========================================================================
 '''
@@ -296,7 +471,6 @@ def synthclips():
         '11': 'November',
         '12': 'December'
     }
-
 
     directory_path = os.path.join(app.static_folder, 'synth_club_clips')
     audioclips = os.listdir(directory_path)

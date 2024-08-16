@@ -1,0 +1,4 @@
+/Family/2024/Michigan/ : /Users/diatom/Dropbox/Family_Photos/
+/Website/trivco_audio/ : /Users/diatom/Dropbox/trivco_audio/
+/Website/synth_club_clips/ : /Users/diatom/Dropbox/synth_club_clips/
+/Website/videos/ : /Users/diatom/Dropbox/videos/

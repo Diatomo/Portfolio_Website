@@ -1,0 +1,48 @@
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Family Media</title>
+    <link rel="icon" type="image/png" href="{{ static_url_for('static', filename='images/diatomdirs.png') }}">
+    <link rel="stylesheet" href="{{ static_url_for('static', filename='css/family.css') }}">
+</head>
+
+{% block content %}
+
+<body>
+
+    <!-- NAVIGATION -->
+    <nav class="navigation-bar">
+        <ul class="navigation">
+            <li class="navigation-item navigation-li navigation-item--active" id="nav-menu">
+                <a class="nav-a" href={{ url_for('family_menu') }}>Menu</a>
+            </li>
+            <li class="navigation-item navigation-li navigation-item--active" id="nav-home">
+                <a class="nav-a" href={{ url_for('index') }}>Home</a>
+            </li>
+            <li class="navigation-item navigation-li navigation-item--active" id="nav-logout">
+                <a class="nav-a" href={{ url_for('logout') }}>Logout</a>
+            </li>
+        </ul>
+    </nav>
+
+    <!-- dir Content -->
+    <h1>{{ title }}</h1>
+
+    <div class="dirs-list">
+        {% for dir in dirs %}
+            <div class="dir">
+                {% if tag %}
+                    <a href={{ url_for('family', path=tag + dir) }}>{{ dir }}</a>
+                {% else %}
+                    <a href={{ url_for('family', path=dir)}}>{{ dir }}</a>
+                {% endif %}
+            </div>
+        {% endfor %}
+        </div>
+    </div>
+
+</body>
+
+
+{% endblock %}
