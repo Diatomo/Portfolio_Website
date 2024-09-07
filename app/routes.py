@@ -420,10 +420,8 @@ def login():
         if request.method == 'POST':
             username = request.form['username']
             password = request.form['password']
-            print(username)
             if (not lockoutCheck(username)):
                 if username in users and users[username]['password'] == password:
-                    print(users)
                     session.pop(username, None)
                     user = User(username)
                     login_user(user)
