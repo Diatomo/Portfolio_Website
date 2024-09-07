@@ -11,9 +11,11 @@ nav {
 
 body {
     min-height: 100vh;
+    min-width: 100vw;
     color: #fafafa;
     overflow-x: hidden;
     margin: 0;
+    position: fixed;
     font-family: montserrat, sans-serif;
 }
 
@@ -58,8 +60,8 @@ input:-webkit-autofill::first-line {
 
 .btn {
     margin-top: 2rem;
-    height: 40px;
-    width: 7%;
+    height: 2rem;
+    width: 10%;
     border: none;
     color: #fafafa;
     background-color: #ff4d5a;
@@ -71,6 +73,16 @@ input:-webkit-autofill::first-line {
     background-color: #ff8089;
     cursor: pointer;
 }
+
+
+
+@media (max-width: 700px) {
+    .btn {
+        width: 20%;
+        font-size: 3vw;
+    }
+}
+
 
 .form-group {
     padding-top: 1em;
@@ -91,7 +103,6 @@ input:-webkit-autofill::first-line {
 }
 
 .demo-description {
-    width: 20%;
     color: #33FFA8;
 }
 
@@ -121,6 +132,15 @@ input:-webkit-autofill::first-line {
     z-index: -10;
 }
 
+.home-canvas {
+    max-width: 100%;
+    max-height: 100%;
+    display: block;
+}
+
+.bg-canvas {
+    display: block;
+}
 
 /* 
  *
