@@ -346,10 +346,9 @@ def family(path):
         print("photo name: " + photos[0])
 
     if (imageCheck(photos)):
-        return render_template('family.html', photos=photos, endpoint=var_path, title=var_path)
+        return render_template('family.html', photos=photos, endpoint=var_path, title=var_path, demo=False)
     else:
         return render_template('family_menu.html', dirs=photos, title=var_path, tag=var_path)
-
 
 
 @app.route('/family_menu')
@@ -368,7 +367,7 @@ def photo_demo():
     endpoint = directory_path.split('/')
     endpoint = endpoint[-1]
     photos = os.listdir(directory_path)
-    return render_template('family.html', photos=photos, endpoint=endpoint, title=title)
+    return render_template('family.html', photos=photos, endpoint=endpoint, title=title, demo=True)
 
 
 def userListExists():
@@ -472,6 +471,35 @@ def synthclips():
 
     directory_path = os.path.join(app.static_folder, 'synth_club_clips')
     audioclips = os.listdir(directory_path)
+    audioclips.sort()
+
+    '''
+        This algorithm is to just reorder the sections and not reorder all
+        the clips in between.
+    '''
+    section_indices = []
+    current_section = audioclips[0][0:4]
+    for i in range(len(audioclips)):
+        section = audioclips[i][0:4]
+        if (section != current_section):
+            current_section = audioclips[i][0:4]
+            section_indices.append(i)
+    section_indices.append(len(audioclips))
+
+    temp = []
+    for i in range(len(section_indices)-1,-1,-1):
+        if (i != 0):
+            temp.append(audioclips[section_indices[i-1]:section_indices[i]])
+        else:
+            temp.append(audioclips[0:section_indices[i]])
+
+
+    flatten = []
+    for i in range(len(temp)):
+        for j in range(len(temp[i])):
+            flatten.append(temp[i][j])
+
+    audioclips = flatten
 
     baseurl = 'https://www.dropbox.com/home/Apps/diatomprojects-synthclips/'
 
@@ -481,9 +509,9 @@ def synthclips():
 
     for clip in audioclips:
         section = clip[0:6]
-        month = clip[0:2]
-        day = clip[2:4]
-        year = clip[4:6]
+        year = clip[0:2]
+        month = clip[2:4]
+        day = clip[4:6]
         sectionLabel = months[month] + ' - '+ day + ' - ' + '20' + year
         if section not in sectionTemp:
             sectionTemp.append(section)
@@ -510,6 +538,8 @@ def synthclips():
 
         result.append(temp)
 
+
+    print(result)
     return render_template('oldprojects/synthclips.html', title='Synth Clips', dbxurl=baseurl, sections=sections,  audioclips=result)
 
 

@@ -20,9 +20,11 @@
             <li class="navigation-item navigation-li navigation-item--active" id="nav-home">
                 <a class="nav-a" href={{ url_for('index') }}>Home</a>
             </li>
-            <li class="navigation-item navigation-li navigation-item--active" id="nav-logout">
-                <a class="nav-a" href={{ url_for('logout') }}>Logout</a>
-            </li>
+            {% if demo == False %}
+                <li class="navigation-item navigation-li navigation-item--active" id="nav-logout">
+                    <a class="nav-a" href={{ url_for('logout') }}>Logout</a>
+                </li>
+            {% endif %}
         </ul>
     </nav>
 
