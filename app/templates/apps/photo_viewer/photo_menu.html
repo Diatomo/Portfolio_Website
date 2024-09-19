@@ -5,6 +5,9 @@
     <title>Family Media</title>
     <link rel="icon" type="image/png" href="{{ static_url_for('static', filename='images/diatomdirs.png') }}">
     <link rel="stylesheet" href="{{ static_url_for('static', filename='css/photo_viewer/photo.css') }}">
+    <link rel="stylesheet" href="{{ static_url_for('static', filename='css/photo_viewer/login.css') }}">
+    <script src="{{ static_url_for('static', filename='js/lib/particles.min.js') }}"></script>
+
 </head>
 
 {% block content %}
@@ -25,6 +28,11 @@
             </li>
         </ul>
     </nav>
+    
+    <!-- CANVAS #1 -->
+    <div class=home id="home">
+        <div class="canvas" id="particles-js-1"></div>
+    </div>
 
     <!-- dir Content -->
     <h1>{{ title }}</h1>
@@ -41,6 +49,9 @@
         {% endfor %}
         </div>
     </div>
+
+    <script src="{{ static_url_for('static', filename='js/portfolio.js') }}"></script>
+    <script src="{{ static_url_for('static', filename='js/portfolio-particles.js') }}"></script>
 
 </body>
 

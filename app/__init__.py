@@ -8,7 +8,7 @@ from datetime import timedelta
 
 flask_static_digest = FlaskStaticDigest()
 
-app = Flask(__name__)
+app = Flask(__name__, static_folder='./static/')
 app.config['PERMANENT_SESSION_LIFETIME'] = timedelta(minutes=15)
 
 login_manager = LoginManager()
