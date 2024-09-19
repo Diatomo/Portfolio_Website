@@ -11,7 +11,7 @@ from flask_wtf import FlaskForm
 from wtforms import StringField, PasswordField, SubmitField
 import os, time, math
 
-
+load_dotenv()
 
 
 '''
