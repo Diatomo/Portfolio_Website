@@ -7,7 +7,7 @@
     <title>Family Media</title>
     <link rel="icon" type="image/png" href="{{ static_url_for('static', filename='images/diatomprojects.png') }}">
     <script src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js"></script>
-    <link rel="stylesheet" href="{{ static_url_for('static', filename='css/login.css') }}">
+    <link rel="stylesheet" href="{{ static_url_for('static', filename='css/photo_viewer/login.css') }}">
 </head>
 
 {% block content %}
@@ -48,7 +48,7 @@
 
     <section class="demo">
         <p class="demo-description">
-            <span><a href={{ url_for('photo_demo') }}>Demo</a></span>
+            <span><a href={{ url_for('photo_viewer.demo') }}>Demo</a></span>
         <p>
     </section>
 

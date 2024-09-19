@@ -4,7 +4,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Family Media</title>
     <link rel="icon" type="image/png" href="{{ static_url_for('static', filename='images/diatomphotos.png') }}">
-    <link rel="stylesheet" href="{{ static_url_for('static', filename='css/family.css') }}">
+    <link rel="stylesheet" href="{{ static_url_for('static', filename='css/photo_viewer/photo.css') }}">
 </head>
 
 {% block content %}
@@ -15,14 +15,14 @@
     <nav class="navigation-bar">
         <ul class="navigation">
             <li class="navigation-item navigation-li navigation-item--active" id="nav-menu">
-                <a class="nav-a" href={{ url_for('family_menu') }}>Menu</a>
+                <a class="nav-a" href={{ url_for('photo_viewer.menu') }}>Menu</a>
             </li>
             <li class="navigation-item navigation-li navigation-item--active" id="nav-home">
                 <a class="nav-a" href={{ url_for('index') }}>Home</a>
             </li>
             {% if demo == False %}
                 <li class="navigation-item navigation-li navigation-item--active" id="nav-logout">
-                    <a class="nav-a" href={{ url_for('logout') }}>Logout</a>
+                    <a class="nav-a" href={{ url_for('photo_viewer.logout') }}>Logout</a>
                 </li>
             {% endif %}
         </ul>
