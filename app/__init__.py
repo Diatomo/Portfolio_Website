@@ -27,6 +27,8 @@ app.register_blueprint(synthclips_bp)
 from app.photo_viewer import bp as photoviewer_bp
 app.register_blueprint(photoviewer_bp)
 
+from app.music_fest import bp as musicfest_bp
+app.register_blueprint(musicfest_bp)
 
 
 from app import routes

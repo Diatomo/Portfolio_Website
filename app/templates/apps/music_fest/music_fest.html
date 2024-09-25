@@ -1,0 +1,96 @@
+
+
+
+<head>
+    <link rel= "stylesheet" type= "text/css" href={{ url_for('static', filename='css/music_fest/music_fest.css') }}>
+    <link rel="icon" type="image/png" href={{ url_for('static', filename='images/diatomprojects.png') }}>
+</head>
+
+{% block content %}
+
+
+
+<body>
+
+    <div class="hover-zone"></div>
+    <!-- NAVIGATION -->
+    <div>
+        <nav class="navigation-bar">
+            <ul class="navigation">
+                <li class="navigation-item navigation-li navigation-item--active" id="nav-home">
+                    <a class="nav-a" href={{ url_for('index') }}>Home</a>
+                </li>
+            </ul>
+        </nav>
+    </div>
+    
+
+    <!-- Loader overlay -->
+    <div id="loader">
+        <div class="spinner"></div>
+            <p>   Loading media...</p>
+    </div>
+
+    <div id="media-container">
+        <!-- VIDEO -->
+        <video id="video" class="fixed-video" autoplay muted loop>
+            <source src={{ url_for('static', filename='music_fest/' + video) }} type="video/mp4">
+                Your browser does not support the video tag.
+        </video>
+
+        <!-- AUDIO -->
+        <audio id="audio" autoplay loop>
+            <source src={{ url_for('static', filename='music_fest/' + audio) }} type="audio/mp3">
+                Your browser does not support the audio element.
+        </audio>
+    </div>
+
+
+
+    <script>
+        /*
+        // Get the hover zone and the nav element
+        const hoverZone = document.querySelector('.hover-zone');
+        const navbar = document.querySelector('.navigation-bar');
+
+        // Show the navigation-bar when hovering over the hover zone
+        hoverZone.addEventListener('mouseenter', () => {
+            navbar.style.transform = 'translateY(0)';
+        });
+
+        // Hide the navigation-bar when the mouse leaves the navigation-bar itself
+        navbar.addEventListener('mouseleave', () => {
+            navbar.style.transform = 'translateY(-100%)';
+        });
+        */
+    </script>
+
+
+    <script>
+        // Select the loader and media elements
+        const loader = document.getElementById('loader');
+        const mediaContainer = document.getElementById('media-container');
+        const video = document.getElementById('video');
+        const audio = document.getElementById('audio');
+
+        // Function to hide the loader once media is loaded
+        function hideLoader() {
+          loader.style.display = 'none';      // Hide the loader
+          mediaContainer.style.display = 'block';  // Show the media
+        }
+
+        // Check if video and audio are loaded
+        video.oncanplaythrough = hideLoader;
+        audio.oncanplaythrough = hideLoader;
+
+        // If only video or audio is used, ensure loader hides for both cases
+        window.addEventListener('load', () => {
+          video.oncanplaythrough = hideLoader;
+          audio.oncanplaythrough = hideLoader;
+        });
+    </script>
+
+
+</body>
+
+{% endblock %}

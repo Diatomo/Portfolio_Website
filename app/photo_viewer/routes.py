@@ -6,13 +6,17 @@ from flask import request, flash, redirect, url_for, render_template
 from flask_login import login_required, login_user, logout_user
 #controller and implementation class
 from .photo_viewer import PhotoViewer, LoginForm, User
+from flask import session
 #system
 import os, time, math
+
+from dotenv import load_dotenv
+load_dotenv()
+MAX_ATTEMPTS = int(os.environ.get("MAX_LOGIN_ATTEMPTS"))
 
 debug = False
 pv = PhotoViewer()
 root = 'apps/photo_viewer/'
-
 
 @login_manager.user_loader
 def load_user(user_id):
@@ -61,18 +65,29 @@ def login():
         if request.method == 'POST':
             username = request.form['username']
             password = request.form['password']
-            if (not pv.lockoutCheck(username)):
+
+            if ('login_attempt' not in session):
+                session.setdefault('login_attempts', 0)
+                session.setdefault('attempt_timestamp', time.time())
+            elif ('attempt_timestamp' in session and time.time() - session('attempt_timestamp') / (15*60) >= 1):
+                session['login_attempts'] = 0
+                session['attempt_timestamp'] = time.time()
+
+            if (session['login_attempts'] <= MAX_ATTEMPTS):
                 if username in pv.users and pv.users[username]['password'] == password:
-                    pv.sessionPop(username)
                     user = User(username)
                     login_user(user)
+                    session.pop('login_attempts', None)
+                    session.pop('attempt_timestamp', None)
                     directory_path = os.path.join(app.static_folder, 'family_photos')
                     photos = os.listdir(directory_path)
                     return redirect(url_for('photo_viewer.menu'))
                 else:
+                    session['login_attempts'] += 1
+                    session['attempt_timestamp'] = time.time()
                     return redirect(url_for('photo_viewer.login'))
             else:
-                error = 'Username is Locked out, Please try again later.'
+                error = 'Account Locked. Please try again later.'
 
     return render_template(root + 'login.html', form=form, error=error)
 

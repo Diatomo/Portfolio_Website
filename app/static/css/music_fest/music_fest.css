@@ -1,0 +1,152 @@
+
+body {
+    min-height: 100vh;
+    color: #fafafa;
+    overflow-x: hidden;
+    margin: 0;
+    padding: 0;
+    background-color: #1a1a1a;
+    font-family: montserrat, sans-serif;
+}
+
+li {
+    list-style: none;
+    text-align: -webkit-match-parent;
+}
+
+nav {
+    display: block;
+    unicode-bidi: isolate;
+}
+
+
+h1 {
+    width: 100%;
+    text-align: center;
+    font-size: 3vw;
+    color: #ff4d5a;
+}
+
+a {
+    text-decoration: none;
+}
+
+/* 
+ *
+ * ==================
+ *     NAVIGATION 
+ * ==================
+ * 
+ */
+
+.hover-zone {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 50px; 
+  z-index: 9999999999999999999;
+}
+
+.navigation-item--active a{
+    color: #ff4d5a;
+}
+
+.nav-a {
+    color: #fafafa;
+}
+
+.navigation {
+    display: flex;
+    margin-right: 10rem;
+    font-size: 1rem;
+    font-weight: 500;
+    letter-spacing: 1px;
+}
+
+.navigation-bar {
+    position: sticky;
+    position: -webkit-sticky;
+    top: 0;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    height: 3rem;
+    border-bottom: 1px solid #1a1a1a;
+    background-color: rgba(40, 40, 40, 0.95);
+    backdrop-filter: blur(8px);
+    box-shadow: 0 4px 4px rgba(0, 0, 0, 0.3);
+    z-index: 99999999999;
+}
+/*
+    #transform: translateY(-100%);
+    #transition: transform 0.3s ease-in-out;
+*/
+
+.navigation-item:not(:last-child) {
+    margin-right: 3rem;
+}
+
+
+
+/* 
+ *
+ * ==================
+ *     LOADER 
+ * ==================
+ * 
+ */
+
+#loader {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.8); /* Semi-transparent background */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+  color: white;
+  font-size: 24px;
+}
+
+/* Loading spinner */
+.spinner {
+  border: 8px solid #fafafa; /* Light grey */
+  border-top: 8px solid #3498db; /* Blue */
+  border-radius: 50%;
+  width: 60px;
+  height: 60px;
+  animation: spin 2s linear infinite;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+
+/* 
+ *
+ * ==================
+ *     MEDIA 
+ * ==================
+ * 
+ */
+
+.media-container {
+  display: none; /
+  position: fixed;
+  width: 100vw;
+  height: 100vh;
+}
+
+
+.fixed-video {
+  object-fit: cover;
+  width: 100vw;
+  height: 100vh;
+  z-index: 999;
+}

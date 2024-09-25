@@ -28,7 +28,16 @@ def serve_particles():
 def index():
     projects = [
         {
-            "name": 'Photo_Viewer',
+            "name": 'Music Festival',
+            "video": '',
+            "code": '',
+            "description": "Music festival ambient performance and visual.",
+            "endpoint": "/musicfest",
+            "image": "music_fest.jpg"
+
+        },
+        {
+            "name": 'Photo Viewer',
             "video": '',
             "code": '',
             "description": "Dropbox media repository viewer. Meant for family members only. Demo is available at bottom of login page.",

@@ -34,6 +34,16 @@ form {
     margin-right: auto;
 }
 
+span {
+    font-size: 1.5em;
+    color: #ADD8E6;
+}
+
+a:visited{
+    color: #ADD8E6;
+}
+
+
 input:-webkit-autofill {
     background-color: #282828 !important;  /* Dark background */
     color: #d3d3d3 !important;  /* Light text color */
@@ -79,7 +89,7 @@ input:-webkit-autofill::first-line {
 @media (max-width: 2500px) {
     .btn {
         width: 7%;
-        font-size: 1vw;
+        font-size: 0.9vw;
     }
 }
 
