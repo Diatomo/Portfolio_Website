@@ -10,6 +10,10 @@ from flask import session
 #system
 import os, time, math
 
+from app.logger import Logger
+log = Logger()
+
+
 from dotenv import load_dotenv
 load_dotenv()
 MAX_ATTEMPTS = int(os.environ.get("MAX_LOGIN_ATTEMPTS"))
@@ -17,6 +21,14 @@ MAX_ATTEMPTS = int(os.environ.get("MAX_LOGIN_ATTEMPTS"))
 debug = False
 pv = PhotoViewer()
 root = 'apps/photo_viewer/'
+
+
+def formatLog():
+    dt = datetime.datetime.now()
+    result = str(dt) + ': '
+    return result
+
+
 
 @login_manager.user_loader
 def load_user(user_id):
@@ -59,6 +71,8 @@ def demo():
 
 @bp.route('/login', methods=['GET', 'POST'])
 def login():
+    msg = "A user has entered the photo viewer."
+    log.addEntry('info', msg)
     form = LoginForm()
     error = None
     if form.validate_on_submit():
@@ -77,6 +91,8 @@ def login():
                 if username in pv.users and pv.users[username]['password'] == password:
                     user = User(username)
                     login_user(user)
+                    msg = "A user has successfully logged into the photo viewer."
+                    log.addEntry('info', msg)
                     session.pop('login_attempts', None)
                     session.pop('attempt_timestamp', None)
                     directory_path = os.path.join(app.static_folder, 'family_photos')

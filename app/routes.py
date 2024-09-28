@@ -4,20 +4,22 @@ from flask import session
 from flask import request
 from dotenv import load_dotenv
 from app import app, login_manager
+from .logger import Logger
 import time
 import math
 import os
 import io
+import datetime
 
 from pydub import AudioSegment
 
 from flask_login import login_required, login_user, logout_user, UserMixin
 
+log = Logger()
 
 load_dotenv()
 app.secret_key = os.environ.get("SECRET_KEY")
 debug = False
-
 
 # Route to serve the JSON file
 @app.route('/assets/particles.json')
@@ -26,6 +28,8 @@ def serve_particles():
 
 @app.route('/')
 def index():
+    msg = "A user has entered the diatom projects website."
+    log.addEntry('info', msg)
     projects = [
         {
             "name": 'Music Festival',
