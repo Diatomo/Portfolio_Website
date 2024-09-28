@@ -87,6 +87,14 @@ a {
     width: 100%; /* Ensure container takes full column width */
     padding-top: 1%; /* Maintain 20% width and 30% height ratio */
     overflow: hidden; /* Hide overflow for images that may extend beyond bounds */
+    transition: transform 0.5s ease;
+    z-index: 0;
+}
+
+
+.photos-grid-item:hover{
+    transform: scale(1.5);
+    z-index: 99;
 }
 
 
@@ -96,7 +104,6 @@ a {
     border-radius: 5px; 
     object-fit: cover;
 }
-
 
 .dirs-list{
     width: 100%;
