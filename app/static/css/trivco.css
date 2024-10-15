@@ -123,6 +123,7 @@ a {
 
 .links {
     text-align: center;
+    padding-bottom: 50px;
 }
 
 .menu {
@@ -139,6 +140,83 @@ a {
 
 }
 
+
+
+/* 
+ *
+ * ================
+ *     FOOTER 
+ * ================
+ * 
+ */
+
+.footer {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100px;
+    background-color: #282828;
+}
+
+.socials {
+    display: flex;
+    margin-bottom: 20px;
+    z-index: 2;
+}
+
+.socials img {
+    height: 100%;
+    width: 100%;
+    margin-top: 1rem;
+}
+
+.socials-item {
+    display: flex;
+    justify-content: center;
+    height: 35px;
+    width: 35px;
+    background-color: transparent;
+    cursor: pointer;
+    transition: transform 0.5s;
+    z-index: 3;
+}
+
+.socials-item:hover {
+    transform: scale(1.2)
+}
+
+.socials-email, .socials-linkedin {
+    margin-left: 5px;
+}
+
+.copyright {
+    color: #fafafa;
+    font-size: 10px;
+    font-weight: 500;
+}
+
+.return {
+    width: 100%;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 2rem;
+    display: flex;
+    justify-content: center;
+}
+
+.return a{
+    color: #fafafa;
+}
+
+.main-bg {
+    height: 100vh;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index:-999
+}
 
 
 
