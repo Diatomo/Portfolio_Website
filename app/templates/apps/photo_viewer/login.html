@@ -14,7 +14,6 @@
 
 <body>
 
-
     <!-- NAVIGATION -->
     <nav class="navigation-bar">
         <ul class="navigation">
@@ -43,13 +42,6 @@
         {% if error != None %}
             <p style="width:100%;text-align:center;color:ff4d5a;"class='login-error'>{{ error }}</p>
         {% endif %}
-    </section>
-
-
-    <section class="demo">
-        <p class="demo-description">
-            <span><a href={{ url_for('photo_viewer.demo') }}>Demo</a></span>
-        <p>
     </section>
 
     <script src="{{ static_url_for('static', filename='js/portfolio.js') }}"></script>

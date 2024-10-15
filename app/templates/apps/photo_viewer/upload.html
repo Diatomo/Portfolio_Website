@@ -1,0 +1,203 @@
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Family Media</title>
+    <link rel="icon" type="image/png" href="{{ static_url_for('static', filename='images/diatomprojects.png') }}">
+    <link rel="stylesheet" href="{{ static_url_for('static', filename='css/photo_viewer/photo.css') }}">
+    <script src="{{ static_url_for('static', filename='js/lib/particles.min.js') }}"></script>
+</head>
+
+{% block content %}
+
+<body>
+
+    <!-- NAVIGATION -->
+    <nav class="navigation-bar">
+        <ul class="navigation">
+            <li class="navigation-item navigation-li navigation-item--active" id="nav-menu">
+                <a class="nav-a" href={{ url_for('photo_viewer.menu') }}>Menu</a>
+            </li>
+            <li class="navigation-item navigation-li navigation-item--active" id="nav-home">
+                <a class="nav-a" href={{ url_for('index') }}>Home</a>
+            </li>
+            {% if demo == False %}
+                <li class="navigation-item navigation-li navigation-item--active" id="nav-logout">
+                    <a class="nav-a" href={{ url_for('photo_viewer.logout') }}>Logout</a>
+                </li>
+            {% endif %}
+        </ul>
+    </nav>
+
+    <!-- CANVAS #1 -->
+    <div class=home id="home">
+        <div class="canvas" id="particles-js-1"></div>
+    </div>
+
+    <!-- Content -->
+    <h1>{{ title }}</h1>
+
+    <div class="upload-container">
+        <form class="box" method="post" action="" enctype="multipart/form-data">
+          
+        <div class="box_input">
+           <svg class="box_icon" xmlns="http://www.w3.org/2000/svg" width="50" height="43" viewBox="0 0 50 43"><path d="M48.4 26.5c-.9 0-1.7.7-1.7 1.7v11.6h-43.3v-11.6c0-.9-.7-1.7-1.7-1.7s-1.7.7-1.7 1.7v13.2c0 .9.7 1.7 1.7 1.7h46.7c.9 0 1.7-.7 1.7-1.7v-13.2c0-1-.7-1.7-1.7-1.7zm-24.5 6.1c.3.3.8.5 1.2.5.4 0 .9-.2 1.2-.5l10-11.6c.7-.7.7-1.7 0-2.4s-1.7-.7-2.4 0l-7.1 8.3v-25.3c0-.9-.7-1.7-1.7-1.7s-1.7.7-1.7 1.7v25.3l-7.1-8.3c-.7-.7-1.7-.7-2.4 0s-.7 1.7 0 2.4l10 11.6z"></path></svg>
+            <input class="box_file" type="file" name="files[]" id="file" data-multiple-caption="{count} files selected" multiple />
+            <label for="file" id="box_label"><strong>Choose a file</strong><span class="box_dragndrop"> or drag it here</span>.</label>
+            <button class="box_button" type="submit">Upload</button>
+          </div>
+          <div class="box_uploading">Uploading…</div>
+          <div class="box_success">
+            Done!
+            <br>
+            <br>
+            <input class="box_file" type="file" name="files[]" id="file" data-multiple-caption="{count} files selected" multiple />
+            <label for="file" id="box_label"><strong>Upload More?</strong><span class="box_dragndrop"> or drag it here</span>.</label>
+          </div>
+          <div class="box_error">Error! <span></span>.</div>
+        </form>
+    </div>
+
+
+    <!-- FOOTER -->
+    <footer class="footer">
+    </footer>
+
+    <script src="{{ static_url_for('static', filename='js/portfolio.js') }}"></script>
+    <script src="{{ static_url_for('static', filename='js/portfolio-particles.js') }}"></script>
+
+    <script>
+        //Feature Detection
+        var isAdvancedUpload = function () {
+            var div = document.createElement('div');
+            let check1 = 'draggable' in div
+            let check2 = 'ondragstart' in div && 'ondrop' in div;
+            let check3 = 'FormData' in window && 'FileReader' in window;
+            return check1 || (check2 && check3)
+        }
+
+        var form = document.querySelector('.box'); 
+
+        function addMultipleEventListeners(element, events, handler) {
+            events.forEach(event => element.addEventListener(event, handler));
+        }
+
+        function defaultHandler(e){
+              e.preventDefault();
+              e.stopPropagation(); 
+        }
+
+        function addHandler(){
+              form.classList.add('is-dragover');
+        }
+
+        function removeHandler(){
+              form.classList.remove('is-dragover');
+        }
+
+        function hideLabel(){
+          const label = document.getElementById('box_label');
+          if (label.style.display != 'none') {
+              label.style.display = 'none';  // Hide the label if it's not hidden
+          }
+        }
+
+        function removeAllClasses(){
+            form.classList.remove('is-error');
+
+        }
+
+        function isUploading(){
+            if (form.classList.contains('is-uploading')){
+              return false
+            }
+            if (form.classList.contains('is-success')){
+              form.classList.remove('is-success');
+            }
+            form.classList.add('is-uploading');
+            form.classList.remove('is-error');
+        }
+
+        function uploadMore(){
+        
+          if (form.classList.contains('is-success')){
+            return false;
+          }
+          if (form.classList.contains('is-uploading')){
+            form.classList.remove('is-uploading');
+          }
+          form.classList.add('is-success');
+        }
+
+        function showError(){
+          if (form.classList.contains('is-error')){
+            return false;
+          }
+          if (form.classList.contains('is-uploading')){
+            form.classList.remove('is-uploading');
+          }
+          form.classList.add('is-error');
+        }
+
+        async function uploadFiles(files){
+
+            // format files for request
+            const formData = new FormData();
+            for (let i = 0; i < files.length; i++){
+              formData.append('files[]', files[i]);
+            }
+            try {
+
+              hideLabel()
+              isUploading()
+
+              // send the request
+              const response = await fetch('http://localhost:5000/photoviewer/upload_files', {
+                  method: 'POST',
+                  body: formData
+                });
+
+              const result = response.json()
+
+              if (response.ok){
+                uploadMore();
+              }
+              else {
+                showError();
+              }
+          }  
+          catch (error) {
+
+          }
+        }
+
+        //test upload feature.
+        if (isAdvancedUpload) {
+            form.classList.add('has-advanced-upload');
+
+            var droppedFiles = false;
+
+            addMultipleEventListeners(form, ['drag', 'dragstart', 'dragend', 'dragover', 'dragenter', 'dragleave', 'drop'], defaultHandler); 
+            addMultipleEventListeners(form, ['dragover', 'dragenter'], addHandler); 
+            addMultipleEventListeners(form, ['dragleave', 'dragend', 'drop'], removeHandler); 
+
+            form.addEventListener('drop', function(e) {
+              droppedFiles = e.dataTransfer.files;
+              uploadFiles(droppedFiles);
+            });
+
+          form.addEventListener('change', function(e) {
+            selectedFiles = e.target.files;
+            uploadFiles(selectedFiles);
+          });
+        }
+        else {
+          console.log('not an advanced upload');
+        }
+
+    </script>
+
+</body>
+
+
+{% endblock %}

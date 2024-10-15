@@ -2,7 +2,7 @@
 from app import app, login_manager
 from . import bp
 #flask framework
-from flask import request, flash, redirect, url_for, render_template
+from flask import request, after_this_request, jsonify,  flash, redirect, url_for, render_template
 from flask_login import login_required, login_user, logout_user
 #controller and implementation class
 from .photo_viewer import PhotoViewer, LoginForm, User
@@ -17,6 +17,7 @@ log = Logger()
 from dotenv import load_dotenv
 load_dotenv()
 MAX_ATTEMPTS = int(os.environ.get("MAX_LOGIN_ATTEMPTS"))
+UPLOAD_PATH = os.environ.get("PVP_PATH")
 
 debug = False
 pv = PhotoViewer()
@@ -27,8 +28,6 @@ def formatLog():
     dt = datetime.datetime.now()
     result = str(dt) + ': '
     return result
-
-
 
 @login_manager.user_loader
 def load_user(user_id):
@@ -43,25 +42,73 @@ def photo(path):
     result = pv.getPhotos(path)
     photos = result['photos']
     var_path = result['var_path']
+    title = var_path.split('/')
+    print(title)
+    if len(title) == 3:
+        title = title[-2] + ' ' + 'Events'
+    elif len(title) == 4:
+        print("this being hit?")
+        title = title[-3] + ' ' + title[-2]
+    else:
+        title = var_path
 
     if (pv.imageCheck(photos)):
-        return render_template(root + 'photo.html', photos=photos, endpoint=var_path, title=var_path, demo=False)
+        return render_template(root + 'photo.html', photos=photos, endpoint=var_path, title=title, demo=False)
     else:
-        return render_template(root + 'photo_menu.html', dirs=photos, title=var_path, tag=var_path)
+        return render_template(root + 'photo_menu.html', dirs=photos, title=title, tag=var_path)
 
 
 @bp.route('/')
 @login_required
 def menu():
-    title = "Menu"
+    title = "Year"
     directory_path = os.path.join(app.static_folder, 'family_photos')
     dirs = os.listdir(directory_path)
     return render_template(root + 'photo_menu.html', dirs=dirs, title=title, tag=None)
 
 
+@bp.route('/upload')
+def upload():
+    title = "Upload Photos"
+    return render_template(root + 'upload.html', title=title)
+
+
+@bp.route('/upload_files', methods=['GET', 'POST'])
+def upload_files():
+
+    @after_this_request
+    def add_header(response):
+        response.headers['Access-Control-Allow-Origin'] = '*'
+        return response
+
+    if 'files[]' not in request.files:
+        print('files not found')
+        return jsonify({"error": "No files part"}), 400
+
+    files = request.files.getlist('files[]')
+
+    if not files:
+        print('no files were selected')
+        return jsonify({"error": "No files selected"}), 400
+
+    file_paths = []
+    for file in files:
+        if file.filename == '':
+            return jsonify({"error": "One of the files has no name"}), 400
+
+
+        file_path = os.path.join(UPLOAD_PATH, file.filename)
+        file.save(file_path)
+        file_paths.append(file_path)
+
+    time.sleep(2)
+    return jsonify({"message": "Files successfully uploaded", "files": file_paths}), 200
+
+
+
 @bp.route('/demo')
 def demo():
-    title = "images"
+    title = "Demo"
     directory_path = os.path.join(app.static_folder, title)
     endpoint = directory_path.split('/')
     endpoint = endpoint[-1]

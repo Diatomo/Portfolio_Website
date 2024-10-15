@@ -5,7 +5,6 @@
     <title>Family Media</title>
     <link rel="icon" type="image/png" href="{{ static_url_for('static', filename='images/diatomprojects.png') }}">
     <link rel="stylesheet" href="{{ static_url_for('static', filename='css/photo_viewer/photo.css') }}">
-    <link rel="stylesheet" href="{{ static_url_for('static', filename='css/photo_viewer/login.css') }}">
     <script src="{{ static_url_for('static', filename='js/lib/particles.min.js') }}"></script>
 
 </head>
@@ -17,11 +16,14 @@
     <!-- NAVIGATION -->
     <nav class="navigation-bar">
         <ul class="navigation">
+            <li class="navigation-item navigation-li navigation-item--active" id="nav-home">
+                <a class="nav-a" href={{ url_for('index') }}>Home</a>
+            </li>
             <li class="navigation-item navigation-li navigation-item--active" id="nav-menu">
                 <a class="nav-a" href={{ url_for('photo_viewer.menu') }}>Menu</a>
             </li>
-            <li class="navigation-item navigation-li navigation-item--active" id="nav-home">
-                <a class="nav-a" href={{ url_for('index') }}>Home</a>
+            <li class="navigation-item navigation-li navigation-item--active" id="nav-upload">
+                <a class="nav-a" href={{ url_for('photo_viewer.upload') }}>Upload</a>
             </li>
             <li class="navigation-item navigation-li navigation-item--active" id="nav-logout">
                 <a class="nav-a" href={{ url_for('photo_viewer.logout') }}>Logout</a>
