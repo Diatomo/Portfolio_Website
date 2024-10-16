@@ -193,6 +193,10 @@
                         {% if project.video == '' and project.code == '' %}
                             <br>
                         {% endif %}
+                        {% if project.demo != '' %}
+                        <a href={{ project.endpoint + project.demo }}>Demo</a>
+                        {% endif %}
+
                     </div>
 
                 <!-- image -->

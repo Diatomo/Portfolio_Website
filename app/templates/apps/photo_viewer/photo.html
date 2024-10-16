@@ -17,12 +17,19 @@
             <li class="navigation-item navigation-li navigation-item--active" id="nav-home">
                 <a class="nav-a" href={{ url_for('index') }}>Home</a>
             </li>
+            {% if demo == False %}
             <li class="navigation-item navigation-li navigation-item--active" id="nav-menu">
                 <a class="nav-a" href={{ url_for('photo_viewer.menu') }}>Menu</a>
             </li>
             <li class="navigation-item navigation-li navigation-item--active" id="nav-upload">
                 <a class="nav-a" href={{ url_for('photo_viewer.upload') }}>Upload</a>
             </li>
+            {% endif %}
+            {% if demo == True %}
+            <li class="navigation-item navigation-li navigation-item--active" id="nav-upload">
+                <a class="nav-a" href={{ url_for('photo_viewer.demo_upload') }}>Upload</a>
+            </li>
+            {% endif %}
             {% if demo == False %}
                 <li class="navigation-item navigation-li navigation-item--active" id="nav-logout">
                     <a class="nav-a" href={{ url_for('photo_viewer.logout') }}>Logout</a>

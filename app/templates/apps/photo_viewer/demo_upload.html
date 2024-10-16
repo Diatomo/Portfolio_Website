@@ -19,11 +19,13 @@
                 <a class="nav-a" href={{ url_for('index') }}>Home</a>
             </li>
             <li class="navigation-item navigation-li navigation-item--active" id="nav-menu">
-                <a class="nav-a" href={{ url_for('photo_viewer.menu') }}>Menu</a>
+                <a class="nav-a" href={{ url_for('photo_viewer.demo') }}>Demo</a>
             </li>
-            <li class="navigation-item navigation-li navigation-item--active" id="nav-logout">
-                <a class="nav-a" href={{ url_for('photo_viewer.logout') }}>Logout</a>
-            </li>
+            {% if demo == False %}
+                <li class="navigation-item navigation-li navigation-item--active" id="nav-logout">
+                    <a class="nav-a" href={{ url_for('photo_viewer.logout') }}>Logout</a>
+                </li>
+            {% endif %}
         </ul>
     </nav>
 
@@ -156,7 +158,7 @@
               isUploading()
 
               // send the request
-              const response = await fetch(base_endpoint + 'photoviewer/upload_files', {
+              const response = await fetch(base_endpoint + 'photoviewer/demo_upload_files', {
                   method: 'POST',
                   body: formData
                 });

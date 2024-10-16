@@ -72,6 +72,10 @@ def upload():
     title = "Upload Photos"
     return render_template(root + 'upload.html', title=title)
 
+@bp.route('/demo_upload')
+def demo_upload():
+    title = "Demo Upload Photos"
+    return render_template(root + 'demo_upload.html', title=title)
 
 @bp.route('/upload_files', methods=['GET', 'POST'])
 def upload_files():
@@ -105,11 +109,38 @@ def upload_files():
     return jsonify({"message": "Files successfully uploaded", "files": file_paths}), 200
 
 
+@bp.route('/demo_upload_files', methods=['GET', 'POST'])
+def demo_upload_files():
+
+    @after_this_request
+    def add_header(response):
+        response.headers['Access-Control-Allow-Origin'] = '*'
+        return response
+
+    if 'files[]' not in request.files:
+        print('files not found')
+        return jsonify({"error": "No files part"}), 400
+
+    files = request.files.getlist('files[]')
+
+    if not files:
+        print('no files were selected')
+        return jsonify({"error": "No files selected"}), 400
+
+    file_paths = []
+    for file in files:
+        if file.filename == '':
+            return jsonify({"error": "One of the files has no name"}), 400
+
+    time.sleep(2)
+    return jsonify({"message": "Files successfully uploaded", "files": file_paths}), 200
+
+
 
 @bp.route('/demo')
 def demo():
     title = "Demo"
-    directory_path = os.path.join(app.static_folder, title)
+    directory_path = os.path.join(app.static_folder, 'images')
     endpoint = directory_path.split('/')
     endpoint = endpoint[-1]
     photos = os.listdir(directory_path)
