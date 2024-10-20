@@ -1,76 +1,115 @@
 
 
-
-<link rel= "stylesheet" type= "text/css" href="{{ url_for('static', filename='css/synth_clips/playlist.css') }}">
-<link rel= "stylesheet" type= "text/css" href="{{ url_for('static', filename='css/synth_clips/audio-player.css') }}">
-
+<head>
+<link rel= "stylesheet" type= "text/css" href="{{ url_for('static', filename='css/synth_clips/music.css') }}">
+<script src="{{ static_url_for('static', filename='js/lib/particles.min.js') }}"></script>
 <link rel="icon" type="image/png" href="static/images/diatomprojects.png">
-
+</head>
 
 {% block content %}
 
+<body>
 
-<h1><b>Synth Clips</b></h1>
-	<div class="menu">
-		<a href={{ url_for('index') }}>Home</a>
-	</div>
-    <hr>
+    <!-- NAVIGATION -->
+    <nav class="navigation-bar">
+        <ul class="navigation">
+            <li class="navigation-item navigation-li navigation-item--active" id="nav-home">
+                <a class="nav-a" href={{ url_for('index') }}>Home</a>
+            </li>
+        </ul>
+    </nav>
+
+    <!-- CANVAS #2 -->
+    <div class="main-bg">
+        <div class="canvas" id="music-particles-js"></div>
+    </div>
+
+    <!-- CONTENT -->
+    <div class="synthclips">
+        <div class="content-title">
+            <h3>
+                Synthesizer Jam Recorded Sessions
+            </h3>
+        </div>
+        <div class="content-refs">
+            <p>
+                All music is recorded over a one to two hour period. Then cut up and processed utilizing
+                some light mixing and added  effects with Audacity.
+            </p>
+            <br>
+            <p><strong>Micheal Vawlter</strong>: Modular Synth / Guitar</p>
+            <p><strong>Thane</strong>: Piano / Drums</p>
+            <p><strong>Charles Stevenson</strong>: Modular Synth</p>
+        </div>
+        <div class="album">
+            <div class="album-desc">
+                This jam was recorded out of town at <strong>Thane/Michael’s</strong> studio. 
+                I had written a patch to get back into the flow of creating music on the 
+                modular synthesizer after dedicating much of the summer to learning music 
+                theory and piano. A lot of the inspiration came from a trip to upper Michigan, 
+                where I escaped the hectic pace of city life. 
+                On the last day of the trip, a violent thunderstorm caused a power surge, and 
+                the hum of generators that followed the blackout inspired me to start the track 
+                with a drone and build the song from there. The melody and harmony were influenced 
+                by the arpeggiated tune of Kakariko Village from Zelda, set in the key of Bflat.
+            </div>
+            <iframe 
+                src="https://bandcamp.com/EmbeddedPlayer/album=3491423449/size=large/bgcol=ffffff/linkcol=333333/tracklist=false/artwork=small/transparent=true/" seamless>
+                <a href="https://diatomaton.bandcamp.com/album/synth-jam-082624">Synth Jam - 082624 by Diatom</a>
+            </iframe>
+        </div>
+
+        <div class="album">
+            <div class="album-desc">
+                This was our second time getting together. Once again, we decided to meet at Kerouac and perform in the side room. The goal was to continue building a community and invite other musicians to join in. It took about an hour to really get started, but once we found our groove, the music began to flow nicely. Unfortunately, someone, slightly inebriated, joined us on piano. While it sounded great at times, we didn’t capture that part of the recording. Overall, after this session, we realized the importance of doing a little preparation if we plan to jam in public again.
+            </div>
+            <iframe
+                src="https://bandcamp.com/EmbeddedPlayer/album=2648460727/size=large/bgcol=ffffff/linkcol=333333/tracklist=false/artwork=small/transparent=true/" seamless>
+                <a href="https://diatomaton.bandcamp.com/album/synth-jam-033024">Synth Jam - 033024 by Diatom</a>
+            </iframe>
+        </div>
+
+        <div class="album">
+            <div class="album-desc">
+                Our first jam session together was planned the previous November, emerging from a growing community called <strong>Modsquad</strong> in Columbus, Ohio. We had a great turnout, with some fascinating visuals provided by Ian’s modular visual rig. Overall, the event showed real potential for hosting public electronic music jam sessions.
+            </div>
+            <iframe
+                src="https://bandcamp.com/EmbeddedPlayer/album=3041107084/size=large/bgcol=ffffff/linkcol=333333/tracklist=false/artwork=small/transparent=true/" seamless>
+                <a href="https://diatomaton.bandcamp.com/album/synth-jam-021124">Synth Jam - 021124 by Diatom</a>
+            </iframe>
+        </div>
+        <div style="padding-bottom:50px;"></div>
+    </div>
 
 
-	<!-- Introduction -->
-	<div class="introduction">
-		<div class="article">
-		<!-- description -->
-			<div class="description">
-				<p style="width: 50%; text-align:center; margin-right:auto; margin-left:auto;"class="intro-description">
-					Event group composed of synth enthusiast playing public improvised jam sessions. Below are featured clips with a custom built audio player.
-				</p>
-			</div>
-		</div>
-	</div>
-	<hr>
+
+    <!-- FOOTER -->
+    <footer class="footer">
+        <div class="socials">
+            <div class="socials-github socials-item">
+                <a href="https://github.com/Inkozi" target="_blank">
+                    <img src="{{ static_url_for('static', filename='images/github_icon.png') }}" alt="github">
+                </a>
+            </div>
+            <div class="socials-linkedin socials-item">
+                <a href="https://linkedin.com/in/charles-stevenson-87a9b0aa" target="_blank">
+                    <img src="{{ static_url_for('static', filename='images/linkedin_icon.png') }}" alt="linkedin">
+                </a>
+            </div>
+            <div class="socials-email socials-item">
+                <a href="mailto:charles.stevenson222@gmail.com" target="_blank">
+                    <img src="{{ static_url_for('static', filename='images/email_icon.png') }}" alt="email">
+                </a>
+            </div>
+        </div>
+        <p class="copyright">
+            Charles Stevenson
+        </p>
+    </footer>
 
 
-    <div>
-    {% for section in sections %}
-        <h2 style="width:100%;text-align:center;"><a href={{ dbxurl }}{{ section.section }}>{{ section.label }}</a></h2>
-        {% set ns = namespace(counter = 1) %}
-	    {% for clip in audioclips %}
-            {% if clip.section == section.section %}
-                <div class="track">
-                    <div class="track-info">
-                        <p style="font-family:Courier New;"><b>{{ ns.counter }}. {{ clip.label }}</b><p>
-                    </div>
-                    {% set ns.counter = ns.counter + 1 %}
-                    <div class="audio-player">
-                        <audio src={{ url_for('static', filename='synth_club_clips/' + clip.audio) }}></audio>
-                        <div class="controls">
-                            <button class="player-button">
-                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="#3D3132">
-                                      <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM9.555 
-                                        7.168A1 1 0 008 8v4a1 1 0 001.555.832l3-2a1 1 0 000-1.664l-3-2z" 
-                                      clip-rule="evenodd" />
-                                </svg>
-                            </button>
-                            <input type="range" class="timeline" max="100" value="0">
-                            <button class="sound-button">
-                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="#3D3132">
-                                    <path fill-rule="evenodd" d="M9.383 3.076A1 1 0 0110 4v12a1 1 0 01-1.707.707L4.586 
-                                        13H2a1 1 0 01-1-1V8a1 1 0 011-1h2.586l3.707-3.707a1 1 0 011.09-.217zM14.657 
-                                        2.929a1 1 0 011.414 0A9.972 9.972 0 0119 10a9.972 9.972 0 01-2.929 7.071 1 
-                                        1 0 01-1.414-1.414A7.971 7.971 0 0017 10c0-2.21-.894-4.208-2.343-5.657a1 1 
-                                        0 010-1.414zm-2.829 2.828a1 1 0 011.415 0A5.983 5.983 0 0115 10a5.984 5.984 
-                                        0 01-1.757 4.243 1 1 0 01-1.415-1.415A3.984 3.984 0 0013 10a3.983 3.983 0 
-                                        00-1.172-2.828 1 1 0 010-1.415z" clip-rule="evenodd" />
-                                </svg>
-                            </button>
-                            <p class=track-time style="font-family:Courier New;">{{ clip.length }}<p>
-                        </div>
-                    </div>
-		        </div>
-            {% endif %}
-	    {% endfor %}
-    {% endfor %}
+    <script src="{{ static_url_for('static', filename='js/portfolio-particles.js') }}"></script>
 
-    <script src="{{ static_url_for('static', filename='js/audio-player.js') }}"></script>
+</body>
+
 {% endblock %}

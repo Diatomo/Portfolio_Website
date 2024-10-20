@@ -1,0 +1,289 @@
+/* 
+ *
+ * ================
+ *     GLOBAL 
+ * ================
+ * 
+ * */
+html {
+    scroll-behavior: smooth;
+}
+
+button {
+    border: none;
+    outline: none;
+    background-color: transparent;
+    color: inherit;
+}
+
+body {
+    background-color: #ede3c2;
+    min-height: 100vh;
+    margin: 0 auto;
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+    line-height: 1.5;
+    font-family: 'Roboto Mono', monospace;
+    text-transform: lowercase;
+}
+
+p {
+    margin: 0 auto;
+}
+
+a {
+    text-decoration: none;
+}
+
+li {
+    list-style: none;
+    text-align: -webkit-match-parent;
+}
+
+nav {
+    display: block;
+    unicode-bidi: isolate;
+}
+
+.section-heading {
+    position: relative;
+    font-size: 3.5rem;
+    font-weight: 700;
+    margin-top: 9rem;
+    margin-bottom: 13rem;
+    z-index: 9999;
+}
+
+
+
+/*
+ *
+ *
+ *  CONTENT
+ *
+ *
+ */
+
+
+.synthclips {
+    display: block;
+    position: relative;
+    text-align: center;
+    justify-content: center;
+    max-width: 700px;
+    margin-top: 100px;
+    margin-left: auto;
+    margin-right: auto;
+    background-color: #ede3c2;
+}
+
+.content-title{
+    text-align: left;
+}
+
+.content-refs{
+    background-color: #D3D3D3;
+    text-align: left;
+}
+
+.album-desc {
+    text-align:left;
+    padding-bottom: 10px;
+}
+
+.album {
+    display: block;
+    text-align: center;
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+
+iframe {
+    display: block;
+    border: 0;
+    width: 100%;
+    height: 120px;
+}
+
+
+/* 
+ *
+ * ==================
+ *     NAVIGATION 
+ * ==================
+ * 
+ */
+
+.navigation-item--active a{
+    color: #1213cd;
+}
+
+.nav-a {
+    color: #fafafa;
+}
+
+.navigation {
+    display: flex;
+    margin-right: 10rem;
+    font-size: 1rem;
+    font-weight: 500;
+    letter-spacing: 1px;
+}
+
+.navigation-bar {
+    position: sticky;
+    position: -webkit-sticky;
+    top: 0;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    height: 3rem;
+    border-bottom: 1px solid #1a1a1a;
+    background-color: #bb7796;
+    backdrop-filter: blur(8px);
+    box-shadow: 0 4px 4px rgba(0, 0, 0, 0.3);
+    z-index: 99999999999;
+}
+
+.navigation-item:not(:last-child) {
+    margin-right: 3rem;
+}
+
+
+
+/* 
+ *
+ * ================
+ *     FOOTER 
+ * ================
+ * 
+ */
+
+.footer {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100px;
+    margin-top: auto;
+    background-color: #0e9ca5;
+}
+
+.socials {
+    display: flex;
+    margin-bottom: 20px;
+    z-index: 2;
+}
+
+.socials img {
+    height: 100%;
+    width: 100%;
+    margin-top: 1rem;
+}
+
+.socials-item {
+    display: flex;
+    justify-content: center;
+    height: 35px;
+    width: 35px;
+    background-color: transparent;
+    cursor: pointer;
+    transition: transform 0.5s;
+    z-index: 3;
+}
+
+.socials-item:hover {
+    transform: scale(1.2)
+}
+
+.socials-email, .socials-linkedin {
+    margin-left: 5px;
+}
+
+.copyright {
+    color: #fafafa;
+    font-size: 10px;
+    font-weight: 500;
+}
+
+.return {
+    width: 100%;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 2rem;
+    display: flex;
+    justify-content: center;
+}
+
+.return a{
+    color: #fafafa;
+}
+
+.main-bg {
+    height: 100vh;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index:-999
+}
+
+
+/* 
+ *
+ * ================
+ *     CANVAS 
+ * ================
+ * 
+ */
+
+.canvas {
+    position: absolute;
+    top: 0;
+    right: 0;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    height: 100%;
+    background-color: "#ede3c2";
+    overflow: hidden;
+}
+
+.home-canvas {
+    max-width: 100%;
+    max-height: 100%;
+    display: block;
+}
+
+.bg-canvas {
+    display: block;
+}
+
+
+
+/*
+ *
+ *  Web Responsiveness
+ *
+ *
+ */
+
+@media (max-width: 2500px) {
+    .synthclips {
+        width: 700px;
+    }
+}
+
+
+@media (max-width: 720px) {
+    .synthclips {
+        width: 500px;
+    }
+}
+
+
+@media (max-width: 460px) {
+    .synthclips {
+        width: 275px;
+    }
+}

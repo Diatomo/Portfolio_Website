@@ -46,7 +46,7 @@ def index():
             "video": '',
             "code": '',
             "demo": '/demo',
-            "description": "Dropbox media repository viewer. Meant for family members only. Demo is available at bottom of login page.",
+            "description": "Dropbox media repository viewer. Meant for family members only. Demo shows photo page as well as the file upload feature.",
             "endpoint": "/photoviewer",
             "image": "photo_viewer.jpg"
         },
