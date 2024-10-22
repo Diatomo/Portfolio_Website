@@ -1,8 +1,8 @@
 
 
-import datetime
+from datetime import datetime
 from app import app
-
+from zoneinfo import ZoneInfo
 
 class Logger:
 
@@ -11,8 +11,9 @@ class Logger:
 
 
     def timestampLog(self):
-        dt = datetime.datetime.now()
-        result = str(dt) + ': '
+        utc_time = datetime.now(ZoneInfo("UTC"))
+        est_time = utc_time.astimezone(ZoneInfo("America/New_York"))
+        result = str(est_time) + ': '
         return result
 
     def addEntry(self, level, msg):

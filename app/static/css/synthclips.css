@@ -82,6 +82,7 @@ nav {
 }
 
 .content-refs{
+    margin-bottom: 25px;
     background-color: #D3D3D3;
     text-align: left;
 }
@@ -95,7 +96,7 @@ nav {
     display: block;
     text-align: center;
     padding-top: 10px;
-    padding-bottom: 10px;
+    padding-bottom: 50px;
 }
 
 iframe {
@@ -285,5 +286,21 @@ iframe {
 @media (max-width: 460px) {
     .synthclips {
         width: 275px;
+    }
+}
+
+
+@media (max-width: 700px) {
+    .navigation {
+        margin-right: 0;
+    }
+    .navigation-bar {
+        justify-content: center;
+    }
+}
+
+@media (max-width: 2400px) {
+    .navigation {
+        margin-right: 3rem;
     }
 }

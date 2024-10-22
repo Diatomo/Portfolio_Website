@@ -306,3 +306,31 @@ strong:hover{
         font-size: 3vw;
     }
 }
+
+@media (max-width: 800px) {
+    h1 {
+        font-size: 6vw;
+    }
+}
+
+
+@media (max-width: 400px) {
+    h1 {
+        font-size: 12vw;
+    }
+}
+
+@media (max-width: 700px) {
+    .navigation {
+        margin-right: 0;
+    }
+    .navigation-bar {
+        justify-content: center;
+    }
+}
+
+@media (max-width: 2400px) {
+    .navigation {
+        margin-right: 3rem;
+    }
+}

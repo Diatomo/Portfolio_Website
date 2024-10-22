@@ -19,4 +19,4 @@ def psych_fest():
     audio = mf.getAudio(title)
 
 
-    return render_template('apps/music_fest/music_fest.html', title='Music Festival', video=video, audio=audio)
+    return render_template('music_fest.html', title='Music Festival', video=video, audio=audio)

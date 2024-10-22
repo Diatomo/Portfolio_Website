@@ -21,7 +21,7 @@ UPLOAD_PATH = os.environ.get("PVP_PATH")
 
 debug = False
 pv = PhotoViewer()
-root = 'apps/photo_viewer/'
+root = 'photo_viewer/'
 
 
 def formatLog():

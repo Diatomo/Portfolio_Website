@@ -68,7 +68,7 @@ def index():
             "code": '',
             "demo": '',
             "description": 'Synth club audio clips.',
-            "endpoint": "/clips",
+            "endpoint": "synthjam",
             "image": "synth_clips.jpg"
         },
         {
@@ -282,6 +282,13 @@ def index():
 
     projects = projects + oldprojects
     return render_template('index.html', title='Diatom-Projects', projects=projects)
+
+
+
+@app.route('/synthjam')
+def clips():
+    print("is this endpoiont being found??")
+    return render_template('synthclips.html', title='Synth Clips')
 
 
 @app.route('/trivco')

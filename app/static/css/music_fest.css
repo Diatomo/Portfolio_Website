@@ -151,3 +151,12 @@ a {
   height: 100vh;
   z-index: 999;
 }
+
+@media (max-width: 700px) {
+    .navigation {
+        margin-right: 0;
+    }
+    .navigation-bar {
+        justify-content: center;
+    }
+}
