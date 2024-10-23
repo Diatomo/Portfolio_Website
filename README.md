@@ -3,7 +3,8 @@ This repository showcases the development of my portfolio website, designed to d
 
 
 
-The portfolio highlights serveral projects from latest to oldest:
+### Projects  
+
 1. **Music_Fest** - Visual and Audio of a ambient modular synthesizer performance I put together. The visual is microorganism footage from NPR's microsmos and added a kaleidoscope effects using Touch Designer.
 2. **Photo_viewer** - Application to upload and view (like photos on a fridge) of family events that occur through the year. This application contains a drag and drop upload feature as well as utilizing dropbox as a data repository.
 3. **Tri-vco** - At one point in time, I was highly interested in hardware, this is my capstone to create my own triple voltage controlled oscillator
@@ -11,5 +12,5 @@ The portfolio highlights serveral projects from latest to oldest:
 5. **TIAS** - Music project I did for an internet art course, it is a step sequencer built using javascript.
 6. **Gravity** - Very early project, this was a weekend sketch I did, heavily inspired applying physics to graphics. This project utilizes processing.
 7. **Asteroids** - First program I ever wrote, is going to live in my personal hall of fame.
-8. **School Projects** - Github repo of projects I wrote in school, yes, I tried to record and keep everything.
+8. **School Projects** - Github repo of projects I wrote in school, yes, I tried to record and keep everything.  
 9... Beyond this point is a catalogue of art-installations I did in the span between 2017 through 2019. They're mainly arduino projects, some of which were very complex, 
