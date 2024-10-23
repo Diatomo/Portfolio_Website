@@ -287,7 +287,6 @@ def index():
 
 @app.route('/synthjam')
 def clips():
-    print("is this endpoiont being found??")
     return render_template('synthclips.html', title='Synth Clips')
 
 
