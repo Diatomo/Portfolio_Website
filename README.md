@@ -7,7 +7,7 @@ This repository showcases the development of my portfolio website, designed to d
 
 1. **Music_Fest** - Visual and Audio of a ambient modular synthesizer performance I put together. The visual is microorganism footage from NPR's microsmos and added a kaleidoscope effects using Touch Designer.
 2. **Photo_viewer** - Application to upload and view (like photos on a fridge) of family events that occur through the year. This application contains a drag and drop upload feature as well as utilizing dropbox as a data repository.
-3. **Tri-vco** - At one point in time, I was highly interested in hardware, this is my capstone to create my own triple voltage controlled oscillator
+3. **Tri-vco** - At one point in time, I was highly interested in hardware, this is my capstone to create my own triple voltage controlled oscillator.
 4. **Synth-clips** - Improv session I have with a few friends, feel free to listen, it has helped me add structure to my writing and is a fun thing to look back on.
 5. **TIAS** - Music project I did for an internet art course, it is a step sequencer built using javascript.
 6. **Gravity** - Very early project, this was a weekend sketch I did, heavily inspired applying physics to graphics. This project utilizes processing.
