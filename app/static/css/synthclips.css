@@ -24,7 +24,6 @@ body {
     text-rendering: optimizeLegibility;
     line-height: 1.5;
     font-family: 'Roboto Mono', monospace;
-    text-transform: lowercase;
 }
 
 p {
@@ -129,6 +128,7 @@ iframe {
     font-size: 1rem;
     font-weight: 500;
     letter-spacing: 1px;
+    font-family: montserrat, sans-serif;
 }
 
 .navigation-bar {

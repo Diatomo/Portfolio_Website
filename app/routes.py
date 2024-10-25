@@ -81,15 +81,6 @@ def index():
             "image" : "tias.png"
         },
         {
-            "name" : 'Gravity',
-            "video" : 'https://www.youtube.com/watch?v=Ysz68Mc6vs8&feature=youtu.be',
-            "code" : 'https://github.com/Diatomo/Gravity',
-            "demo": '',
-            'description' : "Gravity Simulator : Emulates orbits of spawned planets around a sun, click around and watch the little planets orbit.",
-            "endpoint" : "old_gravity",
-            "image" : "gravity.png"
-        },
-        {
             "name" : 'Asteroids',
             "video" : 'https://www.youtube.com/watch?v=4o5iO1PYDYU&feature=youtu.be',
             "code" : 'https://py2.codeskulptor.org/#user49_GFkrajcmPH_1.py',
@@ -334,21 +325,6 @@ def trivco():
 #==========================================================================
 
 
-
 @app.route('/old_tias', methods=["GET", "POST"])
 def tias():
     return current_app.send_static_file('processing/tias.html')
-
-@app.route('/old_gravity')
-def gravity():
-    return render_template('legacy/gravity.html')
-
-@app.route('/old_about')
-def about():
-    title = "About"
-    info = {
-        "name" : "about",
-        "image" : 'profile_picture.jpg',
-    }
-    return render_template('oldprojects/about.html', title=title, info=info)
-

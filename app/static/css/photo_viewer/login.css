@@ -1,7 +1,15 @@
 
+
 li {
     list-style: none;
+}
+
+.navigation li {
     text-align: -webkit-match-parent;
+}
+
+ul {
+    padding-left: 0;
 }
 
 nav {
@@ -94,7 +102,7 @@ input:-webkit-autofill::first-line {
 }
 
 
-@media (max-width: 1200px) {
+@media (max-width: 1400px) {
     .btn {
         width: 12%;
         font-size: 2vw;
@@ -142,6 +150,23 @@ input:-webkit-autofill::first-line {
 .demo-description span {
     color: #FF4D5A;
 
+}
+
+
+/*
+ *
+ *
+ *  Error
+ *
+ */
+.flash-error-msg li ul {
+    padding-left: 0;
+}
+
+.flash-error-msg {
+    width:100%;
+    text-align:center;
+    display:none;
 }
 
 /* 
@@ -228,7 +253,7 @@ input:-webkit-autofill::first-line {
     }
 }
 
-@media (max-width: 1200px) {
+@media (max-width: 1400px) {
     .navigation {
         margin-right: 3rem;
     }

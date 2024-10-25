@@ -32,11 +32,10 @@
 
     <section>
         <h1>Login</h1>
-        <form method="POST" action="">
+        <form id="login-form" method="POST" action="">
             {{ wtf.quick_form(form) }}
         </form>
     </section>
-
 
     <section>
         {% if error != None %}
