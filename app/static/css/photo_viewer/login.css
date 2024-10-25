@@ -42,6 +42,12 @@ form {
     margin-right: auto;
 }
 
+hr {
+    width: 50%;
+    margin-bottom: 60px;
+    background-color: #d3d3d3;
+}
+
 span {
     font-size: 1.5em;
     color: #ADD8E6;
