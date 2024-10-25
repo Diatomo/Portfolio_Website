@@ -108,32 +108,8 @@ def upload_files():
 
 @bp.route('/demo_upload_files', methods=['GET', 'POST'])
 def demo_upload_files():
-
-    @after_this_request
-    def add_header(response):
-        response.headers['Access-Control-Allow-Origin'] = '*'
-        return response
-
-    if 'files[]' not in request.files:
-        return jsonify({"error": "No files part"}), 400
-
-    files = request.files.getlist('files[]')
-
-    if not files:
-        return jsonify({"error": "No files selected"}), 400
-
-    file_paths = []
-    for file in files:
-        if file.filename == '':
-            return jsonify({"error": "One of the files has no name"}), 400
-
-
-        file_path = os.path.join(UPLOAD_PATH, file.filename)
-        file.save(file_path)
-        file_paths.append(file_path)
     time.sleep(2)
-
-    return jsonify({"message": "Files successfully uploaded", "files": file_paths}), 200
+    return jsonify({"message": "Files successfully uploaded", "files": []}), 200
 
 
 
