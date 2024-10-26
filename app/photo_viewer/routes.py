@@ -116,7 +116,7 @@ def demo_upload_files():
 @bp.route('/demo')
 def demo():
     title = "Demo"
-    directory_path = os.path.join(app.static_folder, 'images')
+    directory_path = os.path.join(app.static_folder, 'demo_images')
     endpoint = directory_path.split('/')
     endpoint = endpoint[-1]
     photos = os.listdir(directory_path)
