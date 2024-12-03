@@ -187,11 +187,11 @@
                         {% if project.code != '' %}
                         <a href={{ project.code }}>Code</a>
                         {% endif %}
-                        {% if project.video == '' and project.code == '' %}
-                            <br>
-                        {% endif %}
                         {% if project.demo != '' %}
                         <a href={{ project.endpoint + project.demo }}>Demo</a>
+                        {% endif %}
+                        {% if project.video == '' and project.code == '' and project.demo == '' %}
+                            <br>
                         {% endif %}
 
                     </div>
