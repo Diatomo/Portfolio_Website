@@ -1,0 +1,36 @@
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Family Media</title>
+    <link rel="icon" type="image/png" href="{{ static_url_for('static', filename='images/diatomprojects.png') }}">
+    <link rel="stylesheet" href="{{ static_url_for('static', filename='css/photo_viewer/photo.css') }}">
+</head>
+
+{% block content %}
+
+<body>
+
+    <!-- NAVIGATION -->
+    <nav class="navigation-bar">
+        <ul class="navigation">
+            <li class="navigation-item navigation-li navigation-item--active" id="nav-home">
+                <a class="nav-a" href={{ url_for('index') }}>Home</a>
+            </li>
+            <li class="navigation-item navigation-li navigation-item--active" id="nav-logout">
+                <a class="nav-a" href={{ url_for('harmony.logout') }}>Logout</a>
+            </li>
+        </ul>
+    </nav>
+
+    <!-- Content -->
+    <iframe src="http://localhost:8080" style="width:100%; height:95vh; border:none;"></iframe>
+    
+    <!-- FOOTER -->
+    <footer class="footer">
+    </footer>
+
+</body>
+
+
+{% endblock %}

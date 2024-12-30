@@ -1,0 +1,59 @@
+
+{% import "bootstrap/wtf.html" as wtf %}
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Family Media</title>
+    <link rel="icon" type="image/png" href="{{ static_url_for('static', filename='images/diatomprojects.png') }}">
+    <script src="{{ static_url_for('static', filename='js/lib/particles.min.js') }}"></script>
+    <link rel="stylesheet" href="{{ static_url_for('static', filename='css/photo_viewer/login.css') }}">
+</head>
+
+{% block content %}
+
+<body>
+
+    <!-- NAVIGATION -->
+    <nav class="navigation-bar">
+        <ul class="navigation">
+            <li class="navigation-item navigation-li navigation-item--active" id="nav-home">
+                <a class="nav-a" href={{ url_for('index') }}>Home</a>
+            </li>
+        </ul>
+    </nav>
+
+
+    <!-- CANVAS #1 -->
+    <div class=home id="home">
+        <div class="canvas" id="particles-js-1"></div>
+    </div>
+
+
+    <section>
+        <h1>Login</h1>
+        <form id="login-form" method="POST" action="">
+            {{ wtf.quick_form(form) }}
+        </form>
+    </section>
+
+    <section>
+        {% if error != None %}
+            <p style="width:100%;text-align:center;color:ff4d5a;"class='login-error'>{{ error }}</p>
+        {% endif %}
+    </section>
+
+    <script src="{{ static_url_for('static', filename='js/portfolio.js') }}"></script>
+    <script src="{{ static_url_for('static', filename='js/portfolio-particles.js') }}"></script>
+
+
+    <script>
+        document.getElementById("username").placeholder = "username";
+        document.getElementById("password").placeholder = "password";
+    </script>
+
+
+</body>
+
+
+{% endblock %}

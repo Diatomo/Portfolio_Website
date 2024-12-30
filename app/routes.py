@@ -1,7 +1,7 @@
 from flask import render_template, url_for, current_app, jsonify
 from flask import send_from_directory
 from flask import session
-from flask import request
+from flask import request, redirect
 from dotenv import load_dotenv
 from app import app, login_manager
 from .logger import Logger
@@ -32,6 +32,15 @@ def index():
     log.addEntry('info', msg)
     projects = [
         {
+            "name": 'Harmony: Chord Progression Mobile App',
+            "video": '',
+            "code": '',
+            "demo": '',
+            "description": "Mobile Application for writing harmonies on mobile.",
+            "endpoint": "/harmony",
+            "image": "chordprog.png"
+        },
+        {
             "name": 'Music Festival',
             "video": '',
             "code": '',
@@ -39,7 +48,6 @@ def index():
             "description": "Music festival ambient performance and visual.",
             "endpoint": "/musicfest",
             "image": "music_fest.jpg"
-
         },
         {
             "name": 'Photo Viewer',
@@ -274,6 +282,10 @@ def index():
     projects = projects + oldprojects
     return render_template('index.html', title='Diatom-Projects', projects=projects)
 
+@app.route('/chordprog')
+def harmony():
+    print("yo")
+    return redirect('http://localhost:8080')
 
 
 @app.route('/synthjam')
