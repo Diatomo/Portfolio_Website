@@ -37,7 +37,7 @@ def index():
             "code": '',
             "demo": '',
             "description": "Mobile Application for writing harmonies on mobile.",
-            "endpoint": "/harmony",
+            "endpoint": "/harmony-app",
             "image": "chordprog.png"
         },
         {

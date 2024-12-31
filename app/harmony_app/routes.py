@@ -20,7 +20,7 @@ MAX_ATTEMPTS = int(os.environ.get("MAX_LOGIN_ATTEMPTS"))
 
 debug = False
 cp = HarmonyApp()
-root = 'harmony/'
+root = 'harmony_app/'
 
 
 @login_manager.user_loader
@@ -31,8 +31,7 @@ def load_user(user_id):
 
 @bp.route('/')
 @login_required
-def harmony_app():
-    print("this being hit??")
+def harmony_index():
     return render_template(root + 'index.html')
 
 @bp.route('/login', methods=['GET', 'POST'])
@@ -66,10 +65,8 @@ def login():
                     photos = os.listdir(directory_path)
                     msg = "A user has successfully logged in."
                     log.addEntry('info', msg)
-                    print("successful login - this being hit??")
-                    return redirect(url_for('harmony.harmony_app'))
+                    return redirect(url_for('harmony_app.harmony_index'))
                 else:
-                    print(password)
                     session['login_attempts'] += 1
                     session['attempt_timestamp'] = time.time()
                     error = "Invalid username or password. Please try again."
@@ -83,4 +80,4 @@ def login():
 @login_required
 def logout():
     logout_user()
-    return redirect(url_for('harmony.login'))
+    return redirect(url_for('harmony_app.login'))
