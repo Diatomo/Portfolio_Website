@@ -65,7 +65,7 @@ def login():
                     photos = os.listdir(directory_path)
                     msg = "A user has successfully logged in."
                     log.addEntry('info', msg)
-                    return redirect(url_for('harmony.harmony_index'))
+                    return redirect(url_for('harmony_app.harmony_index'))
                 else:
                     session['login_attempts'] += 1
                     session['attempt_timestamp'] = time.time()
