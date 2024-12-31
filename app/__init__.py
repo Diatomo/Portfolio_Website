@@ -30,7 +30,7 @@ bootstrap = Bootstrap(app)
 from app.photo_viewer import bp as photoviewer_bp, configure_login_manager as pv_login_config
 app.register_blueprint(photoviewer_bp)
 
-from app.harmony import bp as harmony_bp, configure_login_manager as harmony_login_config
+from app.harmony_app import bp as harmony_bp, configure_login_manager as harmony_login_config
 app.register_blueprint(harmony_bp)
 
 from app.music_fest import bp as musicfest_bp
