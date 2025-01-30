@@ -61,8 +61,6 @@ def login():
                     log.addEntry('info', msg)
                     session.pop('login_attempts', None)
                     session.pop('attempt_timestamp', None)
-                    directory_path = os.path.join(app.static_folder, 'family_photos')
-                    photos = os.listdir(directory_path)
                     msg = "A user has successfully logged in."
                     log.addEntry('info', msg)
                     return redirect(url_for('harmony_app.harmony_index'))

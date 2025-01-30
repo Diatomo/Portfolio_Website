@@ -28,6 +28,9 @@ def serve_particles():
 
 @app.route('/')
 def index():
+    '''
+        Main routes, Add new Apps here!
+    '''
     msg = "A user has entered the diatom projects website."
     log.addEntry('info', msg)
     projects = [
@@ -39,15 +42,6 @@ def index():
             "description": "Mobile Application for writing harmonies on mobile.",
             "endpoint": "/harmony-app",
             "image": "chordprog.png"
-        },
-        {
-            "name": 'Music Festival',
-            "video": '',
-            "code": '',
-            "demo": '',
-            "description": "Music festival ambient performance and visual.",
-            "endpoint": "/musicfest",
-            "image": "music_fest.jpg"
         },
         {
             "name": 'Photo Viewer',
@@ -281,12 +275,6 @@ def index():
 
     projects = projects + oldprojects
     return render_template('index.html', title='Diatom-Projects', projects=projects)
-
-@app.route('/chordprog')
-def harmony():
-    print("yo")
-    return redirect('http://localhost:8080')
-
 
 @app.route('/synthjam')
 def clips():

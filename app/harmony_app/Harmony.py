@@ -26,7 +26,7 @@ load_dotenv()
 class LoginForm(FlaskForm):
     username = StringField('Username')
     password = PasswordField('Password')
-    submit = SubmitField('Submit')
+    submit = SubmitField('Submit', render_kw={"class": "btn"})
 
 
 '''
@@ -42,7 +42,6 @@ class User(UserMixin):
     Class: Harmony
 
     Data Member class for some security protecting a development prototype.
-
 '''
 
 class HarmonyApp:

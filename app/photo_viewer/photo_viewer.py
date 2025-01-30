@@ -26,7 +26,7 @@ load_dotenv()
 class LoginForm(FlaskForm):
     username = StringField('Username')
     password = PasswordField('Password')
-    submit = SubmitField('Submit')
+    submit = SubmitField('Submit', render_kw={"class": "btn"})
 
 
 '''

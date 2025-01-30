@@ -33,7 +33,28 @@
     <section>
         <h1>Login</h1>
         <form id="login-form" method="POST" action="">
-            {{ wtf.quick_form(form) }}
+       
+            <div class="form-group">
+                {{ form.username(class="form-control") }} 
+            </div>
+
+
+            <div class="password-container form-group">
+                    {{ form.password(class="form-control", id="password") }} 
+                <i class="fas fa-eye eye-icon" id="togglePassword">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M1 12s3.5-8 11-8 11 8 11 8-3.5 8-11 8S1 12 1 12z"></path>
+                        <circle cx="12" cy="12" r="3"></circle>
+                        <line x1="1" y1="1" x2="23" y2="23" stroke="white" stroke-width="2"/> 
+                    </svg>
+                </i> 
+            </div>
+
+
+            <div class="form-group">
+                {{ form.submit() }} 
+            </div>
+
         </form>
     </section>
 
@@ -50,6 +71,25 @@
     <script>
         document.getElementById("username").placeholder = "username";
         document.getElementById("password").placeholder = "password";
+   
+        const togglePassword = document.getElementById('togglePassword');
+        const passwordInput = document.getElementById('password');
+
+        togglePassword.addEventListener('click', function() {
+            // Toggle the password field type between 'password' and 'text'
+            const type = passwordInput.type === 'password' ? 'text' : 'password';
+            passwordInput.type = type;
+
+            // Toggle the icon (open/closed eye) and the line visibility
+            const svg = this.querySelector('svg');
+            if (passwordInput.type === 'password') {
+                // When password is hidden, show the line (closed eye)
+                svg.querySelector('line').style.display = 'block';  // Show the line
+            } else {
+                // When password is visible, hide the line (open eye)
+                svg.querySelector('line').style.display = 'none';  // Hide the line
+            }
+        });
     </script>
 
 
